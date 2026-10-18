@@ -125,6 +125,9 @@ function ni_inject_seo_and_jsonld_head() {
     $site_name = 'Natura Intimo';
     $default_og_image = 'https://naturaintimo.com/wp-content/uploads/2026/09/414787.jpg';
 
+    // Pinterest Domain Verification
+    echo '<meta name="p:domain_verify" content="2f53dfbec9a96471b0b1cac581d18b71" />' . "\n";
+
     if (is_front_page()) {
         ?>
 <meta name="description" content="Shop authentic European lingerie engineered for full-bust support, everyday elegance, and coordinated sets. Express DHL shipping with guaranteed DDP duties pre-cleared." />
