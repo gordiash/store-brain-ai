@@ -1,0 +1,43 @@
+# Environment Secrets (P0 - Zero Hardcoded Secrets)
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+id_rsa
+id_ed25519
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Logs & Debugging
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Scraping, Data Feeds & Large Binary Archives
+*.zip
+*.deb
+*.tar.gz
+*_logged.html
+backend/mada_xml_logged.html
+backend/mada_xml_page.html
+backend/products.xml
+backend/temp_images/
+backend/page_*.html
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# OS & Temp Files
+.DS_Store
+Thumbs.db
+scratch/
+
+# Local Backups & Invoices (Contain real customer PII or raw dumps)
+backend/backups/
+backend/invoices/
+backend/reports/
+backups/

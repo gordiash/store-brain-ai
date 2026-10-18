@@ -1,0 +1,77 @@
+{
+  "brand_name": "Natura Intimo",
+  "domain": "naturaintimo.com",
+  "founding_location": "Białystok, Poland (European Lingerie Hub)",
+  "tagline": "European Full-Bust Lingerie & Coordinated Sets",
+  "mission": "Empowering women with DD–M cups through precision European architectural brafitting, uncompromising structural support, and sensual coordinated sets directly from Poland to North America.",
+  "core_markets": [
+    {
+      "code": "US",
+      "currency": "USD",
+      "shipping_carrier": "DHL Express Worldwide",
+      "delivery_days": "2-4 business days",
+      "standard_shipping_rate": 24.99,
+      "free_shipping_threshold": 150.00,
+      "duties": "Delivered Duty Paid (DDP) included",
+      "primary_language": "en-US"
+    },
+    {
+      "code": "CA",
+      "currency": "CAD",
+      "shipping_carrier": "DHL Express Worldwide",
+      "delivery_days": "2-4 business days",
+      "standard_shipping_rate": 34.99,
+      "free_shipping_threshold": 200.00,
+      "duties": "CETA 0% Preferential Duty for EU Origin Goods",
+      "primary_language": "en-CA (with fr-CA for Quebec)"
+    },
+    {
+      "code": "PL",
+      "currency": "PLN",
+      "primary_language": "pl-PL"
+    }
+  ],
+  "tone_of_voice": {
+    "style": "Sophisticated, authoritative yet warm, empowering, architectural, body-positive.",
+    "key_lexicon": [
+      "architectural brafitting",
+      "structural ribcage anchoring",
+      "multi-part seamed construction",
+      "powernet bands",
+      "forward projection",
+      "heritage European atelier",
+      "coordinated sets",
+      "sister sizes"
+    ],
+    "forbidden_claims": [
+      "handcrafted / handmade (without individual artisan proof)",
+      "bestseller (without historical sales data)",
+      "medical grade / orthopedic support",
+      "prevents irritation / cures posture problems",
+      "for real women (culturally exclusionary)",
+      "Nike (trademark violation, replaced by model code BS 1135)"
+    ]
+  },
+  "curated_brands": [
+    {
+      "brand": "Gorsenia",
+      "specialty": "Full-bust engineering, deep cups (up to M cup), forward projection, wide cushioned straps."
+    },
+    {
+      "brand": "Gaia",
+      "specialty": "Ergonomic semi-soft and soft designs, lace details, structural side-support panels."
+    },
+    {
+      "brand": "Ava",
+      "specialty": "Feminine embroidery, delicate microfibers with reinforced lower cup structure."
+    },
+    {
+      "brand": "Alles",
+      "specialty": "Sensual coordinated sets, nursing and everyday comfortable full-bust bras."
+    },
+    {
+      "brand": "Mefemi",
+      "specialty": "Modern romantic aesthetics with reinforced European powernet construction."
+    }
+  ]
+}

@@ -1,0 +1,474 @@
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 16px;
+}
+
+/* Header & Status Bar */
+.game-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title-section {
+  text-align: center;
+  color: var(--color-border-accent);
+  text-shadow: 2px 2px 0px #000;
+  padding: 8px 0;
+}
+
+.title-section h1 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.title-section p {
+  font-family: var(--font-menu);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.stat-label {
+  font-family: var(--font-menu);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-family: var(--font-text);
+  color: #fff;
+  font-weight: bold;
+}
+
+.stat-value.gold {
+  color: var(--color-border-accent);
+}
+
+.stat-value.green {
+  color: var(--color-success);
+}
+
+.stat-value.pink {
+  color: var(--color-primary);
+}
+
+/* Main Grid Layout */
+.game-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+@media (max-width: 1024px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Agents Grid */
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .agents-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Agent Chamber / Room */
+.agent-room {
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Specific Room Theming */
+.room-strategist {
+  background: linear-gradient(135deg, #1d0f30 0%, #11081f 100%);
+  border-color: #a855f7;
+}
+
+.room-merchant {
+  background: linear-gradient(135deg, #2b1f15 0%, #1f140d 100%);
+  border-color: #eab308;
+}
+
+.room-instagram {
+  background: linear-gradient(135deg, #2d1020 0%, #1f0815 100%);
+  border-color: #ec4899;
+}
+
+.room-facebook {
+  background: linear-gradient(135deg, #0d1e36 0%, #081124 100%);
+  border-color: #3b82f6;
+}
+
+.room-blogger {
+  background: linear-gradient(135deg, #062c1d 0%, #031911 100%);
+  border-color: #10b981;
+}
+
+.room-reels {
+  background: linear-gradient(135deg, #380d19 0%, #1f070e 100%);
+  border-color: #f43f5e;
+}
+
+/* Agent Header */
+.agent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+  z-index: 2;
+}
+
+.agent-name {
+  font-family: var(--font-title);
+  font-size: 11px;
+  color: #fff;
+}
+
+.agent-level {
+  background-color: #11111e;
+  border: 1px solid var(--color-border-accent);
+  padding: 1px 6px;
+  font-family: var(--font-menu);
+  font-size: 10px;
+  color: var(--color-border-accent);
+}
+
+/* Agent Room Visual Environment Content */
+.agent-visual {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.avatar-character {
+  font-size: 56px;
+  position: relative;
+  z-index: 10;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
+
+.avatar-status-badge {
+  font-family: var(--font-menu);
+  font-size: 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  text-transform: uppercase;
+  z-index: 11;
+  border: 1px solid #fff;
+}
+
+.status-working {
+  background-color: var(--color-success);
+  animation: flash 1.5s infinite;
+}
+
+.status-idle {
+  background-color: var(--color-text-muted);
+}
+
+/* Room floating items to represent the work */
+.room-item {
+  position: absolute;
+  font-size: 26px;
+  opacity: 0.15;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.agent-room:hover .room-item {
+  opacity: 0.45;
+}
+
+.item-1 { top: 25%; left: 15%; animation: float 2.5s infinite; }
+.item-2 { top: 20%; right: 15%; animation: float 3.2s infinite; }
+.item-3 { bottom: 25%; left: 20%; animation: float 2.8s infinite; }
+.item-4 { bottom: 20%; right: 20%; animation: float 3s infinite; }
+
+.room-ceo { border-color: #eab308; }
+.room-ceo .agent-header { background-color: rgba(234, 179, 8, 0.2); color: #fde047; }
+.room-cmo { border-color: #a855f7; }
+.room-cmo .agent-header { background-color: rgba(168, 85, 247, 0.2); color: #c084fc; }
+
+/* Status Working Room effect */
+.agent-room.working-active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid var(--color-success);
+  pointer-events: none;
+  animation: flash 1s infinite;
+  z-index: 5;
+}
+
+/* Agent Activity Description */
+.agent-activity-box {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  z-index: 2;
+}
+
+.activity-label {
+  font-family: var(--font-menu);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.activity-text {
+  font-size: 16px;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* XP Bar inside Room */
+.agent-xp-container {
+  margin-top: 4px;
+}
+
+/* Sidebar Sections */
+.sidebar-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 600px;
+}
+
+.quests-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.quests-title {
+  color: var(--color-border-accent);
+  font-size: 13px;
+  margin-bottom: 12px;
+  border-bottom: 2px dashed var(--color-border);
+  padding-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-right: 4px;
+}
+
+.quest-item {
+  background-color: #1c1c32;
+  border: 2px solid var(--color-border);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background-color 0.2s;
+}
+
+.quest-item.completed {
+  border-color: var(--color-success);
+  background-color: #0c2018;
+  opacity: 0.7;
+}
+
+.quest-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quest-item-title {
+  font-family: var(--font-menu);
+  font-size: 12px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.quest-item.completed .quest-item-title {
+  text-decoration: line-through;
+  color: var(--color-success);
+}
+
+.quest-item-reward {
+  font-family: var(--font-title);
+  font-size: 8px;
+  background-color: #ffd700;
+  color: #000;
+  padding: 1px 4px;
+}
+
+.quest-item-desc {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.quest-item.completed .quest-item-desc {
+  color: #5d7568;
+}
+
+.empty-quests {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-family: var(--font-menu);
+  font-size: 14px;
+  padding: 24px 0;
+  border: 2px dashed #2d2d48;
+}
+
+/* Console / Battle Log */
+.console-section {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.console-title {
+  color: var(--color-primary);
+  font-size: 13px;
+  margin-bottom: 12px;
+  border-bottom: 2px dashed var(--color-border);
+  padding-bottom: 6px;
+}
+
+.console-log {
+  background-color: #070710;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  padding: 8px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column-reverse; /* Scroll from bottom */
+  gap: 6px;
+  flex-grow: 1;
+}
+
+.log-entry {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  line-height: 1.3;
+  padding: 2px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.03);
+}
+
+.log-time {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.log-sender {
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.log-message {
+  color: var(--color-text);
+  word-break: break-word;
+}
+
+/* Control Panel */
+.game-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 4px double var(--color-border);
+}
+
+.controls-info {
+  font-family: var(--font-menu);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-align: center;
+  width: 100%;
+}
+
+/* Agent Skill Badges */
+.agent-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.skill-badge {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 9px;
+  color: #cbd5e1;
+  font-family: var(--font-menu);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  transition: transform 0.15s ease;
+}
+
+.skill-badge:hover {
+  transform: scale(1.05);
+  border-color: var(--color-primary);
+  color: #ffffff;
+}

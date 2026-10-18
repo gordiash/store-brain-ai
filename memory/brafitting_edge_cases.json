@@ -1,0 +1,50 @@
+{
+  "last_updated": "2026-10-18T16:50:00Z",
+  "brand_nuances": {
+    "gorsenia": {
+      "cup_depth": "Deep (głębokie miseczki)",
+      "wire_width": "Narrow to average (wąskie fiszbiny)",
+      "projection": "Strong forward projection (mocne wysunięcie ku przodowi)",
+      "band_stretch": "Firm powernet (ścisły obwód)",
+      "sizing_advice": "If between cup sizes in US conversion, advise customer to take the smaller cup (e.g. choose 34G instead of 34H US for Gorsenia K496)."
+    },
+    "gaia": {
+      "cup_depth": "Standard to deep",
+      "wire_width": "Average to wide (szersze fiszbiny obejmujące tkankę pod pachą)",
+      "projection": "Natural rounded lift",
+      "band_stretch": "Moderate, true to European size",
+      "sizing_advice": "Ideal for shallow or wide-set breasts. Use exact EU-to-US cup mapping."
+    },
+    "ava": {
+      "cup_depth": "Standard",
+      "wire_width": "Average",
+      "projection": "Rounded and centered",
+      "band_stretch": "True to size, comfortable microfibers",
+      "sizing_advice": "Perfect for everyday wear, softer wires than Gorsenia."
+    },
+    "alles": {
+      "cup_depth": "Standard",
+      "wire_width": "Average to narrow",
+      "projection": "Natural cleavage",
+      "band_stretch": "Soft yet supportive, ideal for sensitive skin and nursing mothers",
+      "sizing_advice": "True to size across all styles."
+    }
+  },
+  "frequently_asked_conversions": [
+    {
+      "us_size": "34DDD",
+      "eu_recommended": "75F",
+      "sister_size_alternative": "80E (36DD) or 70G (32G)"
+    },
+    {
+      "us_size": "36G",
+      "eu_recommended": "80G",
+      "sister_size_alternative": "85F (38DDD) or 75H (34H)"
+    },
+    {
+      "us_size": "38H",
+      "eu_recommended": "85H",
+      "sister_size_alternative": "90G (40G) or 80I (36I)"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# Environment Secrets (P0)
+.env
+.env.*
+
+# Dependencies
+node_modules/
+
+# Logs & Temporary files
+*.log
+*.zip
+*_logged.html
+mada_xml_logged.html
+mada_xml_page.html
+
+# Generated Data & Backups
+backups/
+invoices/
+reports/

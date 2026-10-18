@@ -1,0 +1,35 @@
+{
+  "system_description": "Architectural European to US/UK Bra Sizing Conversion Matrix for Natura Intimo.",
+  "band_conversions": [
+    { "eu_cm": 65, "us_uk_inches": 30 },
+    { "eu_cm": 70, "us_uk_inches": 32 },
+    { "eu_cm": 75, "us_uk_inches": 34 },
+    { "eu_cm": 80, "us_uk_inches": 36 },
+    { "eu_cm": 85, "us_uk_inches": 38 },
+    { "eu_cm": 90, "us_uk_inches": 40 },
+    { "eu_cm": 95, "us_uk_inches": 42 },
+    { "eu_cm": 100, "us_uk_inches": 44 },
+    { "eu_cm": 105, "us_uk_inches": 46 },
+    { "eu_cm": 110, "us_uk_inches": 48 }
+  ],
+  "cup_conversions": [
+    { "eu_cup": "A", "us_cup": "A", "uk_cup": "A" },
+    { "eu_cup": "B", "us_cup": "B", "uk_cup": "B" },
+    { "eu_cup": "C", "us_cup": "C", "uk_cup": "C" },
+    { "eu_cup": "D", "us_cup": "D", "uk_cup": "D" },
+    { "eu_cup": "E", "us_cup": "DD", "uk_cup": "DD" },
+    { "eu_cup": "F", "us_cup": "DDD / F", "uk_cup": "E" },
+    { "eu_cup": "G", "us_cup": "G", "uk_cup": "F" },
+    { "eu_cup": "H", "us_cup": "H", "uk_cup": "FF" },
+    { "eu_cup": "I", "us_cup": "I", "uk_cup": "G" },
+    { "eu_cup": "J", "us_cup": "J", "uk_cup": "GG" },
+    { "eu_cup": "K", "us_cup": "K", "uk_cup": "H" },
+    { "eu_cup": "L", "us_cup": "L", "uk_cup": "HH" },
+    { "eu_cup": "M", "us_cup": "M", "uk_cup": "J" }
+  ],
+  "sister_sizing_rule": {
+    "principle": "Equivalent cup volume across band sizes.",
+    "rule_up": "If going UP one band size, go DOWN one cup letter (e.g., 75G / 34G EU -> 80F / 36DDD US).",
+    "rule_down": "If going DOWN one band size, go UP one cup letter (e.g., 75G / 34G EU -> 70H / 32H US)."
+  }
+}

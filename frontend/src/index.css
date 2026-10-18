@@ -1,0 +1,194 @@
+:root {
+  --color-bg: #0f0f1b;
+  --color-panel: #18182b;
+  --color-border: #3b3b5c;
+  --color-border-accent: #ffd700;
+  --color-text: #f4f4f9;
+  --color-text-muted: #8c8ca8;
+  --color-primary: #a855f7; /* Strategist purple */
+  --color-success: #10b981; /* Green */
+  --color-warning: #f59e0b; /* Yellow/Gold */
+  --color-danger: #ef4444;  /* Red */
+  
+  --font-title: 'Press Start 2P', monospace;
+  --font-text: 'VT323', monospace;
+  --font-menu: 'Silkscreen', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-text);
+  font-size: 20px;
+  line-height: 1.4;
+  overflow-x: hidden;
+  image-rendering: pixelated;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  letter-spacing: 1px;
+}
+
+/* NES/RPG Style Border & Box */
+.pixel-panel {
+  background-color: var(--color-panel);
+  border: 4px solid var(--color-border);
+  box-shadow: 
+    0 -4px 0 -2px var(--color-panel), 0 4px 0 -2px var(--color-panel),
+    -4px 0 0 -2px var(--color-panel), 4px 0 0 -2px var(--color-panel),
+    inset 0 0 0 2px #2d2d48;
+  padding: 16px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.pixel-panel-accent {
+  border-color: var(--color-border-accent);
+  box-shadow: 
+    0 -4px 0 -2px var(--color-panel), 0 4px 0 -2px var(--color-panel),
+    -4px 0 0 -2px var(--color-panel), 4px 0 0 -2px var(--color-panel),
+    inset 0 0 0 2px #4d3d1d;
+}
+
+/* NES Style Buttons */
+.pixel-btn {
+  font-family: var(--font-menu);
+  font-size: 16px;
+  padding: 10px 16px;
+  color: var(--color-text);
+  background-color: #24243e;
+  border: 4px solid var(--color-border);
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.pixel-btn:hover {
+  background-color: #3b3b5c;
+  border-color: var(--color-border-accent);
+}
+
+.pixel-btn:active {
+  transform: translateY(2px);
+}
+
+.pixel-btn-success {
+  background-color: #0d6efd;
+  background-color: #064e3b;
+  border-color: #059669;
+}
+.pixel-btn-success:hover {
+  background-color: #047857;
+  border-color: var(--color-border-accent);
+}
+
+.pixel-btn-warning {
+  background-color: #78350f;
+  border-color: #d97706;
+}
+.pixel-btn-warning:hover {
+  background-color: #92400e;
+  border-color: var(--color-border-accent);
+}
+
+.pixel-btn-danger {
+  background-color: #7f1d1d;
+  border-color: #dc2626;
+}
+.pixel-btn-danger:hover {
+  background-color: #991b1b;
+  border-color: var(--color-border-accent);
+}
+
+/* RPG progress bars */
+.pixel-bar-container {
+  width: 100%;
+  height: 24px;
+  background-color: #11111e;
+  border: 3px solid var(--color-border);
+  padding: 2px;
+  position: relative;
+}
+
+.pixel-bar {
+  height: 100%;
+  background-color: var(--color-primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.pixel-bar-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-menu);
+  font-size: 11px;
+  text-shadow: 1px 1px 0px #000;
+  color: #fff;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes float-horizontal {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(4px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes flash {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+}
+
+.anim-float {
+  animation: float 2s ease-in-out infinite;
+}
+
+.anim-blink {
+  animation: blink 1.5s infinite;
+}
+
+.anim-flash {
+  animation: flash 1s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #11111e;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border: 2px solid #11111e;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

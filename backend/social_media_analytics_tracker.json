@@ -1,0 +1,80 @@
+{
+  "last_updated": "2026-10-17T18:31:57.644441Z",
+  "facebook_summary": {
+    "page_id": "1082888234909700",
+    "posts_analyzed": 2,
+    "posts": [
+      {
+        "platform": "facebook",
+        "id": "1082888234909700_122124520287297993",
+        "text": "Why Full-Bust Bras From Poland Are Redefining Support Across the US & Canada ✨\n\nIf you wear a US DD, DDD, G, or H cup, you know the frustration of molded foam bras that flatten breast tissue toward your armpits while flimsy bands let your straps dig painfully into your shoulders.\n\nEuropean lingerie engineering from heritage ateliers like Gorsenia, Gaia, and Ava solves this with structural architectural brafitting:\n\n📐 Multi-Part Cut-and-Sewn Construction: 3-piece and 4-piece seamed cups project the bust naturally forward rather than flattening it sideways.\n🔒 Ribcage Anchoring: Firm powernet bands bear 85% of breast weight, completely freeing your shoulders from tension.\n✨ Coordinated Sets: Pair your favorite bra with matching bottoms (Brazilian briefs, bikini briefs, or high-waist cuts) and enjoy an automatic $10.00 Set Savings discount at checkout.\n\n✈️ Direct Express Delivery Duty Paid (DDP):\nAll orders ship directly from our European atelier in Poland via DHL Express Worldwide (2–4 business days air transit).\n• Standard flat rate: $24.99 USD (Pre-cleared DDP — zero surprise delivery fees, California SB 478 compliant).\n• 100% FREE DHL Express Shipping & Customs Duties on all orders of $150.00+ USD (and C$200.00+ CAD with 0% CETA preferential duty).\n• 30-Day Returns & Complimentary Free First Size Exchange.\n\nFind your exact European band and cup size with our interactive size converter:\n👉 https://naturaintimo.com/size-guide/\n\nBrowse signature European collections:\n👉 https://naturaintimo.com/",
+        "created_at": "2026-10-17T13:51:11+0000",
+        "reactions": 0,
+        "comments": 0,
+        "shares": 0,
+        "impressions": 0,
+        "engaged_users": 0,
+        "engagement_rate": 0.0
+      },
+      {
+        "platform": "facebook",
+        "id": "1082888234909700_122097368331297993",
+        "text": "",
+        "created_at": "2026-05-01T08:38:59+0000",
+        "reactions": 0,
+        "comments": 0,
+        "shares": 0,
+        "impressions": 0,
+        "engaged_users": 0,
+        "engagement_rate": 0.0
+      }
+    ]
+  },
+  "instagram_summary": {
+    "ig_account_id": "17841428136710713",
+    "media_analyzed": 2,
+    "media": [
+      {
+        "platform": "instagram",
+        "id": "18159087478511315",
+        "media_type": "CAROUSEL_ALBUM",
+        "text": "Refined Everyday Support: Gaia BS 1135 & GFB 1135 Beige 🤍\n\nLightweight, unpadded comfort designed to move naturally with your body.\n\n• Gaia BS 1135 Soft Bra (EU 65E–95E / US 30DD–42DD)\n• Gaia GFB 1135 Brazilian Briefs (Sizes S–2XL)\n• Delicate, breathable European lace in a versatile skin-tone beige\n• Complete the set and save $10.00 instantly at checkout\n\nDispatched directly from Poland via DHL Express Worldwide (2–4 business days delivery). Pre-cleared DDP customs with zero surprise delivery fees.\n\nBrowse sizes & fit guidance at naturaintimo.com (link in bio).\n\n#NaturaIntimo #GaiaLingerie #EverydayLingerie #BeigeBra #EuropeanLingerie #BraFitting #SoftBra #LingerieSet",
+        "created_at": "2026-10-17T13:52:48+0000",
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "reach": 1,
+        "engagement_rate": 0.0
+      },
+      {
+        "platform": "instagram",
+        "id": "18131754238798243",
+        "media_type": "CAROUSEL_ALBUM",
+        "text": "Coordinated European Lingerie Set: Gorsenia Nadine ✨\n\nFeminine embroidery, dependable support, and everyday comfort crafted for fuller busts.\n\n• Gorsenia Nadine Soft Bra (EU 65F–115D / US 30DDD–50D)\n• Gorsenia Nadine Briefs (Sizes M–3XL)\n• Multi-part cut-and-sewn cups with firm underwire support\n• Save $10.00 instantly when pairing matching bra and bottom\n\nDispatched directly from Poland via DHL Express Worldwide (2–4 business days delivery). Pre-cleared DDP customs with zero surprise delivery fees.\n\nExplore the collection & size converter at naturaintimo.com (link in bio).\n\n#NaturaIntimo #Gorsenia #FullBust #LingerieSet #EuropeanLingerie #BraFitting #SoftBra #DDPlus",
+        "created_at": "2026-10-17T13:51:58+0000",
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "reach": 1,
+        "engagement_rate": 100.0
+      }
+    ]
+  },
+  "active_ab_recommendations": [
+    {
+      "type": "FORMAT_TEST",
+      "hypothesis": "Reels (wideo 9:16) z prezentacją detali konstrukcyjnych miseczki generują 3-5x wyższy organiczny zasięg w USA niż statyczne zdjęcia.",
+      "test_action": "Opublikować Reel porównujący rozmiarówkę US 34DDD z EU 75G z głosem lektora w US English."
+    },
+    {
+      "type": "AUDIENCE_TARGETING_TEST",
+      "hypothesis": "Posty na Facebooku z aktywnym ograniczeniem grupy odbiorców do USA (Targeting: United States) uzyskają 100% odsłon z rynku docelowego.",
+      "test_action": "Przy kolejnej publikacji ustawić w feedzie feed_targeting={'countries': ['US']}."
+    },
+    {
+      "type": "HOOK_TEST",
+      "hypothesis": "Hook edukacyjny ('Why do 80% of women wear the wrong bra band size?') ma wyższy CTR niż bezpośrednia promocja produktu ('Check our new collection').",
+      "test_action": "Przetestować post edukacyjny z kalkulatorem rozmiarów EU->US."
+    }
+  ]
+}

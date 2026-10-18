@@ -1,0 +1,40 @@
+{
+  "last_updated": "2026-10-18T16:50:00Z",
+  "united_states": {
+    "carrier": "DHL Express Worldwide",
+    "delivery_model": "DDP (Delivered Duty Paid)",
+    "de_minimis_threshold_usd": 800.00,
+    "hts_codes": {
+      "bras_synthetic": {
+        "hts_code": "6212.10.9020",
+        "description": "Brassieres of man-made fibers, containing lace or embroidery",
+        "general_duty_rate": "16.9%"
+      },
+      "bras_cotton": {
+        "hts_code": "6212.10.9010",
+        "description": "Brassieres of cotton",
+        "general_duty_rate": "16.9%"
+      },
+      "briefs_synthetic": {
+        "hts_code": "6108.22.9020",
+        "description": "Women's briefs and panties, knitted or crocheted, of man-made fibers",
+        "general_duty_rate": "15.6%"
+      },
+      "briefs_cotton": {
+        "hts_code": "6108.21.0010",
+        "description": "Women's briefs and panties, knitted, of cotton",
+        "general_duty_rate": "7.6%"
+      }
+    },
+    "sales_tax_nexus": "No physical nexus. Wayfair economic nexus thresholds (typically $100k or 200 transactions) monitored annually.",
+    "california_sb_478": "Strict compliance required. Mandatory delivery charges ($24.99 USD) and any customs handling are bundled in displayed prices."
+  },
+  "canada": {
+    "carrier": "DHL Express Worldwide",
+    "trade_agreement": "CETA (Canada-European Union Comprehensive Economic and Trade Agreement)",
+    "preferential_tariff": "0.0% on EU origin qualifying textile products",
+    "invoice_declaration": "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of Poland/EU preferential origin.",
+    "gst_hst_threshold": "CAD 30,000 global sales threshold monitored for CRA registration.",
+    "quebec_bill_96": "Commercial materials and customer communications targeting Quebec must provide French language accessibility."
+  }
+}

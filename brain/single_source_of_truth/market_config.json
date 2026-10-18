@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "2.0.0",
+  "lastUpdated": "2026-10-16",
+  "seller": {
+    "legalName": "Natura Izabela Jakubczyk",
+    "brandName": "Natura Intimo",
+    "domain": "naturaintimo.com",
+    "taxIdNip": "7621888669",
+    "countryCode": "PL",
+    "address": {
+      "street": "ul. Juliana Tuwima 26",
+      "postalCode": "10-747",
+      "city": "Olsztyn",
+      "country": "Poland"
+    },
+    "contact": {
+      "supportEmail": "support@naturaintimo.com",
+      "legacyEmail": "sklep@naturaintimo.com",
+      "responseSlaHours": 24,
+      "businessHoursCet": "Mon–Fri 09:00–17:00 CET (03:00–11:00 AM EST)",
+      "socialChannels": {
+        "instagram": "https://www.instagram.com/naturaintimo/",
+        "facebook": "https://www.facebook.com/naturaintimo/",
+        "tiktok": "https://www.tiktok.com/@naturaintimo",
+        "pinterest": "https://www.pinterest.com/naturaintimo/"
+      }
+    }
+  },
+  "markets": {
+    "US": {
+      "currency": "USD",
+      "displaySymbol": "US$",
+      "locales": ["en-US"],
+      "carrier": "DHL Express Worldwide",
+      "incoterms": "DDP",
+      "preparationDays": { "min": 1, "max": 2 },
+      "transitBusinessDays": { "min": 2, "max": 4 },
+      "minimumOrderAmount": 0,
+      "freeShippingThreshold": 150.00,
+      "freeDutiesThreshold": 150.00,
+      "standardShippingCost": 24.99,
+      "ddpCustomsProcessingFee": 0.00,
+      "pricingTransparencyRule": "All mandatory fees and customs duties are included in the flat shipping rate or absorbed into product margin (California SB 478 and Canadian Competition Act compliant). Standard DHL Express DDP flat rate: $24.99, 100% Free DHL Express at $150+ USD.",
+      "returnWindowDays": 30,
+      "freeFirstSizeExchange": true
+    },
+    "CA": {
+      "currency": "CAD",
+      "fallbackCurrency": "USD",
+      "displaySymbol": "C$",
+      "locales": ["en-CA", "fr-CA"],
+      "carrier": "DHL Express Worldwide",
+      "incoterms": "DDP",
+      "cetaOriginDeclarationApplicable": true,
+      "preparationDays": { "min": 1, "max": 2 },
+      "transitBusinessDays": { "min": 3, "max": 5 },
+      "minimumOrderAmount": 0,
+      "freeShippingThreshold": 200.00,
+      "standardShippingCost": 24.99,
+      "returnWindowDays": 30,
+      "freeFirstSizeExchange": true
+    },
+    "PL": {
+      "currency": "PLN",
+      "displaySymbol": "zł",
+      "locales": ["pl-PL"],
+      "vatRateStandard": 0.23,
+      "returnWindowDays": 14
+    }
+  },
+  "customsAndHts": {
+    "defaultOriginIfVerifiedManufacturer": {
+      "Gorsenia": "PL",
+      "Gaia": "PL",
+      "Ava": "PL",
+      "Mefemi": "PL",
+      "Alles": "PL"
+    },
+    "componentHtsMapping": {
+      "bra_synthetic": {
+        "htsUs": "6212.10.9020",
+        "hs6": "6212.10",
+        "description": "Brassieres of man-made fibers, knitted or crocheted / woven"
+      },
+      "bra_cotton": {
+        "htsUs": "6212.10.9010",
+        "hs6": "6212.10",
+        "description": "Brassieres of cotton"
+      },
+      "panty_synthetic_knit": {
+        "htsUs": "6108.22.9020",
+        "hs6": "6108.22",
+        "description": "Women's briefs and panties, knitted or crocheted, of man-made fibers"
+      },
+      "panty_cotton_knit": {
+        "htsUs": "6108.21.0010",
+        "hs6": "6108.21",
+        "description": "Women's briefs and panties, knitted or crocheted, of cotton"
+      },
+      "nightwear_synthetic_knit": {
+        "htsUs": "6108.32.0010",
+        "hs6": "6108.32",
+        "description": "Women's nightdresses and pajamas, knitted or crocheted, of man-made fibers"
+      }
+    },
+    "forbidSetSingleHts": true,
+    "setSplittingRule": "Coordinated sets must be itemized separately on Commercial Invoice as Bra (6212.10) + Briefs/Panties (6108.22) with individual values, weights, and fiber compositions."
+  },
+  "complianceBlacklists": {
+    "forbiddenMarketingTerms": [
+      "handcrafted",
+      "handmade",
+      "custom tailored",
+      "carefully tailored",
+      "for real women",
+      "real women",
+      "guarantees perfect fit",
+      "medical grade",
+      "hypoallergenic guaranteed",
+      "prevents irritation",
+      "FedEx Economy",
+      "PLN 200",
+      "when checkout launches",
+      "being finalised"
+    ],
+    "trademarkSensitiveModelNames": {
+      "Nike": "Replace in US/CA product titles with model code 'BS 1135' or 'GFB 1135'"
+    }
+  },
+  "sizeConversionReference": {
+    "bandEuToUsUk": {
+      "60": "28",
+      "65": "30",
+      "70": "32",
+      "75": "34",
+      "80": "36",
+      "85": "38",
+      "90": "40",
+      "95": "42",
+      "100": "44",
+      "105": "46",
+      "110": "48",
+      "115": "50"
+    },
+    "cupEuToUsAndUk": {
+      "B": { "us": "B", "uk": "B" },
+      "C": { "us": "C", "uk": "C" },
+      "D": { "us": "D", "uk": "D" },
+      "E": { "us": "DD (E)", "uk": "DD" },
+      "F": { "us": "DDD (F)", "uk": "E" },
+      "G": { "us": "G", "uk": "F" },
+      "H": { "us": "H", "uk": "FF" },
+      "I": { "us": "I", "uk": "G" },
+      "J": { "us": "J", "uk": "GG" },
+      "K": { "us": "K", "uk": "H" },
+      "L": { "us": "L", "uk": "HH" },
+      "M": { "us": "M", "uk": "J" }
+    }
+  }
+}
