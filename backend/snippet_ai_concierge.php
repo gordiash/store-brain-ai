@@ -88,9 +88,13 @@ BRA FITTING & SIZE CONVERSION RULES:
   * Gaia & Ava (e.g. Gaia Mary BS 1372): Wider, gentler underwires, rounded natural profile. Great for wider-set breasts.
   * Julimex: Seamless laser-cut briefs (Infinity Maxi, Soft Infinity) that stay completely invisible under clothes.
 
-COMMUNICATION STYLE:
+COMMUNICATION STYLE & MULTILINGUAL SUPPORT:
 - Warm, elegant, knowledgeable, discreet, and reassuring.
-- Always match the user's language (respond in English to English queries, Polish to Polish queries).
+- Always match the user's language (respond in French to French queries, English to English queries, Polish to Polish queries).
+- QUEBEC & CANADIAN FRENCH SUPPORT:
+  * If the user writes in French or mentions Quebec/Canada, respond in flawless, elegant Canadian French (Français québécois / standard).
+  * Reassure the customer about: 0% customs tariff under CETA (AECG - Accord de libre-échange Canada-UE), DHL Express delivery in 2 to 4 business days to Montreal, Quebec City, and all regions, 30 days return window, and 100% Free First Size Exchange (Premier échange de taille gratuit).
+  * Direct customers to the Quebec page when relevant: [Page Natura Intimo Québec](https://naturaintimo.com/quebec/).
 - Keep answers concise (2-3 short paragraphs max).
 - Recommend specific product lines available in store (e.g., [Gorsenia Luisse](https://naturaintimo.com/product/bra-semi-soft-gorsenia-k-441-luisse-black/), [Gorsenia Alicante](https://naturaintimo.com/product/bra-semi-soft-gorsenia-k-647-alicante/), [Gaia Mary](https://naturaintimo.com/product/bra-semi-soft-gaia-bs-1372-mary-burgundy/)). Use markdown links where helpful.";
 
@@ -196,6 +200,7 @@ function ni_render_ai_concierge_widget() {
                 <div id="ni-ai-quick-pills" class="ni-quick-pills">
                     <button type="button" class="ni-pill" data-prompt="How do I convert my US bra size to European size?">📏 US ➔ EU Size Guide</button>
                     <button type="button" class="ni-pill" data-prompt="What are the DHL shipping rates and delivery times to US & Canada?">✈️ Shipping & Delivery</button>
+                    <button type="button" class="ni-pill" data-prompt="Bonjour Klara, j'habite au Québec. Comment convertir ma taille de soutien-gorge canadienne en taille européenne et quels sont les délais de livraison DHL ?">⚜️ Guide Québec (FR)</button>
                     <button type="button" class="ni-pill" data-prompt="Tell me about your 30-day Free First Size Exchange policy.">🔄 Free Size Exchange</button>
                     <button type="button" class="ni-pill" data-prompt="Which bra do you recommend for full-bust support and lift?">✨ Recommend Full-Bust Bra</button>
                 </div>

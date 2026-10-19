@@ -17,13 +17,17 @@ function ni_enforce_english_tagline($desc) {
     return 'European Full-Bust Lingerie & Coordinated Sets';
 }
 
-// 1. Automatic 301 redirect for any legacy Polish /produkt/ URLs to /product/
-add_action('init', 'ni_redirect_legacy_produkt_urls', 1);
-function ni_redirect_legacy_produkt_urls() {
+// 1. Automatic 301 redirects for legacy URLs and French language alias
+add_action('init', 'ni_redirect_legacy_and_french_urls', 1);
+function ni_redirect_legacy_and_french_urls() {
     $uri = $_SERVER['REQUEST_URI'] ?? '';
     if (strpos($uri, '/produkt/') !== false) {
         $clean_path = str_replace('/produkt/', '/product/', $uri);
         wp_safe_redirect(home_url($clean_path), 301);
+        exit;
+    }
+    if ($uri === '/fr' || $uri === '/fr/' || $uri === '/fr-ca' || $uri === '/fr-ca/') {
+        wp_safe_redirect(home_url('/quebec/'), 301);
         exit;
     }
 }
@@ -145,6 +149,7 @@ function ni_inject_seo_and_jsonld_head() {
 <meta name="twitter:image" content="<?php echo esc_url($default_og_image); ?>" />
 <link rel="alternate" hreflang="en-US" href="https://naturaintimo.com/" />
 <link rel="alternate" hreflang="en-CA" href="https://naturaintimo.com/natura-intimo-canada/" />
+<link rel="alternate" hreflang="fr-CA" href="https://naturaintimo.com/quebec/" />
 <link rel="alternate" hreflang="pl-PL" href="https://naturaintimo.com/pl/" />
 <link rel="alternate" hreflang="x-default" href="https://naturaintimo.com/" />
         <?php
