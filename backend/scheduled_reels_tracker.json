@@ -1,0 +1,34 @@
+[
+  {
+    "video_id": "1422853336674921",
+    "title": "Why Full-Bust Support Starts With Ribcage Anchoring ✨",
+    "description": "Why Full-Bust Support Starts With Ribcage Anchoring ✨\n\nIf you wear a US 32DDD, 34G, or 36H, stop letting flimsy elastic bands transfer all the weight onto your shoulder straps!\n\nEuropean lingerie engineering from Gaia & Gorsenia relies on architectural multi-part seamed cups that lift naturally forward while the firm powernet band secures 85% of breast weight against your ribcage.\n\n✨ Featured Model: Gaia Mary Semi-Soft in Burgundy (US 32D–42D / EU 70D–95D).\n✨ Save $10.00 instantly when you pair with matching Brazilian or Bikini briefs at checkout.\n✈️ 100% Free DHL Express Worldwide Shipping & Duty-Paid Delivery (DDP) to USA on orders $150+ USD (and C$200+ CAD to Canada).\n✨ 30-Day Hassle-Free Returns & Free First Size Exchange.\n\nFind your exact sister size conversion:\n👉 https://naturaintimo.com/size-guide/\n\n#NaturaIntimo #FullBust #BraFitting #USABrafitting #GaiaLingerie #SupportiveBra #EuropeanLingerie #BodyPositivity",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "status": "SCHEDULED",
+    "scheduled_time": 1792403711,
+    "scheduled_time_human": "2026-10-19T11:55:11",
+    "created_at": "2026-10-19T07:55:26.790348Z",
+    "api_response": {
+      "success": true,
+      "message": "Video is Processing. To check the status of the video, please follow the instructions listed at https://developers.facebook.com/docs/video-api/guides/reels-publishing#get-the-upload-status.",
+      "post_id": "122124826413297993"
+    }
+  },
+  {
+    "platform": "facebook_photo",
+    "post_id": "122124870831297993",
+    "title": "The Black Friday Upgrade Your Shoulders Have Been Waiting For ✨",
+    "scheduled_time_utc": "2026-10-25T16:00:00Z",
+    "scheduled_time_pl": "2026-10-25 18:00:00 CET",
+    "scheduled_time_us_est": "2026-10-25 12:00:00 PM EST",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "coupon_code": "BF20",
+    "status": "SCHEDULED"
+  }
+]

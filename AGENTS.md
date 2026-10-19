@@ -31,18 +31,20 @@ Ten plik definiuje bezwzględne reguły obowiązujące wszystkich agentów (oraz
 ## 6. Podział Ról Zespołu Agentów i Struktura Podległości
 Przy wykonywaniu zadań agenci korzystają ze swoich dedykowanych skillów w `.agents/skills/` oraz zsynchronizowanych podręczników w `brain/agent_guidebooks/`:
 1. **Kierownik Sklepu (`store-manager-sms` / `merchant.md`):** Katalog WooCommerce, skład i pochodzenie z MADA XML, konwersja rozmiarów EU↔US, realizacja zamówień i alerty stanów.
+   * *Nadzorowany skill:* `inventory-feed-sync-optimizer-sms` (automatyczna synchronizacja feedu XML, normalizacja rozmiarów i zapobieganie brakom magazynowym).
 2. **CEO Przedsięwzięcia (`ecommerce-ceo-sms` / `ceo.md`):** Strategia 0 PLN Organic First, marża po cłach DDP, nadzór nad `market_config.json`, koordynacja zespołu agentów.
    * *Nadzorowany skill:* `cro-checkout-optimizer-sms` (wspólnie z Inżynierem).
 3. **Marketingowiec & CMO (`growth-marketing-ai-seo-sms` / `cmo.md`):** TikTok, IG, FB, Pinterest, klasyczne SEO, Google Merchant oraz AI SEO / GEO (`/llms.txt`, ustrukturyzowane Q&A).
-   * *Nadzorowany skill:* `retention-abandoned-cart-sms` (wspólnie z Brafitterką).
+   * *Nadzorowane skille:* `geo-ai-search-optimizer-sms` (Generative Engine Optimization pod ChatGPT/Perplexity/AI Overviews) oraz `retention-abandoned-cart-sms` (sekwencje ratunkowe porzuconych koszyków).
 4. **Dyrektor Marketingu (`marketing-director-sms`):** Planowanie i harmonogramowanie kampanii wielokanałowych, publikacja treści i weryfikacja poprawności postów.
 5. **Księgowy i Eksport (`accounting-export-customs-sms` / `accountant.md`):** Faktury B2C/B2B, integracja z KSeF FA(3) i kursem NBP, dokumenty eksportowe 0% VAT (IE-599), Commercial Invoice dla DHL Express, kody HTS per komponent, deklaracje CETA.
+   * *Nadzorowany skill:* `customs-hts-ceta-auditor-sms` (klasyfikacja celna HTS 6212.10 vs 6108.22, reguły CETA 0% i walidacja kursów NBP).
 6. **Brafitterka i Obsługa Klienta (`brafitting-customer-care-sms` / `customer_care.md`):** Dobór rozmiaru EU↔US/UK, *sister sizes*, SLA <24h, obsługa zwrotów i darmowej pierwszej wymiany rozmiaru (RMA 30 dni).
-   * *Nadzorowane skille:* `retention-abandoned-cart-sms` (ratowanie koszyków rozwijaniem obaw o rozmiar) oraz `review-reputation-manager-sms` (zbieranie recenzji dopasowania).
+   * *Nadzorowane skille:* `brafitting-conversational-advisor-sms` (konwersacyjne drzewo decyzyjne i doradztwo kształtu biustu), `retention-abandoned-cart-sms` (rozwiewanie obaw o rozmiar) oraz `review-reputation-manager-sms` (zbieranie recenzji dopasowania).
 7. **Inżynier Sklepu, UX i Bezpieczeństwa (`tech-ux-security-sms` / `tech_lead.md`):** Snippety PHP, routing `/en/`, optymalizacja frontendu, dostępność ADA / WCAG 2.2 AA, wydajność i bezpieczeństwo API.
-   * *Nadzorowany skill:* `cro-checkout-optimizer-sms` (implementacja koszyka, sticky CTA, płatności express).
+   * *Nadzorowane skille:* `cwv-performance-booster-sms` (Core Web Vitals LCP < 2.0s, caching Litespeed i ochrona przed wpautop) oraz `cro-checkout-optimizer-sms` (koszyk, sticky CTA, płatności express).
 8. **Strażnik Compliance US/CA (`us-ca-compliance-auditor-sms` / `compliance.md`):** Kontrola *pre-flight* zgodności prawnej (FTC, SB 478, Bill 96) i bezpieczeństwa znaków towarowych.
-   * *Nadzorowany skill:* `review-reputation-manager-sms` (rygor FTC 16 CFR Part 465 zakazu fałszywych recenzji).
+   * *Nadzorowane skille:* `ftc-pricing-privacy-auditor-sms` (skanowanie California SB 478, kanadyjskiego Drip Pricing i Textile Act) oraz `review-reputation-manager-sms` (rygor FTC 16 CFR Part 465).
 
 ---
 
