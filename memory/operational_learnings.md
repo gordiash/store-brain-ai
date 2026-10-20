@@ -21,6 +21,12 @@ Ten dokument stanowi dynamiczną bazę wiedzy i doświadczeń operacyjnych zespo
     3. Sieć CDN Automattic buforuje zdjęcia na brzegach sieci (edge), ma nielimitowaną przepustowość dla botów i zwraca HTTP 200 w <100ms, całkowicie chroniąc serwer cyberFolks przed throttlingiem.
     4. Test symulacyjny 10 równoległych wątków pobierających scraperem `Pinterestbot/1.0` wykazał 100% powodzenia (118/118 obrazów, status 200 OK w 1.21 sekundy, zero błędów 429).
     5. Rekomendowane źródła danych w Pinterest Business: `https://naturaintimo.com/?pinterest_feed=xml` (XML) lub `https://naturaintimo.com/?pinterest_feed=csv` (CSV).
+* **Integracja Bramki PayPal (woocommerce-paypal-payments / ppcp-gateway):**
+  * Oficjalna wtyczka `woocommerce-paypal-payments` (v4.1.3) została aktywowana w WooCommerce i ustawiona na pozycji priorytetowej (`order: 22`, przed kartami płatniczymi i Klarna).
+  * Zgodnie z architekturą wtyczki, po aktywacji w API WooCommerce bramka posiada status `needs_setup: true`. Wtyczka do renderowania inteligentnych przycisków PayPal Smart Buttons i autoryzacji transakcji wymaga jednorazowego połączenia konta firmowego PayPal przez oficjalny mechanizm OAuth w kokpicie WP-Admin (`/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway`).
+  * Zasada P0 (Zero Hardcoded Secrets) bezwzględnie zakazuje wpisywania sztucznych kluczy API – autoryzacja konta PayPal musi zostać zainicjowana przez właścicielkę sklepu za pomocą jednego kliknięcia ("Połącz z PayPal").
+  * Zaktualizowano Jedno Źródło Prawdy (`market_config.json`) oraz bazę wiedzy Asystentki AI Klary (Snippet 96) o pełne wsparcie PayPal (w tym PayPal Express i Pay Later / Pay in 4).
+
 
 
 ## 2. Prawne i Celne USA / Kanada (`us-ca-compliance-auditor-sms` & `accounting-export-customs-sms`)

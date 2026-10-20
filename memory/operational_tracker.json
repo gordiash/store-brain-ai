@@ -27,6 +27,19 @@
   "daily_operations_log": [
     {
       "date": "2026-10-20",
+      "action": "Activated PayPal Payment Gateway in WooCommerce & AI Concierge",
+      "details": {
+        "gateway_id": "ppcp-gateway",
+        "gateway_title": "PayPal",
+        "status": "enabled (order: 22, positioned above credit cards and Klarna)",
+        "needs_setup": true,
+        "onboarding_action": "Requires store owner 1-click connect via WP Admin (/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway)",
+        "snippet_updated": "Snippet 96 (Natura Intimo – Virtual Bra Fitter & AI Concierge Engine) updated with PayPal and accepted payment methods",
+        "market_config_updated": "brain/single_source_of_truth/market_config.json and backend/market_config.json updated"
+      }
+    },
+    {
+      "date": "2026-10-20",
       "action": "Purged Test Order #6971 & Verified Clean Tracking State",
       "details": {
         "action": "Zamówienie #6971 ($134.98 USD) zostało zidentyfikowane jako zamówienie testowe i trwale usunięte z bazy WooCommerce oraz rejestrów finansowych.",

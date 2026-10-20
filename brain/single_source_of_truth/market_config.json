@@ -24,7 +24,15 @@
         "tiktok": "https://www.tiktok.com/@naturaintimo",
         "pinterest": "https://www.pinterest.com/naturaintimo/"
       }
-    }
+    },
+    "paymentMethods": [
+      "Credit / Debit Card (Visa, Mastercard, American Express via Stripe)",
+      "PayPal (PayPal Express, Pay Later / Pay in 4)",
+      "Apple Pay",
+      "Google Pay",
+      "Klarna (Pay in 30 days, Financing)",
+      "Link by Stripe"
+    ]
   },
   "markets": {
     "US": {

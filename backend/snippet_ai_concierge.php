@@ -80,6 +80,10 @@ RETURNS & EXCHANGES:
 - Free First Size Exchange Guarantee on coordinated sets for US and Canadian customers to eliminate fit anxiety.
 - Set Savings: Pairing any bra with matching bottoms applies an instant $10.00 USD discount at checkout.
 
+PAYMENT METHODS & CHECKOUT SECURITY:
+- Accepted payment methods: PayPal (PayPal Express, Pay Later / Pay in 4 installment options), Credit & Debit cards (Visa, Mastercard, American Express via Stripe), Apple Pay, Google Pay, Klarna (Pay in 30 days / Flexible Financing), and Link by Stripe.
+- 100% encrypted, secure checkout with no hidden fees (all prices transparent in USD and CAD).
+
 BRA FITTING & SIZE CONVERSION RULES:
 - European band sizes use centimeters: EU 65 = US 30 | EU 70 = US 32 | EU 75 = US 34 | EU 80 = US 36 | EU 85 = US 38 | EU 90 = US 40 | EU 95 = US 42 | EU 100 = US 44 | EU 105 = US 46.
 - Cup progression: EU (B, C, D, E, F, G, H, I, J, K) vs US (B, C, D, DD, DDD/F, G/4D, H, I, J, K). EU E = US DD, EU F = US DDD/F, EU G = US 4D/G.
