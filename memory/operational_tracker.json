@@ -27,15 +27,13 @@
   "daily_operations_log": [
     {
       "date": "2026-10-20",
-      "action": "Activated PayPal Payment Gateway in WooCommerce & AI Concierge",
+      "action": "Completed PayPal Onboarding & Configured Checkout Visibility",
       "details": {
         "gateway_id": "ppcp-gateway",
         "gateway_title": "PayPal",
-        "status": "enabled (order: 22, positioned above credit cards and Klarna)",
-        "needs_setup": true,
-        "onboarding_action": "Requires store owner 1-click connect via WP Admin (/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway)",
-        "snippet_updated": "Snippet 96 (Natura Intimo – Virtual Bra Fitter & AI Concierge Engine) updated with PayPal and accepted payment methods",
-        "market_config_updated": "brain/single_source_of_truth/market_config.json and backend/market_config.json updated"
+        "status": "connected & active (needs_setup: false, order: 22, pre-selected by default)",
+        "fix_applied": "Disabled duplicate ppcp-card-button-gateway to prevent conflict with Stripe and ensure PayPal is default checked radio on checkout page (/checkout-usa-canada/)",
+        "litespeed_purged": "Full cache purge executed via LiteSpeed Purge API"
       }
     },
     {
