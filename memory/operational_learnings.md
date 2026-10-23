@@ -25,7 +25,11 @@ Ten dokument stanowi dynamiczną bazę wiedzy i doświadczeń operacyjnych zespo
   * Oficjalna wtyczka `woocommerce-paypal-payments` (v4.1.3) została aktywowana w WooCommerce i ustawiona na pozycji priorytetowej (`order: 22`, przed kartami płatniczymi i Klarna).
   * Zgodnie z architekturą wtyczki, po aktywacji w API WooCommerce bramka posiada status `needs_setup: true`. Wtyczka do renderowania inteligentnych przycisków PayPal Smart Buttons i autoryzacji transakcji wymaga jednorazowego połączenia konta firmowego PayPal przez oficjalny mechanizm OAuth w kokpicie WP-Admin (`/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway`).
   * Zasada P0 (Zero Hardcoded Secrets) bezwzględnie zakazuje wpisywania sztucznych kluczy API – autoryzacja konta PayPal musi zostać zainicjowana przez właścicielkę sklepu za pomocą jednego kliknięcia ("Połącz z PayPal").
-  * Zaktualizowano Jedno Źródło Prawdy (`market_config.json`) oraz bazę wiedzy Asystentki AI Klary (Snippet 96) o pełne wsparcie PayPal (w tym PayPal Express i Pay Later / Pay in 4).
+* **Autonomiczny Hub WhatsApp dla Zespołu Agentów (Snippet 5 & backend/whatsapp_agent_dispatcher.py):**
+  * Zamiast prostego bota wysyłającego wyłącznie powiadomienia o zamówieniach, wdrożono wieloagentowy dyspozytor `Natura Intimo AI Agents Hub`.
+  * Każda rola w zespole (CEO, Merchant, CMO, Brafitterka, Księgowy, Tech, Compliance) posiada unikalny identyfikator, nagłówek i format komunikatów.
+  * Zbudowano dwukierunkowy bridge REST API (`/wp-json/ni/v1/whatsapp-agent-command`), który pozwala właścicielce sklepu na bezpośrednią interakcję z agentami (np. `/ceo` generuje raport finansowy z kursem NBP, `/stan [model]` sprawdza warianty w WooCommerce, a `/brafitting` przelicza miseczki EU↔US).
+  * Zintegrowano daemon pulsu serca (`paperclip_heartbeat_daemon.py`) oraz konsensus publikacyjny (`autogen_consensus_swarm.py`) z natychmiastowym dispatchingiem powiadomień na WhatsApp.
 
 
 

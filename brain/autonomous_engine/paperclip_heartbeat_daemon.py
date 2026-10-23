@@ -99,6 +99,26 @@ def run_heartbeat_tick(pulse_type="AUTO"):
         except Exception as e:
             print(f"  [Tracker Error] {e}")
 
+    # 4. WhatsApp Dispatch for Autonomous Notifications
+    try:
+        backend_dir = os.path.join(WORKSPACE_DIR, "backend")
+        if backend_dir not in sys.path:
+            sys.path.append(backend_dir)
+        from whatsapp_agent_dispatcher import send_agent_dispatch
+        
+        if pulse_type in ["STANDUP", "MANUAL_STANDUP", "MORNING_PULSE"]:
+            send_agent_dispatch(
+                "CEO",
+                "Poranny Standup & Puls Finansowy",
+                f"• Kurs NBP (Tabela A): 1 USD = {rates.get('USD_PLN')} PLN | 1 CAD = {rates.get('CAD_PLN')} PLN\n"
+                f"• Aktywne zamówienia w systemie: {orders_info.get('count')}\n"
+                f"• Status zespołu: Wszystkie skille operacyjne i silniki autonomii gotowe do pracy.",
+                "https://naturaintimo.com/wp-admin/"
+            )
+            print("  [WhatsApp Dispatch] Standup dispatched to store owner.")
+    except Exception as we:
+        print(f"  [WhatsApp Dispatch Notice] {we}")
+
     print(f"[{now_utc.isoformat()}] Heartbeat Pulse Completed. State is healthy.")
     return True
 

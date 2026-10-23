@@ -71,6 +71,22 @@ class AutoGenConsensusSwarm:
         dialogue.append(t4)
         print(" ", t4)
 
+        # Optional WhatsApp Notification to Store Owner
+        try:
+            import os
+            workspace_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            backend_dir = os.path.join(workspace_dir, "backend")
+            if backend_dir not in sys.path:
+                sys.path.append(backend_dir)
+            from whatsapp_agent_dispatcher import send_agent_dispatch
+            
+            status_text = "ZATWIERDZONA (Konsensus 4/4)" if is_approved else "ODRZUCONA / WYMAGA POPRAWEK"
+            summary_body = f"Produkt: *{product_name}*\nStatus: *{status_text}*\n\n"
+            summary_body += "\n".join([f"• {d}" for d in dialogue[-3:]])
+            send_agent_dispatch("CEO", f"AutoGen Swarm: {product_name}", summary_body, priority="SUCCESS" if is_approved else "HIGH")
+        except Exception as e:
+            pass
+
         return {
             "approved": is_approved,
             "dialogue": dialogue
@@ -84,3 +100,4 @@ if __name__ == "__main__":
         copy_draft="Architectural Full-Bust Support: Gorsenia K496 Paradise Black. Flat rate $24.99 USD DDP, free shipping over $150 USD."
     )
     print("\nSwarm Consensus Result:", res["approved"])
+
