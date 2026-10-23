@@ -131,6 +131,39 @@
       "when checkout launches",
       "being finalised"
     ],
+    "adultAndNudityBlacklist": {
+      "forbiddenTerms": [
+        "nude",
+        "naked",
+        "porn",
+        "erotic",
+        "sex",
+        "sexy",
+        "boobs",
+        "nipple",
+        "nipples",
+        "orgasm",
+        "stripper",
+        "sheer",
+        "see-through",
+        "transparent",
+        "thong",
+        "thongs",
+        "hot",
+        "seductive",
+        "provocative"
+      ],
+      "safeReplacements": {
+        "nude": "neutral beige / skin-tone / champagne",
+        "sexy": "sensual / sophisticated / elegant",
+        "erotic": "romantic / fine European lingerie",
+        "sheer": "fine breathable mesh / delicate tulle",
+        "see-through": "translucent tulle / breathable mesh",
+        "thong": "Brazilian cut / minimal-coverage brief",
+        "boobs": "bust / fuller bust",
+        "nipple": "apex / cup contour"
+      }
+    },
     "trademarkSensitiveModelNames": {
       "Nike": "Replace in US/CA product titles with model code 'BS 1135' or 'GFB 1135'"
     }

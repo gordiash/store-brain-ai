@@ -22,6 +22,7 @@ Ten plik definiuje bezwzględne reguły obowiązujące wszystkich agentów (oraz
 * Dane te mogą pochodzić wyłącznie z pliku źródłowego hurtowni MADA (`products.xml`) lub oficjalnej specyfikacji producenta (Gorsenia, Gaia, Ava, Mefemi, Alles).
 * Jeśli produkt nie posiada w źródle jednoznacznego składu surowcowego lub kraju pochodzenia, agent musi ustawić flagę `_requires_customs_review = 'yes'` i dopisać produkt do listy `flaggedIds` do ręcznej weryfikacji właścicielki.
 * **Czarna lista twierdzeń (Forbidden Claims):** Zakaz używania nieudokumentowanych określeń: *handcrafted*, *handmade*, *custom tailored*, *bestseller* (dla produktów bez historii sprzedaży), *medical grade*, *prevents irritation*, *for real women* (wykluczające kulturowo w US/CA), oraz zakaz umieszczania w tytułach produktów nazw kolidujących z zastrzeżonymi znakami towarowymi w USA (np. nazwa linii *Nike* marki Gaia musi być zastąpiona kodem modelu `BS 1135` / `GFB 1135`).
+* **Czarna lista nagości, erotyki i pornografii (Adult/Nudity Policy – P0):** Całkowity zakaz używania w postach social media, opisach produktów i reklamach słów triggerujących filtry Meta/TikTok/Google Adult Content: `nude`, `naked`, `porn`, `sex`, `sexy`, `erotic`, `boobs`, `nipple`, `sheer`, `see-through`, `thong`, `hot`, `seductive`. W zamian należy stosować bezpieczną terminologię brafittingową i modową: `neutral beige / champagne`, `sensual / refined`, `fine breathable mesh`, `Brazilian cut`, `full bust`, `cup support`.
 
 ## 5. Separacja Językowa i Walutowa (US / CA / PL – P1)
 * Strony, komunikaty koszyka, snippety PHP i e-maile kierowane do klientów z USA i Kanady (`/en/`, `en-US`, `en-CA`) muszą być w 100% po angielsku (a dla prowincji Quebec docelowo również po francusku `fr-CA` zgodnie z *Bill 96*).
@@ -52,10 +53,11 @@ Przy wykonywaniu zadań agenci korzystają ze swoich dedykowanych skillów w `.a
 * Repozytorium **`https://github.com/gordiash/store-brain-ai.git`** stanowi nadrzędne, wersjonowane środowisko wiedzy operacyjnej i samouczenia się całego ekosystemu agentów Natura Intimo.
 * **Struktura Repozytorium:**
   * `AGENTS.md` – Główne zasady i protokoły operacyjne.
-  * `.agents/skills/` – Zbiór 21 wyspecjalizowanych umiejętności agentowych.
+  * `.agents/skills/` – Zbiór 30 wyspecjalizowanych umiejętności agentowych.
   * `brain/single_source_of_truth/` – Parametry biznesowe, identyfikacja marki, matryca rozmiarów.
   * `brain/ai_seo/` – Baza wiedzy Generative Engine Optimization (`llms.txt`, `llms-full.txt`).
   * `brain/agent_guidebooks/` – Szczegółowe podręczniki ról agentów (`ceo.md`, `merchant.md`, itp.).
+  * `brain/autonomous_engine/` – 4 silniki automatyzacji i autonomii (Paperclip, Self-Improving, LangGraph, AutoGen).
   * `memory/` – Pamięć ciągła, dziennik wniosków operacyjnych (`operational_learnings.md`) i bazy przypadków brzegowych (`brafitting_edge_cases.json`, `customs_and_tax_rulings.json`, `audience_insights.json`).
   * `backend/` – Skrypty wykonawcze, konektory API i zoptymalizowane snippety PHP.
 
@@ -72,3 +74,21 @@ Każdy agent wykonujący zadanie ma obowiązek działać zgodnie z pętlą samou
    * Po zaktualizowaniu plików wiedzy, agent tworzy commit w repozytorium `store-brain-ai` zgodnie z konwencją:
      `learn(<rola>): <krótki opis nowo nabytej wiedzy lub przypadku brzegowego>` (np. `learn(brafitting): add Gorsenia K496 cup depth nuance`).
    * Zapewnia to, że wszyscy agenci oraz kolejne sesje zawsze korzystają z najświeższej, stale rozwijającej się bazy wiedzy sklepu.
+
+---
+
+## 9. Cztery Silniki Autonomii i Samodzielności Agentów (`brain/autonomous_engine/`)
+Aby zagwarantować pełną samodzielność, niezawodność i samodoskonalenie się zespołu sklepu bez ciągłego nadzoru człowieka, wdrożono architekturę 4 zintegrowanych silników:
+
+1. **Paperclip Heartbeat Daemon (`paperclip_heartbeat_daemon.py`):**
+   * *Wzorzec:* `paperclipai/paperclip` (Zero-Human Company Architecture).
+   * *Działanie:* Cykliczne "uderzenia serca" (heartbeats) zamiast kosztownych nieskończonych pętli tokenowych. Odpowiada za 4 codzienne pulsy: poranny standup NBP/MADA, cogodzinny monitoring porzuconych koszyków, weryfikację zamówień i wieczorny odczyt analityki Meta Graph API.
+2. **Awesome Self-Improving Agents (`self_improving_reflection_loop.py`):**
+   * *Wzorzec:* `selfimproving-agent/Awesome-Self-Improving-Agents` & `AFunLS/self-evolving-agent-patterns`.
+   * *Działanie:* Wbudowany "system odpornościowy" (Immune System) testujący działania agentów pod kątem znanych błędów (zakazane słowa FTC, brakujące koszty DDP, naruszenia znaków towarowych) oraz automatyczna pętla ekstrakcji i zapisu nowo nabytej wiedzy.
+3. **LangGraph State Router (`langgraph_workflow_router.py`):**
+   * *Wzorzec:* `langchain-ai/langgraph` (Stateful Cyclic Graphs).
+   * *Działanie:* Modelowanie procesów e-commerce (np. `Order -> Customs -> MADA -> Commercial Invoice -> Onboarding` oraz `Draft -> Compliance -> Stock -> Publish`) jako stanowych grafów cyklicznych z warunkowym rozgałęzieniem i obsługą poprawek w razie odrzucenia.
+4. **AutoGen Consensus Swarm (`autogen_consensus_swarm.py`):**
+   * *Wzorzec:* `microsoft/autogen` (Multi-Agent Conversational Deliberation).
+   * *Działanie:* Wielogłosowa debata i konsensus między agentami (CEO, CMO, Merchant, Compliance) przed każdą publikacją kampanii lub masową modyfikacją produktów.

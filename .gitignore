@@ -41,3 +41,4 @@ backend/backups/
 backend/invoices/
 backend/reports/
 backups/
+backend/all_products_cache.json
