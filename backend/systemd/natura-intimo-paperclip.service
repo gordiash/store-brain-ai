@@ -1,0 +1,17 @@
+[Unit]
+Description=Natura Intimo Paperclip Heartbeat Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/jarek/Pulpit/TikTok Agent
+ExecStart=/usr/bin/python3 "/home/jarek/Pulpit/TikTok Agent/brain/autonomous_engine/paperclip_heartbeat_daemon.py" --daemon --interval 1800
+Restart=always
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
