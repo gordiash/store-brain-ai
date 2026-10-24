@@ -48,3 +48,13 @@ Ten dokument stanowi dynamiczną bazę wiedzy i doświadczeń operacyjnych zespo
 ## 4. Marketing Organiczny i AI SEO (`growth-marketing-ai-seo-sms`)
 * **Zero Halucynacji w Treściach Postów:** Wszelkie posty publikowane na FB/IG muszą precyzyjnie podawać parametry logistyczne z `market_config.json` ($24.99 USD ryczałt DDP, darmowa dostawa od $150.00 USD / $200.00 CAD). Błędne ceny natychmiast niszczą zaufanie klienta i podlegają karom FTC.
 * **Architektura GEO (`/llms.txt`):** Silniki wyszukiwania AI (ChatGPT Search, Perplexity, Claude, Google AI Overviews) indeksują plik `/llms.txt` jako ustrukturyzowaną bazę odpowiedzi. Kluczowe jest podawanie bezpośrednich, precyzyjnych odpowiedzi typu "Answer-First" na początku każdej sekcji.
+* **Algorytmy Dystrybucji Instagram & Facebook Reels (Oficjalne Wytyczne Mety 2026):**
+  * **Metryka P0: Shares & DMs First:** Polubienia mają znikomy wpływ na polecanie wideo nowym osobom. Głównym czynnikiem wirusowym w Reels jest współczynnik udostępnień w wiadomościach prywatnych (DMs/Sends) oraz wielokrotne odtworzenia (Rewatches / Completion Rate > 100%).
+  * **Hook 0–3 sekundy:** Pierwsze 2–3 sekundy decydują o natychmiastowym swipe away. Porażka w pierwszych 2 sekundach powoduje trwałe obcięcie dystrybucji.
+  * **Kary algorytmiczne Mety:** Całkowity zakaz publikowania filmów ze znakami wodnymi obcych aplikacji (TikTok/CapCut), materiałów w niskiej rozdzielczości (<1080p), z nieczytelną typografią lub nieoryginalnych repostów.
+  * **Facebook Content Distribution Guidelines:** Bezwzględny zakaz "Engagement Bait" (sztuczne wymuszanie komentarzy typu "napisz TAK", "udostępnij znajomej") – grozi to natychmiastowym ucięciem zasięgu profilu. Feed Facebooka promuje autentyczną wymianę zdań (back-and-forth meaningful comments) i zapisywanie postów.
+* **Algorytm Pinterest (Visual Search Engine vs Social Feed):**
+  * **Wyszukiwarka, nie portal społecznościowy:** Pinterest indeksuje piny semantycznie i wizualnie (rozpoznawanie krojów miseczek i koronek przez visual AI) w powiązaniu z intencjami zakupowymi.
+  * **Koniec z hashtagami:** Oficjalne wytyczne Pinteresta potwierdzają, że hashtagi nie mają wpływu na indeksowanie. Treść musi operować naturalnymi frazami kluczowymi SEO (Front-loaded titles, gdzie główne słowo kluczowe pojawia się w pierwszych 40 znakach).
+  * **Wymiar 2:3 i Fresh Pins:** Bezwzględny wymiar 1000x1500 px (formaty poziome i kwadratowe tracą do 70% zasięgu). Pinterest promuje Fresh Pins (unikalne grafiki) i karze masowe repinowanie tego samego obrazu.
+  * **Długowieczność (Long Shelf Life):** Piny indeksują się i pracują na ruch zakupowy przez 6 do 18 miesięcy, w przeciwieństwie do 24-godzinnego życia postów na FB/IG.

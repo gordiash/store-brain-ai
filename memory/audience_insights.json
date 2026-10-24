@@ -16,15 +16,32 @@
   "top_performing_content_formats": [
     {
       "format": "Structural comparison carousel (US molded foam vs Polish 3-piece cut-and-sewn seamed cup).",
-      "best_platform": "Instagram & Facebook"
+      "best_platform": "Instagram & Facebook",
+      "primary_metric": "Saves & DMs (Direct Message shares)"
     },
     {
       "format": "Brafitting educational Reel / TikTok ('Why your shoulder straps are digging in: Band vs Strap physics').",
-      "best_platform": "TikTok & Instagram Reels"
+      "best_platform": "TikTok & Instagram Reels",
+      "primary_metric": "Rewatches, completion rate >100%, DM sends to friends (Hook 0-3s)"
     },
     {
       "format": "Curated style Pin ('Sensual matching sets for DD–H cups that actually support').",
-      "best_platform": "Pinterest"
+      "best_platform": "Pinterest",
+      "primary_metric": "Saves & Outbound Clicks (Front-loaded keywords, 2:3 ratio 1000x1500px, zero hashtags)"
     }
-  ]
+  ],
+  "algorithm_ranking_rules": {
+    "instagram_reels": {
+      "priority_signals": ["dm_shares", "rewatch_rate", "watch_time_completion"],
+      "penalties": ["watermarks_from_other_apps", "resolution_below_1080p", "unoriginal_reposts", "immediate_swipe_away_0_2s"]
+    },
+    "facebook_feed_and_reels": {
+      "priority_signals": ["back_and_forth_meaningful_comments", "saves", "retention"],
+      "penalties": ["engagement_bait_asking_for_likes_comments", "clickbait_withheld_info", "low_quality_links"]
+    },
+    "pinterest_visual_search": {
+      "priority_signals": ["visual_ai_relevance", "saves_repins", "fresh_pins_unique_images"],
+      "format_rules": ["aspect_ratio_2_3_1000x1500", "front_loaded_titles_under_40_chars", "no_hashtags_use_natural_seo"]
+    }
+  }
 }
