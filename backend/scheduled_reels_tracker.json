@@ -30,5 +30,107 @@
     ],
     "coupon_code": "BF20",
     "status": "SCHEDULED"
+  },
+  {
+    "platform": "facebook_reels & instagram_reels",
+    "fb_post_id": "122125360017297993",
+    "ig_media_id": "17872677606640672",
+    "title": "85% Of Support Must Come From The Band ✨",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "video_file": "backend/rendered_reels/gorsenia_paradise_professional_10s_v2.mp4",
+    "public_video_url": "https://naturaintimo.com/wp-content/uploads/2026/10/gorsenia_paradise_professional_10s_v2.mp4",
+    "fb_status": "SCHEDULED",
+    "ig_status": "PUBLISHED",
+    "created_at": "2026-10-23T09:29:22.278360Z"
+  },
+  {
+    "day": "Poniedziałek (26.10.2026)",
+    "scheduled_epoch": 1793030400,
+    "post_id": "122125498293297993",
+    "product_id": 3442,
+    "title": "Why Molded Cups Push Your Bust Sideways (And What To Do Instead)",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "status": "SCHEDULED"
+  },
+  {
+    "day": "Środa (28.10.2026)",
+    "scheduled_epoch": 1793203200,
+    "post_id": "122125498341297993",
+    "product_id": 3507,
+    "title": "Sister Sizes Explained: Why Your 36DD Might Actually Be a 32G",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "status": "SCHEDULED"
+  },
+  {
+    "day": "Piątek (30.10.2026)",
+    "scheduled_epoch": 1793376000,
+    "post_id": "122125498395297993",
+    "product_id": 3579,
+    "title": "Delicate Embroidery Engineered for Dependable Everyday Support",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "status": "SCHEDULED"
+  },
+  {
+    "day": "Niedziela (01.11.2026)",
+    "scheduled_epoch": 1793552400,
+    "post_id": "122125498443297993",
+    "product_id": 3485,
+    "title": "The Science of True Ribcage Support: How to Stop Band Ride-Up",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "status": "SCHEDULED"
+  },
+  {
+    "day": "Wtorek (27.10.2026)",
+    "scheduled_epoch": 1793116800,
+    "video_id": "1093414300256444",
+    "post_id": "122125499787297993",
+    "title": "Why Molded Cups Flatten Your Bust Sideways ✨",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "video_url": "https://naturaintimo.com/wp-content/uploads/2026/10/reel_1_gaia_mary_burgundy_10s.mp4",
+    "status": "SCHEDULED"
+  },
+  {
+    "day": "Czwartek (29.10.2026)",
+    "scheduled_epoch": 1793289600,
+    "video_id": "1098577949820469",
+    "post_id": "122125499811297993",
+    "title": "The 36DD Trap: Why You Need a 32G Instead ✨",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "video_url": "https://naturaintimo.com/wp-content/uploads/2026/10/reel_2_gorsenia_luisse_black_10s.mp4",
+    "status": "SCHEDULED"
+  },
+  {
+    "day": "Sobota (31.10.2026)",
+    "scheduled_epoch": 1793462400,
+    "video_id": "1807640687048318",
+    "post_id": "122125499937297993",
+    "title": "Can Delicate Lace Bras Actually Support Heavy Busts? ✨",
+    "target_countries": [
+      "US",
+      "CA"
+    ],
+    "video_url": "https://naturaintimo.com/wp-content/uploads/2026/10/reel_3_ava_divine_champagne_10s.mp4",
+    "status": "SCHEDULED"
   }
 ]

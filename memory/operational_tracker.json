@@ -17,20 +17,44 @@
     "recent_orders": []
   },
   "exchange_rates_nbp": {
-    "date": "2026-10-22",
+    "date": "2026-10-23",
     "table": "A",
-    "USD_PLN": 3.8886,
-    "CAD_PLN": 2.7745,
-    "EUR_PLN": 4.3685
+    "USD_PLN": 3.9247,
+    "CAD_PLN": 2.8002,
+    "EUR_PLN": 4.3917
   },
   "daily_operations_log": [
+    {
+      "date": "2026-10-25",
+      "action": "Upgraded Management Dashboard with Auto-Refresh, REST API & Chart.js Visualizations",
+      "details": {
+        "desktop_file": "/home/jarek/Pulpit/NaturaIntimo_Panel_Zarzadzajacy.html",
+        "desktop_launcher": "/home/jarek/Pulpit/NaturaIntimo_Panel.desktop",
+        "api_endpoint": "GET https://naturaintimo.com/wp-json/ni/v1/dashboard-stats (Snippet 125)",
+        "features_added": [
+          "Automatic data fetch immediately upon file launch (DOMContentLoaded)",
+          "30-second polling loop with live countdown badge and sync animation",
+          "Chart.js interactive visualizations: Sprint Revenue vs $1000 Goal, Multi-Channel Organic Reach, Market Share Distribution (US/CA/PL), Unit Economics & Net Margin (>40%)",
+          "Dynamic live order stream from WooCommerce with status badges",
+          "Offline/local fallback support with fail-safe data rendering"
+        ]
+      }
+    },
     {
       "date": "2026-10-23",
       "action": "Expanded WhatsApp Bot into Autonomous Multi-Agent Communication Hub",
       "details": {
-        "snippet_upgraded": "Snippet 5 (Natura Intimo – Autonomous Multi-Agent WhatsApp Hub & Command Bridge)",
+        "snippet_upgraded": "Snippet 5 (Natura Intimo \u2013 Autonomous Multi-Agent WhatsApp Hub & Command Bridge)",
         "python_dispatcher": "backend/whatsapp_agent_dispatcher.py",
-        "supported_agent_personas": ["CEO", "MERCHANT", "CMO", "BRAFITTERKA", "ACCOUNTANT", "TECH", "COMPLIANCE"],
+        "supported_agent_personas": [
+          "CEO",
+          "MERCHANT",
+          "CMO",
+          "BRAFITTERKA",
+          "ACCOUNTANT",
+          "TECH",
+          "COMPLIANCE"
+        ],
         "new_capabilities": [
           "Preserved high-fidelity WooCommerce order notifications with DHL DDP details",
           "Automated out-of-stock and low-stock P0 alerts from Merchant persona",
@@ -89,5 +113,5 @@
       }
     }
   ],
-  "last_heartbeat_pulse": "2026-10-23T09:43:04.299311+00:00"
+  "last_heartbeat_pulse": "2026-10-25T12:38:20.124216+00:00"
 }
