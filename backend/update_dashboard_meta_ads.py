@@ -641,7 +641,12 @@ old_fetch_call = '''      try {
         });'''
 
 new_fetch_call = '''      try {
-        const response = await fetch('https://naturaintimo.com/wp-json/ni/v1/dashboard-stats?_t=' + Date.now(), {
+        let metaTokenParam = '';
+        try {
+          const storedToken = localStorage.getItem('meta_user_token');
+          if (storedToken) metaTokenParam = '&meta_token=' + encodeURIComponent(storedToken);
+        } catch(e) {}
+        const response = await fetch('https://naturaintimo.com/wp-json/ni/v1/dashboard-stats?_t=' + Date.now() + metaTokenParam, {
           method: 'GET',
           headers: { 'Accept': 'application/json' }
         });'''
@@ -662,7 +667,7 @@ new_social_kpi_update = '''        // Update Social KPI
         // Update Meta Ads KPI and telemetry
         if (data.meta_ads) {
           const ma = data.meta_ads;
-          if (document.getElementById('kpiMetaDaily')) document.getElementById('kpiMetaDaily').textContent = ma.daily_budget_pln.toFixed(2) + ' PLN';
+          if (document.getElementById('kpiMetaDaily')) document.getElementById('kpiMetaDaily').textContent = ma.daily_budget_pln.toFixed(2) + ' PLN / d';
           if (document.getElementById('kpiMetaClicksTop')) document.getElementById('kpiMetaClicksTop').textContent = ma.link_clicks + ' kliknięć';
           if (document.getElementById('kpiMetaCtrTop')) document.getElementById('kpiMetaCtrTop').textContent = ma.ctr_pct.toFixed(2) + '%';
           
@@ -681,9 +686,9 @@ new_social_kpi_update = '''        // Update Social KPI
 
 html = html.replace(old_social_kpi_update, new_social_kpi_update)
 
-# Add helper functions testLiveMetaToken and openTokenModal before </script>
+# Add helper functions testLiveMetaToken, initStoredToken and openTokenModal before </script>
 helper_funcs = '''
-    // Meta Ads Graph API Live Tester & Diagnostics
+    // Meta Ads Graph API Live Tester & Diagnostics (Proxied through Natura Intimo API to bypass CORS)
     async function testLiveMetaToken() {
       const tokenInput = document.getElementById('metaUserTokenInput');
       const feedback = document.getElementById('metaTokenStatusFeedback');
@@ -691,39 +696,59 @@ helper_funcs = '''
       const token = tokenInput.value.trim();
 
       if (!token) {
-        feedback.className = 'text-xs p-2.5 rounded-lg border bg-amber-50 text-amber-800 border-amber-200 block';
+        feedback.className = 'text-xs p-3 rounded-xl border bg-amber-50 text-amber-900 border-amber-200 block';
         feedback.innerHTML = '⚠️ Proszę wkleić token dostępowy Meta Graph API z uprawnieniami <code>ads_read</code>.';
         return;
       }
 
       btn.disabled = true;
-      btn.innerHTML = '<span>⏳</span> Sprawdzam token...';
+      btn.innerHTML = '<span>⏳</span> Łączę z Meta Graph API...';
       feedback.className = 'hidden';
 
       try {
-        const testUrl = `https://graph.facebook.com/v20.0/act_1304486204267762/insights?fields=campaign_name,impressions,clicks,spend,cpc,ctr&access_token=${encodeURIComponent(token)}`;
-        const res = await fetch(testUrl);
+        // Query through our WordPress CORS-enabled REST proxy endpoint
+        const proxyUrl = 'https://naturaintimo.com/wp-json/ni/v1/meta-proxy?token=' + encodeURIComponent(token);
+        const res = await fetch(proxyUrl);
         const json = await res.json();
 
-        if (json.error) {
-          throw new Error(json.error.message || 'Błąd autoryzacji Meta Graph API');
+        if (!json.success) {
+          throw new Error(json.error || 'Błąd autoryzacji Meta Graph API');
         }
 
-        const insight = json.data && json.data.length > 0 ? json.data[0] : null;
-        feedback.className = 'text-xs p-2.5 rounded-lg border bg-emerald-50 text-emerald-800 border-emerald-200 block';
-        feedback.innerHTML = `✅ <strong>Sukces!</strong> Połączono na żywo z kontem reklamowym.<br>
-          Wyświetlenia: <strong>${insight?.impressions || '3 420'}</strong> | Kliknięcia: <strong>${insight?.clicks || '98'}</strong> | Wydatki: <strong>${insight?.spend || '140.00'} PLN</strong> | CTR: <strong>${parseFloat(insight?.ctr || 2.86).toFixed(2)}%</strong>`;
+        // Save token to localStorage for automatic persistence
+        try { localStorage.setItem('meta_user_token', token); } catch(e){}
 
-        if (insight) {
-          if (document.getElementById('metaSpendVal')) document.getElementById('metaSpendVal').textContent = parseFloat(insight.spend).toFixed(2) + ' PLN';
-          if (document.getElementById('metaClicksVal')) document.getElementById('metaClicksVal').textContent = insight.clicks + ' kliknięć';
-          if (document.getElementById('metaImpressionsVal')) document.getElementById('metaImpressionsVal').textContent = insight.impressions;
-          if (document.getElementById('metaCtrVal')) document.getElementById('metaCtrVal').textContent = parseFloat(insight.ctr).toFixed(2) + '% CTR';
-        }
+        feedback.className = 'text-xs p-3.5 rounded-xl border bg-emerald-50 text-emerald-900 border-emerald-200 block space-y-1.5';
+        feedback.innerHTML = `
+          <div class="flex items-center gap-2 font-bold text-emerald-800 text-sm">
+            <span>✅</span> Połączono na żywo z kontem reklamowym Meta!
+          </div>
+          <div class="text-xs text-emerald-700 leading-relaxed">
+            Właściciel: <strong>${json.user_name}</strong> | Konto: <strong>${json.account_id}</strong><br>
+            Kampania: <strong>${json.campaign_name}</strong> (Status: <span class="uppercase font-bold text-emerald-800">${json.campaign_status}</span>, Budżet: <strong>${json.daily_budget_pln.toFixed(2)} PLN / d</strong>)<br>
+            Wyświetlenia: <strong>${json.impressions.toLocaleString('pl-PL')}</strong> | Zasięg: <strong>${json.reach.toLocaleString('pl-PL')}</strong> | Kliknięcia: <strong>${json.clicks}</strong> | Wydano: <strong>${json.spend_pln.toFixed(2)} PLN</strong> | Śr. CTR: <strong>${json.ctr_pct.toFixed(2)}%</strong> | Śr. CPC: <strong>${json.cpc_pln.toFixed(2)} PLN</strong>
+          </div>
+        `;
+
+        // Update DOM elements on the page
+        if (document.getElementById('metaSpendVal')) document.getElementById('metaSpendVal').textContent = json.spend_pln.toFixed(2) + ' PLN';
+        if (document.getElementById('metaClicksVal')) document.getElementById('metaClicksVal').textContent = json.clicks + ' kliknięć';
+        if (document.getElementById('metaImpressionsVal')) document.getElementById('metaImpressionsVal').textContent = json.impressions.toLocaleString('pl-PL');
+        if (document.getElementById('metaReachVal')) document.getElementById('metaReachVal').textContent = json.reach.toLocaleString('pl-PL');
+        if (document.getElementById('metaCtrVal')) document.getElementById('metaCtrVal').textContent = json.ctr_pct.toFixed(2) + '% CTR';
+        
+        if (document.getElementById('kpiMetaDaily')) document.getElementById('kpiMetaDaily').textContent = json.daily_budget_pln.toFixed(2) + ' PLN / d';
+        if (document.getElementById('kpiMetaClicksTop')) document.getElementById('kpiMetaClicksTop').textContent = json.clicks + ' kliknięć';
+        if (document.getElementById('kpiMetaCtrTop')) document.getElementById('kpiMetaCtrTop').textContent = json.ctr_pct.toFixed(2) + '%';
+
+        if (document.getElementById('chartMetaSpend')) document.getElementById('chartMetaSpend').textContent = json.spend_pln.toFixed(2) + ' PLN';
+        if (document.getElementById('chartMetaReach')) document.getElementById('chartMetaReach').textContent = json.reach.toLocaleString('pl-PL');
+        if (document.getElementById('chartMetaClicks')) document.getElementById('chartMetaClicks').textContent = json.clicks;
+        if (document.getElementById('chartMetaCtr')) document.getElementById('chartMetaCtr').textContent = json.ctr_pct.toFixed(2) + '% CTR';
 
       } catch (err) {
-        feedback.className = 'text-xs p-2.5 rounded-lg border bg-red-50 text-red-800 border-red-200 block';
-        feedback.innerHTML = `❌ <strong>Błąd Graph API:</strong> ${err.message}`;
+        feedback.className = 'text-xs p-3 rounded-xl border bg-red-50 text-red-800 border-red-200 block';
+        feedback.innerHTML = `❌ <strong>Błąd autoryzacji Meta:</strong> ${err.message}`;
       } finally {
         btn.disabled = false;
         btn.innerHTML = '<span>⚡</span> Sprawdź i Pobierz Live Dane';
@@ -738,6 +763,17 @@ helper_funcs = '''
         input.focus();
       }
     }
+
+    // Prefill stored token on load
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const stored = localStorage.getItem('meta_user_token');
+        const input = document.getElementById('metaUserTokenInput');
+        if (stored && input && !input.value) {
+          input.value = stored;
+        }
+      } catch(e) {}
+    });
 '''
 
 html = html.replace('  </script>', helper_funcs + '\n  </script>')
