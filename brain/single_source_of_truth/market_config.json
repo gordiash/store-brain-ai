@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "lastUpdated": "2026-10-16",
+  "lastUpdated": "2026-10-26",
   "seller": {
     "legalName": "Natura Izabela Jakubczyk",
     "brandName": "Natura Intimo",
@@ -8,8 +8,8 @@
     "taxIdNip": "7621888669",
     "countryCode": "PL",
     "address": {
-      "street": "ul. Juliana Tuwima 26",
-      "postalCode": "10-747",
+      "street": "ul. Wesoła 1A",
+      "postalCode": "10-652",
       "city": "Olsztyn",
       "country": "Poland"
     },

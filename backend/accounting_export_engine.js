@@ -22,8 +22,8 @@ const marketConfig = JSON.parse(
 
 const EXPORTER_DATA = {
   name: 'Natura Izabela Jakubczyk',
-  street: 'ul. Juliana Tuwima 26',
-  postalCode: '10-747',
+  street: 'ul. Wesoła 1A',
+  postalCode: '10-652',
   city: 'Olsztyn',
   country: 'Poland',
   countryCode: 'PL',

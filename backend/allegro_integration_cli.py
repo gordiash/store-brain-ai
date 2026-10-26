@@ -82,7 +82,7 @@ def export_allegro_rest_api_payload(data, product_id=None, out_file=None):
                 "countryCode": "PL",
                 "province": "WARMINSKO_MAZURSKIE",
                 "city": "Olsztyn",
-                "postCode": "10-747"
+                "postCode": "10-652"
             },
             "payments": {
                 "invoice": "VAT"

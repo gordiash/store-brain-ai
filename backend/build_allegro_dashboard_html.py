@@ -1189,7 +1189,7 @@ def build_dashboard():
             <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
               <strong>Nazwa:</strong> Natura Izabela Jakubczyk<br>
               <strong>NIP:</strong> 7621888669<br>
-              <strong>Adres:</strong> ul. Juliana Tuwima 26, 10-747 Olsztyn<br>
+              <strong>Adres:</strong> ul. Wesoła 1A, 10-652 Olsztyn<br>
               <strong>Forma opodatkowania:</strong> Faktury VAT 23%
             </p>
           </div>
@@ -1208,7 +1208,7 @@ def build_dashboard():
             <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
               <strong>Czas na zwrot:</strong> 30 dni (standard Natura Intimo)<br>
               <strong>Koszt zwrotu:</strong> Darmowy ze Smart! Paczkomat<br>
-              <strong>Adres do zwrotów:</strong> ul. Tuwima 26, 10-747 Olsztyn
+              <strong>Adres do zwrotów:</strong> ul. Wesoła 1A, 10-652 Olsztyn
             </p>
           </div>
 
