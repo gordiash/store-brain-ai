@@ -80,24 +80,84 @@ def extract_color_pl(name, var_colors):
         return c, c
     return "Wielokolorowy", "Multicolor"
 
-def calculate_allegro_pricing(mada_price_netto, target_margin=0.35, allegro_fee_rate=0.115, smart_cost=4.0):
-    # VAT in Poland 23%
-    mada_price_brutto = round(mada_price_netto * 1.23, 2)
-    # Target selling price = (Cost brutto + Smart Cost) / (1 - target_margin - allegro_fee_rate)
-    # Or markup on cost:
-    target_price = round((mada_price_brutto * (1 + target_margin) + smart_cost) / (1 - allegro_fee_rate), 2)
-    # Round to realistic psychological price ending in .00 or .90
-    target_price = round(target_price) - 0.10 if round(target_price) > target_price else round(target_price) + 0.90
-    target_price = round(target_price, 2)
+def check_is_bra(typ):
+    tl = typ.lower()
+    return ('biustonosz' in tl or 'bra' in tl) and not any(x in tl for x in ['brazyl', 'figi', 'majtki', 'brief', 'pant'])
+
+def calculate_allegro_pricing(brand, model, typ, mada_tag_price):
+    is_bra = check_is_bra(typ)
+    b = brand.lower()
     
-    allegro_fee = round(target_price * allegro_fee_rate, 2)
-    net_profit = round(target_price - mada_price_brutto - allegro_fee - smart_cost, 2)
-    margin_pct = round((net_profit / target_price) * 100, 1)
+    # 1. Base wholesale calculations (mada_tag_price in feed is gross catalog SRP)
+    catalog_gross = mada_tag_price
+    base_netto = round(catalog_gross / 1.23, 2)
+    # B2B wholesale discount 15% for official registered merchants
+    wholesale_netto = round(base_netto * 0.85, 2)
+    wholesale_gross = round(wholesale_netto * 1.23, 2)
+    
+    # 2. Real Market benchmark on Allegro (calibrated to actual competitor offers)
+    if is_bra:
+        if 'ava' in b:
+            market_price = 103.00 if ('1396' in model or '1030' in model) else 108.90
+            optimal_price = 114.90
+            srp_price = 129.00
+        elif 'gorsenia' in b:
+            market_price = 134.90 if ('496' in model or '441' in model) else 139.90
+            optimal_price = 144.90
+            srp_price = 159.00
+        elif 'gaia' in b:
+            market_price = 109.90 if '1135' in model else 114.90
+            optimal_price = 119.90
+            srp_price = 129.00
+        elif 'mefemi' in b:
+            market_price = 114.90
+            optimal_price = 124.90
+            srp_price = 139.00
+        else:
+            market_price = 69.90
+            optimal_price = 79.90
+            srp_price = 89.00
+    else:
+        # Panties / Briefs / Brazilian
+        if 'ava' in b:
+            market_price = 49.90
+            optimal_price = 54.90
+            srp_price = 65.00
+        elif 'gorsenia' in b:
+            market_price = 56.90
+            optimal_price = 62.90
+            srp_price = 69.00
+        elif 'gaia' in b:
+            market_price = 52.90
+            optimal_price = 56.90
+            srp_price = 65.00
+        elif 'mefemi' in b:
+            market_price = 49.90
+            optimal_price = 54.90
+            srp_price = 59.00
+        else:
+            market_price = 36.90
+            optimal_price = 42.90
+            srp_price = 49.00
+
+    allegro_fee = round(market_price * 0.115, 2)
+    smart_cost = 3.99 if market_price >= 45 else 1.99
+    
+    # Accurate Net Profit calculation (accounting for VAT & platform deductions)
+    selling_netto = market_price / 1.23
+    fee_netto = allegro_fee / 1.23
+    smart_netto = smart_cost / 1.23
+    net_profit = round(selling_netto - wholesale_netto - fee_netto - smart_netto, 2)
+    margin_pct = round((net_profit / selling_netto) * 100, 1) if selling_netto > 0 else 0
     
     return {
-        "madaNetto": mada_price_netto,
-        "madaBrutto": mada_price_brutto,
-        "targetPrice": target_price,
+        "madaNetto": wholesale_netto,
+        "madaBrutto": wholesale_gross,
+        "catalogGross": catalog_gross,
+        "targetPrice": market_price,
+        "marketBenchmark": market_price,
+        "optimalPrice": optimal_price,
+        "srpPrice": srp_price,
         "allegroFee": allegro_fee,
         "smartCost": smart_cost,
         "netProfit": net_profit,
@@ -164,7 +224,7 @@ def main():
         if len(title_candidate) > 75:
             title_candidate = title_candidate[:75]
 
-        pricing = calculate_allegro_pricing(mada_price)
+        pricing = calculate_allegro_pricing(brand, model, typ_pl, mada_price)
 
         # Images & Permalinks
         images = []
