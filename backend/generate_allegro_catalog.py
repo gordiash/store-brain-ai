@@ -9,6 +9,8 @@ import json
 import re
 import os
 
+from allegro_api_bridge import get_demand_data
+
 def clean_html(raw_html):
     if not raw_html:
         return ""
@@ -214,6 +216,8 @@ def main():
             {"name": "Skład materiałowy", "value": material_comp}
         ]
 
+        demand = get_demand_data(model, typ_pl)
+
         catalog.append({
             "id": p_id,
             "madaId": mada_id,
@@ -230,6 +234,7 @@ def main():
             "totalStock": total_stock,
             "stockStatus": "INSTOCK" if total_stock > 5 else ("LOWSTOCK" if total_stock > 0 else "OUTOFSTOCK"),
             "pricing": pricing,
+            "demand": demand,
             "allegroTitle": title_candidate,
             "materialComposition": material_comp,
             "description": desc_clean,

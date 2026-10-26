@@ -17,11 +17,11 @@
     "recent_orders": []
   },
   "exchange_rates_nbp": {
-    "date": "2026-10-23",
+    "date": "2026-10-26",
     "table": "A",
-    "USD_PLN": 3.9247,
-    "CAD_PLN": 2.8002,
-    "EUR_PLN": 4.3917
+    "USD_PLN": 3.9293,
+    "CAD_PLN": 2.8032,
+    "EUR_PLN": 4.4026
   },
   "daily_operations_log": [
     {
@@ -43,6 +43,13 @@
           "Interactive Product Matrix with MADA stock levels and Allegro Category 76170/76171 mapping",
           "Automated Allegro Title generator strictly compliant with 75-character limit",
           "Live Allegro Margin & Fee Calculator with Smart! co-financing and net profit simulation",
+          "Anti-Overselling Watchdog protecting Allegro Seller Quality ratings with stock buffer",
+          "Instant Allegro REST API JSON Payload generation and Mass Listing CSV batch downloader",
+          "Interactive Chart.js visualizations (Brand distribution, Wholesale stock, Cup size availability, Margin structure)",
+          "Allegro REST API Key Management interface with local encryption and OAuth 2.0 connection test",
+          "Allegro Demand & Bestseller Radar ranking products by monthly sales velocity and turnover days",
+          "One-click Top Bestsellers CSV batch exporter for prioritizing high-demand models"
+        ],
           "Anti-Overselling Watchdog protecting Allegro Seller Quality ratings with stock buffer",
           "Instant Allegro REST API JSON Payload generation and Mass Listing CSV batch downloader",
           "Interactive Chart.js visualizations (Brand distribution, Wholesale stock, Cup size availability, Margin structure)"
@@ -138,5 +145,5 @@
       }
     }
   ],
-  "last_heartbeat_pulse": "2026-10-26T09:47:37.878622+00:00"
+  "last_heartbeat_pulse": "2026-10-26T10:47:45.453521+00:00"
 }

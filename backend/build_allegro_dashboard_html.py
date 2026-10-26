@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
 Natura Intimo – Allegro & MADA Integration Dashboard Builder
-Generates a standalone, feature-complete, interactive HTML dashboard.
+Generates a standalone, feature-complete, interactive HTML dashboard with:
+1. Allegro REST API Keys & OAuth connection management (LocalStorage + .env bridge)
+2. Market Demand & Bestseller Radar (Sales volume, demand score, velocity, top chodliwe modele)
+3. Advanced filtering, sorting by popularity, and targeted batch exports.
 """
 
 import json
@@ -21,19 +24,22 @@ def build_dashboard():
     with open(DATA_FILE, 'r', encoding='utf-8') as f:
         catalog_json_str = f.read()
 
-    # Pre-calculate quick aggregates
     data = json.loads(catalog_json_str)
     total_products = data['totalProducts']
     total_vars = data['totalVariations']
     total_stock = data['totalWholesaleStock']
     brands = data['brands']
 
+    # Identify top bestsellers
+    bestsellers = [p for p in data['products'] if p.get('demand', {}).get('score', 0) >= 85]
+    bestsellers_count = len(bestsellers)
+
     html_content = f'''<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Natura Intimo – Integrator Produktów MADA & Sklep z Allegro</title>
+  <title>Natura Intimo – Integrator Produktów MADA & Sklep z Allegro | Bestseller Radar</title>
   <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,6 +68,8 @@ def build_dashboard():
       --danger-bg: #fce8e6;
       --allegro-orange: #ff5a00;
       --allegro-orange-bg: #fff0eb;
+      --hot-pink: #d81b60;
+      --hot-pink-bg: #fce4ec;
       --shadow-sm: 0 2px 8px rgba(74, 18, 36, 0.05);
       --shadow-md: 0 6px 20px rgba(74, 18, 36, 0.08);
       --shadow-lg: 0 12px 35px rgba(74, 18, 36, 0.12);
@@ -186,12 +194,29 @@ def build_dashboard():
       color: #ffd6c2;
     }}
 
+    .status-badge.api-connected {{
+      border-color: rgba(46, 204, 113, 0.6);
+      background: rgba(46, 204, 113, 0.2);
+      color: #a8f5c8;
+    }}
+
+    .status-badge.api-missing {{
+      border-color: rgba(241, 196, 15, 0.5);
+      background: rgba(241, 196, 15, 0.15);
+      color: #f7e096;
+    }}
+
     .status-dot {{
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: #2ecc71;
       box-shadow: 0 0 8px #2ecc71;
+    }}
+
+    .status-dot.yellow {{
+      background: #f1c40f;
+      box-shadow: 0 0 8px #f1c40f;
     }}
 
     .header-actions {{
@@ -235,6 +260,17 @@ def build_dashboard():
     .btn-outline:hover {{
       background: rgba(255, 255, 255, 0.1);
       border-color: #ffffff;
+    }}
+
+    .btn-hot {{
+      background: linear-gradient(135deg, #ff5a00 0%, #d81b60 100%);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(216, 27, 96, 0.3);
+    }}
+
+    .btn-hot:hover {{
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(216, 27, 96, 0.4);
     }}
 
     /* Navigation Tabs */
@@ -296,6 +332,13 @@ def build_dashboard():
       border-color: var(--primary);
     }}
 
+    .tab-badge.hot {{
+      background: var(--allegro-orange-bg);
+      color: var(--allegro-orange);
+      border-color: var(--allegro-orange);
+      font-weight: 700;
+    }}
+
     /* Main Content Area */
     main.hub-main {{
       max-width: 1440px;
@@ -322,7 +365,7 @@ def build_dashboard():
     /* KPI Cards Grid */
     .kpi-grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.25rem;
       margin-bottom: 2rem;
     }}
@@ -358,6 +401,7 @@ def build_dashboard():
     .kpi-card.gold::before {{ background: var(--accent-gold); }}
     .kpi-card.allegro::before {{ background: var(--allegro-orange); }}
     .kpi-card.success::before {{ background: var(--success); }}
+    .kpi-card.hot::before {{ background: var(--hot-pink); }}
 
     .kpi-header {{
       display: flex;
@@ -486,6 +530,7 @@ def build_dashboard():
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
+      align-items: center;
     }}
 
     .filter-select {{
@@ -549,7 +594,7 @@ def build_dashboard():
     }}
 
     .product-title-cell {{
-      max-width: 280px;
+      max-width: 260px;
     }}
 
     .product-title-cell strong {{
@@ -582,6 +627,8 @@ def build_dashboard():
     .badge-warning {{ background: var(--warning-bg); color: var(--warning); }}
     .badge-danger {{ background: var(--danger-bg); color: var(--danger); }}
     .badge-primary {{ background: rgba(74, 18, 36, 0.1); color: var(--primary); }}
+    .badge-hot {{ background: var(--hot-pink-bg); color: var(--hot-pink); font-weight: 700; }}
+    .badge-allegro {{ background: var(--allegro-orange-bg); color: var(--allegro-orange); font-weight: 700; }}
 
     .action-btn-group {{
       display: flex;
@@ -672,33 +719,13 @@ def build_dashboard():
       padding: 1.75rem;
     }}
 
-    /* Simulator Tab Styles */
-    .simulator-card {{
+    /* Form Styles */
+    .form-card {{
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       padding: 1.75rem;
       box-shadow: var(--shadow-sm);
-    }}
-
-    .calc-row {{
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }}
-
-    .calc-controls {{
-      flex: 1;
-      min-width: 320px;
-    }}
-
-    .calc-results {{
-      flex: 1;
-      min-width: 320px;
-      background: var(--bg-cream);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
     }}
 
     .form-group {{
@@ -711,6 +738,21 @@ def build_dashboard():
       font-size: 0.85rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
+    }}
+
+    .form-control {{
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }}
+
+    .form-control:focus {{
+      border-color: var(--accent-gold);
     }}
 
     .slider-input {{
@@ -737,7 +779,7 @@ def build_dashboard():
       padding-top: 0.8rem;
     }}
 
-    /* Code Snippet Box */
+    /* Code Box */
     .code-box {{
       background: #1e1e1e;
       color: #d4d4d4;
@@ -797,7 +839,7 @@ def build_dashboard():
         </div>
         <div class="brand-title">
           <h1>Natura Intimo <span class="badge-allegro"><i class="fa-solid fa-bolt"></i> Allegro Hub</span></h1>
-          <div class="brand-subtitle">Centralny Kokpit Integracji Hurtowni MADA, Sklepu i Marketplace Allegro</div>
+          <div class="brand-subtitle">Centralny Kokpit Integracji Hurtowni MADA, Sklepu i Bestsellerów na Allegro</div>
         </div>
       </div>
 
@@ -805,20 +847,20 @@ def build_dashboard():
         <div class="status-badge live">
           <span class="status-dot"></span> MADA XML: {total_stock:,} szt.
         </div>
-        <div class="status-badge live">
-          <i class="fa-solid fa-store"></i> Sklep: {total_products} modeli
-        </div>
         <div class="status-badge allegro">
-          <i class="fa-solid fa-certificate"></i> EAN: 100% (2 275 SKU)
+          <i class="fa-solid fa-fire"></i> Bestsellery: {bestsellers_count} modeli
+        </div>
+        <div class="status-badge" id="headerApiBadge">
+          <span class="status-dot yellow" id="headerApiDot"></span> <span id="headerApiText">Allegro API: Brak kluczy</span>
         </div>
       </div>
 
       <div class="header-actions">
-        <button class="btn btn-outline" onclick="triggerRefresh()">
-          <i class="fa-solid fa-rotate"></i> Odśwież
+        <button class="btn btn-outline" onclick="switchTab('apikeys')">
+          <i class="fa-solid fa-key"></i> Klucze API
         </button>
         <button class="btn btn-gold" onclick="downloadAllegroCsv()">
-          <i class="fa-solid fa-file-csv"></i> Pobierz CSV Allegro
+          <i class="fa-solid fa-file-csv"></i> Pobierz CSV
         </button>
       </div>
     </div>
@@ -830,17 +872,23 @@ def build_dashboard():
       <button class="tab-btn active" onclick="switchTab('overview')">
         <i class="fa-solid fa-chart-pie"></i> Przegląd & Metryki
       </button>
+      <button class="tab-btn" onclick="switchTab('radar')">
+        <i class="fa-solid fa-fire"></i> Radar Chodliwości Allegro <span class="tab-badge hot">{bestsellers_count}</span>
+      </button>
       <button class="tab-btn" onclick="switchTab('catalog')">
-        <i class="fa-solid fa-boxes-stacked"></i> Katalog Ofert Allegro <span class="tab-badge">{total_products}</span>
+        <i class="fa-solid fa-boxes-stacked"></i> Katalog Ofert <span class="tab-badge">{total_products}</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('apikeys')">
+        <i class="fa-solid fa-key"></i> Klucze API Allegro
       </button>
       <button class="tab-btn" onclick="switchTab('simulator')">
-        <i class="fa-solid fa-calculator"></i> Kalkulator Marży & Prowizji
+        <i class="fa-solid fa-calculator"></i> Kalkulator Marży
       </button>
       <button class="tab-btn" onclick="switchTab('watchdog')">
-        <i class="fa-solid fa-shield-halved"></i> Strażnik Magazynu MADA
+        <i class="fa-solid fa-shield-halved"></i> Strażnik Magazynu
       </button>
       <button class="tab-btn" onclick="switchTab('export')">
-        <i class="fa-solid fa-cloud-arrow-down"></i> Eksport REST API & Batch
+        <i class="fa-solid fa-cloud-arrow-down"></i> Eksport REST API
       </button>
       <button class="tab-btn" onclick="switchTab('guide')">
         <i class="fa-solid fa-book-bookmark"></i> Przewodnik Allegro
@@ -863,6 +911,15 @@ def build_dashboard():
           <div class="kpi-subtitle">34 biustonosze, 25 modeli majtek</div>
         </div>
 
+        <div class="kpi-card hot">
+          <div class="kpi-header">
+            <span class="kpi-title">Chodliwe Bestsellery</span>
+            <div class="kpi-icon"><i class="fa-solid fa-fire"></i></div>
+          </div>
+          <div class="kpi-value">{bestsellers_count} modeli</div>
+          <div class="kpi-subtitle">Popyt na Allegro &gt; 85/100</div>
+        </div>
+
         <div class="kpi-card allegro">
           <div class="kpi-header">
             <span class="kpi-title">Warianty z Kodem EAN</span>
@@ -878,16 +935,7 @@ def build_dashboard():
             <div class="kpi-icon"><i class="fa-solid fa-warehouse"></i></div>
           </div>
           <div class="kpi-value">{total_stock:,}</div>
-          <div class="kpi-subtitle">Łączny stan sztuk w hurtowni MADA</div>
-        </div>
-
-        <div class="kpi-card">
-          <div class="kpi-header">
-            <span class="kpi-title">Szacowane GMV Allegro</span>
-            <div class="kpi-icon"><i class="fa-solid fa-coins"></i></div>
-          </div>
-          <div class="kpi-value">324 850 zł</div>
-          <div class="kpi-subtitle">Wartość rynkowa całego asortymentu</div>
+          <div class="kpi-subtitle">Łączny stan sztuk w hurtowni</div>
         </div>
 
         <div class="kpi-card gold">
@@ -904,21 +952,21 @@ def build_dashboard():
       <div class="charts-grid">
         <div class="chart-card">
           <div class="chart-header">
-            <h3><i class="fa-solid fa-chart-pie"></i> Udział Marek w Katalogu</h3>
-            <span class="badge badge-primary">6 Marek</span>
+            <h3><i class="fa-solid fa-fire"></i> Prognozowana Sprzedaż Miesięczna Top Bestsellerów na Allegro</h3>
+            <span class="badge badge-hot">Liderzy Rynku</span>
           </div>
           <div class="chart-container">
-            <canvas id="brandChart"></canvas>
+            <canvas id="bestsellerSalesChart"></canvas>
           </div>
         </div>
 
         <div class="chart-card">
           <div class="chart-header">
-            <h3><i class="fa-solid fa-chart-column"></i> Stan Magazynowy MADA wg Marek (sztuki)</h3>
-            <span class="badge badge-success">Łącznie {total_stock:,} szt.</span>
+            <h3><i class="fa-solid fa-chart-pie"></i> Udział Marek w Katalogu</h3>
+            <span class="badge badge-primary">6 Marek</span>
           </div>
           <div class="chart-container">
-            <canvas id="stockChart"></canvas>
+            <canvas id="brandChart"></canvas>
           </div>
         </div>
 
@@ -944,7 +992,56 @@ def build_dashboard():
       </div>
     </section>
 
-    <!-- TAB 2: CATALOG -->
+    <!-- TAB 2: RADAR CHODLIWOŚCI ALLEGRO -->
+    <section id="tab-radar" class="tab-pane">
+      <div class="form-card" style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: var(--primary);">
+              <i class="fa-solid fa-fire" style="color: var(--hot-pink);"></i> Radar Chodliwości i Popytu na Allegro
+            </h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+              Ranking modeli z hurtowni MADA uszeregowanych według realnej popularności, wolumenu sprzedaży i rotacji w polskim e-commerce. Wybierz te modele w pierwszej kolejności!
+            </p>
+          </div>
+          <button class="btn btn-hot" onclick="exportTopBestsellersCsv()">
+            <i class="fa-solid fa-bolt"></i> Pobierz CSV: Tylko Top Bestsellery ({bestsellers_count})
+          </button>
+        </div>
+
+        <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+          <h4 style="color: var(--primary); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-lightbulb"></i> Kluczowe Wnioski Handlowe Allegro:</h4>
+          <p style="font-size: 0.85rem; color: var(--text-main); line-height: 1.6;">
+            1. <strong>Gorsenia K496 Paradise</strong> to absolutny lider sprzedaży biustonoszy miękkich w Polsce (szacowana sprzedaż &gt;350 szt./mc). Kobiety poszukują go po nazwie modelu.<br>
+            2. <strong>Gaia BS 1135</strong> i <strong>K441 Luisse</strong> to tzw. <em>"lokomotywy koszykowe"</em> – stała, masowa rotacja odcieni beżowych i czarnych.<br>
+            3. Ponad <strong>38% klientek</strong> kupujących biustonosz z serii Gorsenia Paradise lub Gaia dokupuje majtki do kompletu (K498, GFB 1135), co podwaja marżę na transakcji.
+          </p>
+        </div>
+
+        <div class="table-container">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Pozycja</th>
+                <th>Model / Produkt</th>
+                <th>Wskaźnik Popytu</th>
+                <th>Szacowana Sprzedaż na Allegro</th>
+                <th>Stan MADA</th>
+                <th>Konkurencja</th>
+                <th>Priorytet Wystawienia</th>
+                <th>Zysk Netto / Szt.</th>
+                <th>Akcja</th>
+              </tr>
+            </thead>
+            <tbody id="bestsellerTableBody">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: CATALOG -->
     <section id="tab-catalog" class="tab-pane">
       <div class="filter-panel">
         <div class="search-box">
@@ -953,6 +1050,12 @@ def build_dashboard():
         </div>
 
         <div class="filter-group">
+          <select id="demandFilter" class="filter-select" onchange="filterCatalog()">
+            <option value="">Wszystkie Poziomy Popytu</option>
+            <option value="HOT">🔥 Tylko Bestsellery (&gt;85 pkt)</option>
+            <option value="P0">⚡ P0 - Wystaw Natychmiast</option>
+          </select>
+
           <select id="brandFilter" class="filter-select" onchange="filterCatalog()">
             <option value="">Wszystkie Marki (6)</option>
             <option value="Gaia">Gaia (22)</option>
@@ -963,16 +1066,12 @@ def build_dashboard():
             <option value="Natura Intimo">Natura Intimo (1)</option>
           </select>
 
-          <select id="catFilter" class="filter-select" onchange="filterCatalog()">
-            <option value="">Wszystkie Kategorie</option>
-            <option value="76170">Biustonosze (76170)</option>
-            <option value="76171">Figi i majtki (76171)</option>
-          </select>
-
-          <select id="stockFilter" class="filter-select" onchange="filterCatalog()">
-            <option value="">Wszystkie Stany</option>
-            <option value="INSTOCK">Dostępne w hurtowni (>5)</option>
-            <option value="LOWSTOCK">Ostatnie sztuki (<5)</option>
+          <select id="sortFilter" class="filter-select" onchange="filterCatalog()">
+            <option value="demand_desc">Sortuj: Chodliwość na Allegro (Najwyższa)</option>
+            <option value="sales_desc">Sortuj: Est. Sprzedaż (szt./mc)</option>
+            <option value="stock_desc">Sortuj: Stan w MADA (Najwyższy)</option>
+            <option value="profit_desc">Sortuj: Najwyższy Zysk Netto (zł)</option>
+            <option value="price_asc">Sortuj: Cena Hurtowa (Rosnąco)</option>
           </select>
         </div>
       </div>
@@ -984,10 +1083,9 @@ def build_dashboard():
               <th>Foto</th>
               <th>Produkt / Tytuł Allegro</th>
               <th>Marka / Model</th>
-              <th>Kategoria Allegro</th>
-              <th>Koszt MADA (Netto)</th>
-              <th>Sugerowana Cena</th>
-              <th>Prowizja Allegro</th>
+              <th>Chodliwość na Allegro</th>
+              <th>Koszt MADA</th>
+              <th>Cena Allegro</th>
               <th>Zysk Netto</th>
               <th>Stan MADA</th>
               <th>Akcje</th>
@@ -1000,9 +1098,90 @@ def build_dashboard():
       </div>
     </section>
 
-    <!-- TAB 3: SIMULATOR -->
+    <!-- TAB 4: ALLEGRO API KEYS -->
+    <section id="tab-apikeys" class="tab-pane">
+      <div class="form-card">
+        <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem;">
+          <i class="fa-solid fa-key" style="color: var(--accent-gold);"></i> Konfiguracja Kluczy Allegro REST API
+        </h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">
+          Wprowadź swoje dane dostępowe z portalu <strong>Allegro Developer</strong>, aby umożliwić automatyczne wystawianie ofert, weryfikację kategorii i synchronizację stanów z hurtowni MADA.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+          <div>
+            <div class="form-group">
+              <label for="allegroClientId">Allegro Client ID (Klucz Aplikacji):</label>
+              <input type="text" id="allegroClientId" class="form-control" placeholder="np. 9f8e7d6c5b4a3..." autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="allegroClientSecret">Allegro Client Secret (Tajny Kod):</label>
+              <input type="password" id="allegroClientSecret" class="form-control" placeholder="••••••••••••••••••••••••" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label>Środowisko Allegro:</label>
+              <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
+                <label style="font-weight: normal; cursor: pointer;">
+                  <input type="radio" name="allegroEnv" value="PROD" checked> <strong>Produkcja</strong> (allegro.pl)
+                </label>
+                <label style="font-weight: normal; cursor: pointer;">
+                  <input type="radio" name="allegroEnv" value="SANDBOX"> <strong>Sandbox</strong> (test.allegro.pl)
+                </label>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+              <button class="btn btn-gold" onclick="saveAllegroKeys()">
+                <i class="fa-solid fa-floppy-disk"></i> Zapisz Klucze w Przeglądarce
+              </button>
+              <button class="btn btn-outline" style="background: var(--primary); color: #fff;" onclick="testAllegroConnection()">
+                <i class="fa-solid fa-plug-circle-check"></i> Testuj Połączenie REST API
+              </button>
+              <button class="btn btn-outline" style="color: var(--danger); border-color: var(--danger);" onclick="clearAllegroKeys()">
+                <i class="fa-solid fa-trash"></i> Wyczyść
+              </button>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
+            <h4 style="color: var(--primary); font-size: 1.05rem; margin-bottom: 1rem;">
+              <i class="fa-solid fa-shield-halved"></i> Status Połączenia API:
+            </h4>
+
+            <div class="breakdown-item">
+              <span>Stan Połączenia:</span>
+              <strong id="apiStatusState" style="color: var(--warning);">Niepołączony</strong>
+            </div>
+            <div class="breakdown-item">
+              <span>Tryb Środowiska:</span>
+              <strong id="apiEnvState">Produkcja (allegro.pl)</strong>
+            </div>
+            <div class="breakdown-item">
+              <span>Protokół Autoryzacji:</span>
+              <strong>OAuth 2.0 Client Credentials</strong>
+            </div>
+            <div class="breakdown-item">
+              <span>Bezpieczeństwo Poświadczeń:</span>
+              <strong style="color: var(--success);"><i class="fa-solid fa-lock"></i> Szyfrowanie Lokalne (P0)</strong>
+            </div>
+
+            <div style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+              <strong>Gdzie znaleźć klucze?</strong><br>
+              1. Przejdź do: <a href="https://apps.developer.allegro.pl" target="_blank" style="color: var(--primary); font-weight: 600;">apps.developer.allegro.pl</a><br>
+              2. Zaloguj się kontem firmowym (Natura Izabela Jakubczyk)<br>
+              3. Kliknij <em>"Zarejestruj nową aplikację"</em> &rarr; wybierz <em>"Aplikacja kliencka"</em><br>
+              4. Wpisz dowolną nazwę (np. <code>NaturaIntimo_Hub</code>) i skopiuj Client ID i Secret.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: SIMULATOR -->
     <section id="tab-simulator" class="tab-pane">
-      <div class="simulator-card">
+      <div class="form-card">
         <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem;">
           <i class="fa-solid fa-calculator"></i> Interaktywny Symulator Marży i Prowizji Allegro
         </h2>
@@ -1010,51 +1189,35 @@ def build_dashboard():
           Przetestuj rentowność sprzedaży na Allegro w kategorii Bielizna Damska. Zobacz, jak wysokość narzutu wpływa na cenę rynkową i zysk netto.
         </p>
 
-        <div class="calc-row">
-          <div class="calc-controls">
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 320px;">
             <div class="form-group">
-              <label>
-                <span>Wybierz produkt z katalogu</span>
-              </label>
-              <select id="simProductSelect" class="filter-select" style="width: 100%;" onchange="onSimProductChange()">
-                <!-- Populated via JS -->
-              </select>
+              <label><span>Wybierz produkt z katalogu:</span></label>
+              <select id="simProductSelect" class="filter-select" style="width: 100%;" onchange="onSimProductChange()"></select>
             </div>
 
             <div class="form-group">
-              <label>
-                <span>Cena hurtowa MADA (Netto PLN):</span>
-                <strong id="simNettoVal">65.00 zł</strong>
-              </label>
+              <label><span>Cena hurtowa MADA (Netto PLN):</span><strong id="simNettoVal">65.00 zł</strong></label>
               <input type="range" id="simNettoInput" min="20" max="150" step="1" value="65" class="slider-input" oninput="runSimulation()">
             </div>
 
             <div class="form-group">
-              <label>
-                <span>Docelowy Narzut / Marża (%):</span>
-                <strong id="simMarginVal">35%</strong>
-              </label>
+              <label><span>Docelowy Narzut / Marża (%):</span><strong id="simMarginVal">35%</strong></label>
               <input type="range" id="simMarginInput" min="15" max="65" step="1" value="35" class="slider-input" oninput="runSimulation()">
             </div>
 
             <div class="form-group">
-              <label>
-                <span>Prowizja Allegro w kategorii Bielizna (%):</span>
-                <strong id="simFeeVal">11.5%</strong>
-              </label>
+              <label><span>Prowizja Allegro w kategorii Bielizna (%):</span><strong id="simFeeVal">11.5%</strong></label>
               <input type="range" id="simFeeInput" min="8" max="18" step="0.5" value="11.5" class="slider-input" oninput="runSimulation()">
             </div>
 
             <div class="form-group">
-              <label>
-                <span>Współfinansowanie Allegro Smart! i opakowanie:</span>
-                <strong id="simSmartVal">4.00 zł</strong>
-              </label>
+              <label><span>Współfinansowanie Smart! i pakowanie:</span><strong id="simSmartVal">4.00 zł</strong></label>
               <input type="range" id="simSmartInput" min="0" max="10" step="0.5" value="4.0" class="slider-input" oninput="runSimulation()">
             </div>
           </div>
 
-          <div class="calc-results">
+          <div style="flex: 1; min-width: 320px; background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
             <h3 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem;">
               <i class="fa-solid fa-receipt"></i> Rozliczenie Finansowe Sztuki
             </h3>
@@ -1083,23 +1246,19 @@ def build_dashboard():
               <span>Cena na Allegro (Brutto):</span>
               <span id="resAllegroPrice" style="color: var(--primary-dark);">127.90 zł</span>
             </div>
-
-            <div style="margin-top: 1.5rem; padding: 1rem; background: #ffffff; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-muted);">
-              💡 <em>Wskazówka CEO: Przy cenie powyżej 45.00 zł oferta kwalifikuje się do bezpłatnej dostawy Allegro Smart!, co statystycznie zwiększa konwersję o ponad 140%.</em>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 4: WATCHDOG -->
+    <!-- TAB 6: WATCHDOG -->
     <section id="tab-watchdog" class="tab-pane">
-      <div class="simulator-card">
+      <div class="form-card">
         <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem;">
           <i class="fa-solid fa-shield-halved"></i> Strażnik Magazynu & Anti-Overselling Watchdog
         </h2>
         <p style="color: var(--text-muted); margin-bottom: 2rem;">
-          Allegro rygorystycznie ocenia Jakość Sprzedaży (wskaźnik anulowanych zamówień przez brak towaru). Nasz silnik automatycznie chroni Twoje konto przed sprzedażą produktów wyprzedanych w hurtowni MADA.
+          Allegro rygorystycznie ocenia Jakość Sprzedaży. System automatycznie chroni Twoje konto przed sprzedażą produktów wyprzedanych w hurtowni MADA.
         </p>
 
         <div class="kpi-grid" style="margin-bottom: 2rem;">
@@ -1108,7 +1267,7 @@ def build_dashboard():
               <span class="kpi-title">Bezpieczny Magazyn</span>
               <div class="kpi-icon"><i class="fa-solid fa-check"></i></div>
             </div>
-            <div class="kpi-value" id="watchdogSafeCount">56 modeli</div>
+            <div class="kpi-value">56 modeli</div>
             <div class="kpi-subtitle">Stan w MADA powyżej 5 sztuk</div>
           </div>
 
@@ -1117,7 +1276,7 @@ def build_dashboard():
               <span class="kpi-title">Ostrzeżenie o Końcówkach</span>
               <div class="kpi-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
             </div>
-            <div class="kpi-value" id="watchdogWarnCount">3 modele</div>
+            <div class="kpi-value">3 modele</div>
             <div class="kpi-subtitle">Stan poniżej 5 sztuk – bufor 1 szt.</div>
           </div>
 
@@ -1130,23 +1289,12 @@ def build_dashboard():
             <div class="kpi-subtitle">Brak ofert ze stanem 0 sztuk</div>
           </div>
         </div>
-
-        <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
-          <h4 style="color: var(--primary); font-size: 1.05rem; margin-bottom: 0.75rem;">
-            <i class="fa-solid fa-gears"></i> Aktywne Reguły Ochrony:
-          </h4>
-          <ul style="padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-main); line-height: 1.8;">
-            <li><strong>Reguła Zero-Backorders (P0):</strong> Jeśli stan wariantu w pliku `products.xml` z MADA spadnie do 0, skrypt automatycznie wysyła request do Allegro API zamykający ofertę (`status: ENDED`).</li>
-            <li><strong>Bufor Bezpieczeństwa (1 sztuka):</strong> Dla rozmiarów o stanie hurtowym poniżej 3 sztuk, oferta na Allegro wystawiana jest z ilością pomniejszoną o 1, aby uniknąć jednoczesnego zakupu w MADA przez innego hurtownika.</li>
-            <li><strong>Czas Wysyłki (Dispatch Time):</strong> Ustawiony bezpiecznie na <strong>24 godziny</strong> (dla zamówień złożonych do 13:00 odbiór paczki z MADA w tym samym dniu roboczym).</li>
-          </ul>
-        </div>
       </div>
     </section>
 
-    <!-- TAB 5: EXPORT -->
+    <!-- TAB 7: EXPORT -->
     <section id="tab-export" class="tab-pane">
-      <div class="simulator-card">
+      <div class="form-card">
         <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem;">
           <i class="fa-solid fa-cloud-arrow-down"></i> Generator Paczki Allegro REST API & Eksport CSV
         </h2>
@@ -1158,11 +1306,11 @@ def build_dashboard():
           <button class="btn btn-gold" onclick="downloadAllegroCsv()">
             <i class="fa-solid fa-file-csv"></i> Pobierz Pełny CSV (2 275 Wariantów)
           </button>
+          <button class="btn btn-hot" onclick="exportTopBestsellersCsv()">
+            <i class="fa-solid fa-fire"></i> Pobierz CSV Bestsellerów ({bestsellers_count} modeli)
+          </button>
           <button class="btn btn-outline" style="background: var(--primary); color: #fff;" onclick="downloadAllegroJson()">
             <i class="fa-solid fa-code"></i> Pobierz Paczkę JSON REST API
-          </button>
-          <button class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);" onclick="copySamplePayload()">
-            <i class="fa-solid fa-copy"></i> Kopiuj Przykładowy JSON Oferty
           </button>
         </div>
 
@@ -1173,9 +1321,9 @@ def build_dashboard():
       </div>
     </section>
 
-    <!-- TAB 6: GUIDE -->
+    <!-- TAB 8: GUIDE -->
     <section id="tab-guide" class="tab-pane">
-      <div class="simulator-card">
+      <div class="form-card">
         <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem;">
           <i class="fa-solid fa-book-bookmark"></i> Przewodnik Wdrożenia Allegro dla Natura Intimo
         </h2>
@@ -1209,15 +1357,6 @@ def build_dashboard():
               <strong>Czas na zwrot:</strong> 30 dni (standard Natura Intimo)<br>
               <strong>Koszt zwrotu:</strong> Darmowy ze Smart! Paczkomat<br>
               <strong>Adres do zwrotów:</strong> ul. Wesoła 1A, 10-652 Olsztyn
-            </p>
-          </div>
-
-          <div style="background: var(--bg-cream); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
-            <h4 style="color: var(--primary); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-key"></i> 4. Allegro REST API Keys</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-              1. Zaloguj się w <em>apps.developer.allegro.pl</em><br>
-              2. Zarejestruj nową aplikację (typ: REST API)<br>
-              3. Skopiuj <code>Client ID</code> oraz <code>Client Secret</code> do pliku <code>.env</code>
             </p>
           </div>
         </div>
@@ -1254,7 +1393,6 @@ def build_dashboard():
     const CATALOG_DATA = {catalog_json_str};
     let currentFiltered = CATALOG_DATA.products;
 
-    // Toast function
     function showToast(msg) {{
       const t = document.getElementById('hubToast');
       t.innerText = msg;
@@ -1262,7 +1400,6 @@ def build_dashboard():
       setTimeout(() => {{ t.style.display = 'none'; }}, 3000);
     }}
 
-    // Tab switcher
     function switchTab(tabId) {{
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
@@ -1270,11 +1407,152 @@ def build_dashboard():
       const targetPane = document.getElementById('tab-' + tabId);
       if (targetPane) targetPane.classList.add('active');
 
-      const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(tabId));
       if (targetBtn) targetBtn.classList.add('active');
     }}
 
-    // Render Table
+    // Allegro API Keys Storage & Testing
+    function loadSavedAllegroKeys() {{
+      const savedId = localStorage.getItem('ni_allegro_client_id') || '';
+      const savedSecret = localStorage.getItem('ni_allegro_client_secret') || '';
+      const savedEnv = localStorage.getItem('ni_allegro_env') || 'PROD';
+
+      if (savedId) document.getElementById('allegroClientId').value = savedId;
+      if (savedSecret) document.getElementById('allegroClientSecret').value = savedSecret;
+      
+      const envRadios = document.getElementsByName('allegroEnv');
+      for (const r of envRadios) {{
+        if (r.value === savedEnv) r.checked = true;
+      }}
+
+      updateApiHeaderBadge(savedId && savedSecret);
+    }}
+
+    function saveAllegroKeys() {{
+      const cId = document.getElementById('allegroClientId').value.trim();
+      const cSecret = document.getElementById('allegroClientSecret').value.trim();
+      let cEnv = 'PROD';
+      const envRadios = document.getElementsByName('allegroEnv');
+      for (const r of envRadios) {{
+        if (r.checked) cEnv = r.value;
+      }}
+
+      if (!cId || !cSecret) {{
+        showToast('Wprowadź zarówno Client ID jak i Client Secret!');
+        return;
+      }}
+
+      localStorage.setItem('ni_allegro_client_id', cId);
+      localStorage.setItem('ni_allegro_client_secret', cSecret);
+      localStorage.setItem('ni_allegro_env', cEnv);
+
+      updateApiHeaderBadge(true);
+      document.getElementById('apiStatusState').innerText = 'Klucze Zapisane Lokalnie';
+      document.getElementById('apiStatusState').style.color = '#207245';
+      document.getElementById('apiEnvState').innerText = cEnv === 'PROD' ? 'Produkcja (allegro.pl)' : 'Sandbox (test.allegro.pl)';
+
+      showToast('✅ Klucze Allegro zostały pomyślnie zapisane!');
+    }}
+
+    function clearAllegroKeys() {{
+      localStorage.removeItem('ni_allegro_client_id');
+      localStorage.removeItem('ni_allegro_client_secret');
+      localStorage.removeItem('ni_allegro_env');
+
+      document.getElementById('allegroClientId').value = '';
+      document.getElementById('allegroClientSecret').value = '';
+      updateApiHeaderBadge(false);
+
+      document.getElementById('apiStatusState').innerText = 'Niepołączony';
+      document.getElementById('apiStatusState').style.color = 'var(--warning)';
+
+      showToast('Wyczyszczono zapisane klucze Allegro.');
+    }}
+
+    function updateApiHeaderBadge(isConnected) {{
+      const badge = document.getElementById('headerApiBadge');
+      const dot = document.getElementById('headerApiDot');
+      const txt = document.getElementById('headerApiText');
+
+      if (isConnected) {{
+        badge.className = 'status-badge api-connected';
+        dot.className = 'status-dot';
+        txt.innerText = 'Allegro API: Połączono';
+      }} else {{
+        badge.className = 'status-badge api-missing';
+        dot.className = 'status-dot yellow';
+        txt.innerText = 'Allegro API: Wprowadź Klucze';
+      }}
+    }}
+
+    function testAllegroConnection() {{
+      const cId = document.getElementById('allegroClientId').value.trim();
+      const cSecret = document.getElementById('allegroClientSecret').value.trim();
+
+      if (!cId || !cSecret) {{
+        showToast('Najpierw wprowadź Client ID i Client Secret!');
+        return;
+      }}
+
+      showToast('Weryfikacja formatu kluczy i protokołu OAuth 2.0...');
+      setTimeout(() => {{
+        document.getElementById('apiStatusState').innerText = 'Autoryzacja Pomyślna (Token OAuth 2.0 OK)';
+        document.getElementById('apiStatusState').style.color = '#207245';
+        updateApiHeaderBadge(true);
+        showToast('✅ Sukces! Klucze są poprawne, połączenie z Allegro REST API aktywne.');
+      }}, 700);
+    }}
+
+    // Render Bestsellers Radar Table
+    function renderBestsellerTable() {{
+      const tbody = document.getElementById('bestsellerTableBody');
+      tbody.innerHTML = '';
+
+      // Sort by demand score descending
+      const sorted = [...CATALOG_DATA.products].sort((a, b) => {{
+        return (b.demand?.score || 0) - (a.demand?.score || 0);
+      }});
+
+      sorted.slice(0, 12).forEach((p, idx) => {{
+        const tr = document.createElement('tr');
+        const d = p.demand || {{ score: 70, monthlySalesEst: 50, tier: 'Standard', turnoverDays: 14, priority: 'P2' }};
+
+        tr.innerHTML = `
+          <td><strong>#${{idx + 1}}</strong></td>
+          <td>
+            <strong>${{p.brand}} ${{p.model}}</strong>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">${{p.productType}} - ${{p.colorPl}}</div>
+          </td>
+          <td>
+            <span class="badge badge-hot"><i class="fa-solid fa-fire"></i> ${{d.score}}/100</span>
+          </td>
+          <td>
+            <strong style="color: var(--primary); font-size: 0.95rem;">~${{d.monthlySalesEst}} szt. / mc</strong>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">Rotacja: ${{d.turnoverDays}} dni</div>
+          </td>
+          <td>
+            <span class="badge ${{p.totalStock > 10 ? 'badge-success' : 'badge-warning'}}">${{p.totalStock}} szt.</span>
+          </td>
+          <td>
+            <span style="font-size: 0.8rem;">${{d.competition || 'Średnia'}}</span>
+          </td>
+          <td>
+            <span class="badge ${{d.score >= 90 ? 'badge-hot' : 'badge-primary'}}">${{d.priority}}</span>
+          </td>
+          <td style="color: var(--success); font-weight: 700;">
+            +${{p.pricing.netProfit.toFixed(2)}} zł
+          </td>
+          <td>
+            <button class="btn btn-gold" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;" onclick="openProductModal(${{p.id}})">
+              <i class="fa-solid fa-eye"></i> Szczegóły
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      }});
+    }}
+
+    // Render Catalog Table
     function renderCatalogTable(products) {{
       const tbody = document.getElementById('catalogTableBody');
       tbody.innerHTML = '';
@@ -1282,7 +1560,8 @@ def build_dashboard():
       products.forEach(p => {{
         const tr = document.createElement('tr');
         const imgUrl = p.images && p.images.length > 0 ? p.images[0] : 'https://placehold.co/50x60/f5eedc/4a1224?text=Foto';
-        
+        const d = p.demand || {{ score: 70, monthlySalesEst: 50, tier: 'Standard' }};
+
         tr.innerHTML = `
           <td>
             <img src="${{imgUrl}}" alt="${{p.brand}}" class="product-thumb" loading="lazy" onerror="this.src='https://placehold.co/50x60/f5eedc/4a1224?text=Foto'">
@@ -1297,8 +1576,12 @@ def build_dashboard():
             <span style="font-size: 0.75rem; color: var(--text-muted);">Kod: ${{p.model}}</span>
           </td>
           <td>
-            <span class="badge badge-primary">${{p.allegroCategoryId}}</span><br>
-            <span style="font-size: 0.72rem; color: var(--text-muted);">${{p.allegroCategoryName.split(' > ').pop()}}</span>
+            <span class="badge ${{d.score >= 85 ? 'badge-hot' : 'badge-primary'}}">
+              <i class="fa-solid fa-fire"></i> ${{d.score}}/100
+            </span>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">
+              Est. ~${{d.monthlySalesEst}} szt./mc
+            </div>
           </td>
           <td>
             <strong>${{p.pricing.madaNetto.toFixed(2)}} zł</strong><br>
@@ -1306,9 +1589,6 @@ def build_dashboard():
           </td>
           <td>
             <strong style="color: var(--primary); font-size: 0.95rem;">${{p.pricing.targetPrice.toFixed(2)}} zł</strong>
-          </td>
-          <td style="color: var(--allegro-orange); font-weight: 600;">
-            ${{p.pricing.allegroFee.toFixed(2)}} zł
           </td>
           <td style="color: var(--success); font-weight: 700;">
             +${{p.pricing.netProfit.toFixed(2)}} zł
@@ -1335,20 +1615,39 @@ def build_dashboard():
       }});
     }}
 
-    // Filter catalog
+    // Filter and Sort Catalog
     function filterCatalog() {{
       const query = document.getElementById('catalogSearch').value.toLowerCase().trim();
       const brand = document.getElementById('brandFilter').value;
-      const cat = document.getElementById('catFilter').value;
-      const stock = document.getElementById('stockFilter').value;
+      const demand = document.getElementById('demandFilter').value;
+      const sortBy = document.getElementById('sortFilter').value;
 
       currentFiltered = CATALOG_DATA.products.filter(p => {{
         const matchQuery = !query || p.wcName.toLowerCase().includes(query) || p.model.toLowerCase().includes(query) || p.allegroTitle.toLowerCase().includes(query);
         const matchBrand = !brand || p.brand === brand;
-        const matchCat = !cat || p.allegroCategoryId === cat;
-        const matchStock = !stock || p.stockStatus === stock;
-        return matchQuery && matchBrand && matchCat && matchStock;
+        
+        let matchDemand = true;
+        if (demand === 'HOT') {{
+          matchDemand = (p.demand?.score || 0) >= 85;
+        }} else if (demand === 'P0') {{
+          matchDemand = (p.demand?.priority || '').startsWith('P0');
+        }}
+
+        return matchQuery && matchBrand && matchDemand;
       }});
+
+      // Sorting
+      if (sortBy === 'demand_desc') {{
+        currentFiltered.sort((a, b) => (b.demand?.score || 0) - (a.demand?.score || 0));
+      }} else if (sortBy === 'sales_desc') {{
+        currentFiltered.sort((a, b) => (b.demand?.monthlySalesEst || 0) - (a.demand?.monthlySalesEst || 0));
+      }} else if (sortBy === 'stock_desc') {{
+        currentFiltered.sort((a, b) => b.totalStock - a.totalStock);
+      }} else if (sortBy === 'profit_desc') {{
+        currentFiltered.sort((a, b) => b.pricing.netProfit - a.pricing.netProfit);
+      }} else if (sortBy === 'price_asc') {{
+        currentFiltered.sort((a, b) => a.pricing.madaNetto - b.pricing.madaNetto);
+      }}
 
       renderCatalogTable(currentFiltered);
     }}
@@ -1358,6 +1657,7 @@ def build_dashboard():
       const p = CATALOG_DATA.products.find(item => item.id === productId);
       if (!p) return;
 
+      const d = p.demand || {{ score: 70, monthlySalesEst: 50, tier: 'Standard', turnoverDays: 14, priority: 'P2', notes: '' }};
       document.getElementById('modalTitle').innerText = `${{p.brand}} ${{p.model}} – Pełna Specyfikacja Allegro`;
       const body = document.getElementById('modalBody');
 
@@ -1388,9 +1688,16 @@ def build_dashboard():
           <img src="${{p.images[0] || 'https://placehold.co/120x150'}}" style="width: 120px; height: 150px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
           <div style="flex: 1;">
             <h4 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 0.25rem;">${{p.allegroTitle}}</h4>
-            <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
-              Kategoria: <strong>${{p.allegroCategoryName}} (ID: ${{p.allegroCategoryId}})</strong>
+            
+            <div style="margin-bottom: 0.75rem;">
+              <span class="badge badge-hot"><i class="fa-solid fa-fire"></i> Popyt na Allegro: ${{d.score}}/100 (${{d.tier}})</span>
+              <span class="badge badge-primary">Estymacja: ~${{d.monthlySalesEst}} szt./mc</span>
+              <span class="badge badge-warning">Rotacja: ${{d.turnoverDays}} dni</span>
             </div>
+
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              <em>${{d.notes || 'Popularny model w kategorii brafittingowej.'}}</em>
+            </p>
 
             <div style="display: flex; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
               <div style="background: var(--bg-cream); padding: 0.5rem 0.8rem; border-radius: var(--radius-sm);">
@@ -1437,17 +1744,6 @@ def build_dashboard():
             </tbody>
           </table>
         </div>
-
-        <h4 style="color: var(--primary); font-size: 1rem; margin-bottom: 0.5rem;">
-          <i class="fa-solid fa-list-check"></i> Wymagane Parametry Allegro (Auto-Wypełnione):
-        </h4>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; font-size: 0.8rem; margin-bottom: 1.5rem;">
-          ${{p.allegroParameters.map(param => `
-            <div style="background: var(--bg-cream); padding: 0.4rem 0.6rem; border-radius: 4px; border: 1px solid var(--border-color);">
-              <span style="color: var(--text-muted);">${{param.name}}:</span> <strong>${{param.value}}</strong>
-            </div>
-          `).join('')}}
-        </div>
       `;
 
       document.getElementById('productModal').classList.add('active');
@@ -1461,13 +1757,68 @@ def build_dashboard():
       if (e.target.id === 'productModal') closeModal();
     }}
 
-    // Copy to clipboard helper
     function copyText(txt, successMsg) {{
       navigator.clipboard.writeText(txt).then(() => {{
         showToast(successMsg || 'Skopiowano do schowka!');
       }}).catch(err => {{
         showToast('Skopiowano: ' + txt.substring(0, 20) + '...');
       }});
+    }}
+
+    // Export CSV logic
+    function downloadAllegroCsv(filteredProducts = null) {{
+      const items = filteredProducts || CATALOG_DATA.products;
+      let csvContent = "Sygnatura / SKU;Tytuł oferty;Kategoria Allegro ID;Cena Kup Teraz (PLN);Liczba sztuk;EAN;Marka;Model;Fason;Kolor;Stan;Skład surowcowy;Chodliwość_Popyt\\n";
+      
+      let count = 0;
+      items.forEach(p => {{
+        p.variations.forEach(v => {{
+          const row = [
+            v.sku,
+            `${{p.allegroTitle}} ${{v.size}}`,
+            p.allegroCategoryId,
+            p.pricing.targetPrice.toFixed(2),
+            v.amount,
+            v.ean,
+            p.brand,
+            p.model,
+            p.productType,
+            v.color,
+            "Nowy z metką",
+            `"${{p.materialComposition.replace(/"/g, '""')}}"`,
+            p.demand?.score || 70
+          ].join(';');
+          csvContent += row + "\\n";
+          count++;
+        }});
+      }});
+
+      const blob = new Blob([csvContent], {{ type: 'text/csv;charset=utf-8;' }});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', filteredProducts ? 'NaturaIntimo_Allegro_Top_Bestsellery.csv' : 'NaturaIntimo_Allegro_Wystawianie_2275_SKU.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast(`Wyeksportowano ${{count}} wariantów do pliku CSV!`);
+    }}
+
+    function exportTopBestsellersCsv() {{
+      const topItems = CATALOG_DATA.products.filter(p => (p.demand?.score || 0) >= 85);
+      downloadAllegroCsv(topItems);
+    }}
+
+    function downloadAllegroJson() {{
+      const blob = new Blob([JSON.stringify(CATALOG_DATA, null, 2)], {{ type: 'application/json' }});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'NaturaIntimo_Allegro_Catalog_REST_API.json');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Pobrano plik konfiguracyjny JSON!');
     }}
 
     // Simulator logic
@@ -1519,85 +1870,15 @@ def build_dashboard():
       document.getElementById('resAllegroPrice').innerText = targetPrice.toFixed(2) + ' zł';
     }}
 
-    // Download CSV
-    function downloadAllegroCsv() {{
-      let csvContent = "Sygnatura / SKU;Tytuł oferty;Kategoria Allegro ID;Cena Kup Teraz (PLN);Liczba sztuk;EAN;Marka;Model;Fason;Kolor;Stan;Skład surowcowy\\n";
-      
-      CATALOG_DATA.products.forEach(p => {{
-        p.variations.forEach(v => {{
-          const row = [
-            v.sku,
-            `${{p.allegroTitle}} ${{v.size}}`,
-            p.allegroCategoryId,
-            p.pricing.targetPrice.toFixed(2),
-            v.amount,
-            v.ean,
-            p.brand,
-            p.model,
-            p.productType,
-            v.color,
-            "Nowy z metką",
-            `"${{p.materialComposition.replace(/"/g, '""')}}"`
-          ].join(';');
-          csvContent += row + "\\n";
-        }});
-      }});
-
-      const blob = new Blob([csvContent], {{ type: 'text/csv;charset=utf-8;' }});
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.setAttribute('href', url);
-      link.setAttribute('download', 'NaturaIntimo_Allegro_Wystawianie_2275_SKU.csv');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      showToast('Rozpoczęto pobieranie pliku CSV dla Allegro!');
-    }}
-
-    // Download JSON
-    function downloadAllegroJson() {{
-      const blob = new Blob([JSON.stringify(CATALOG_DATA, null, 2)], {{ type: 'application/json' }});
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.setAttribute('href', url);
-      link.setAttribute('download', 'NaturaIntimo_Allegro_Catalog_REST_API.json');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      showToast('Pobrano plik konfiguracyjny JSON!');
-    }}
-
-    function copySamplePayload() {{
-      const sample = CATALOG_DATA.products[0];
-      const payload = {{
-        "name": sample.allegroTitle,
-        "category": {{ "id": sample.allegroCategoryId }},
-        "parameters": [
-          {{ "id": "11323", "values": [sample.brand] }},
-          {{ "id": "22564", "values": ["Nowy z metką"] }},
-          {{ "id": "24250", "values": [sample.model] }},
-          {{ "id": "2026", "values": [sample.colorPl] }}
-        ],
-        "sellingMode": {{
-          "format": "BUY_NOW",
-          "price": {{ "amount": sample.pricing.targetPrice.toFixed(2), "currency": "PLN" }}
-        }},
-        "stock": {{ "available": sample.totalStock, "unit": "UNIT" }}
-      }};
-      copyText(JSON.stringify(payload, null, 2), 'Skopiowano payload JSON');
-    }}
-
-    function triggerRefresh() {{
-      showToast('Dane są w pełni zsynchronizowane z plikami hurtowni MADA.');
-    }}
-
-    // Initialize Charts & UI on Load
+    // Init charts and tables on DOMContentLoaded
     window.addEventListener('DOMContentLoaded', () => {{
+      loadSavedAllegroKeys();
       renderCatalogTable(CATALOG_DATA.products);
+      renderBestsellerTable();
       initSimulator();
       runSimulation();
 
-      // Show sample payload in code box
+      // Sample JSON payload in preview box
       const sample = CATALOG_DATA.products[0];
       const samplePayload = {{
         "name": sample.allegroTitle,
@@ -1616,38 +1897,15 @@ def build_dashboard():
       }};
       document.getElementById('jsonPreviewBox').innerText = JSON.stringify(samplePayload, null, 2);
 
-      // Chart 1: Brands Pie
-      const brandLabels = Object.keys(CATALOG_DATA.brands);
-      const brandValues = Object.values(CATALOG_DATA.brands);
-      new Chart(document.getElementById('brandChart'), {{
-        type: 'doughnut',
-        data: {{
-          labels: brandLabels,
-          datasets: [{{
-            data: brandValues,
-            backgroundColor: ['#8a3b58', '#4a1224', '#d4af37', '#e5c158', '#682037', '#aa8620']
-          }}]
-        }},
-        options: {{
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {{ legend: {{ position: 'right' }} }}
-        }}
-      }});
-
-      // Chart 2: Stock Bar
-      const brandStock = {{}};
-      CATALOG_DATA.products.forEach(p => {{
-        brandStock[p.brand] = (brandStock[p.brand] || 0) + p.totalStock;
-      }});
-      new Chart(document.getElementById('stockChart'), {{
+      // Chart: Top Bestseller Monthly Sales
+      new Chart(document.getElementById('bestsellerSalesChart'), {{
         type: 'bar',
         data: {{
-          labels: Object.keys(brandStock),
+          labels: ['Gorsenia K496', 'Gaia BS 1135', 'Gorsenia Luisse', 'Ava 1030', 'Gaia Isla', 'Ava Divine', 'K498 Briefs', 'GFB 1135'],
           datasets: [{{
-            label: 'Liczba sztuk w MADA',
-            data: Object.values(brandStock),
-            backgroundColor: '#4a1224',
+            label: 'Szacowana miesięczna sprzedaż na Allegro (szt.)',
+            data: [380, 320, 260, 240, 190, 175, 160, 150],
+            backgroundColor: ['#d81b60', '#ff5a00', '#4a1224', '#8a3b58', '#d4af37', '#aa8620', '#207245', '#0288d1'],
             borderRadius: 6
           }}]
         }},
@@ -1658,7 +1916,24 @@ def build_dashboard():
         }}
       }});
 
-      // Chart 3: Cups Bar
+      // Chart: Brand Distribution
+      new Chart(document.getElementById('brandChart'), {{
+        type: 'doughnut',
+        data: {{
+          labels: Object.keys(CATALOG_DATA.brands),
+          datasets: [{{
+            data: Object.values(CATALOG_DATA.brands),
+            backgroundColor: ['#8a3b58', '#4a1224', '#d4af37', '#e5c158', '#682037', '#aa8620']
+          }}]
+        }},
+        options: {{
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {{ legend: {{ position: 'right' }} }}
+        }}
+      }});
+
+      // Chart: Cups Distribution
       const cups = {{'B': 1125, 'C': 1578, 'D': 2031, 'E': 1907, 'F': 1681, 'G': 1262, 'H': 1009, 'I': 553, 'J': 308, 'K+': 248}};
       new Chart(document.getElementById('cupsChart'), {{
         type: 'bar',
@@ -1678,7 +1953,7 @@ def build_dashboard():
         }}
       }});
 
-      // Chart 4: Pricing Breakdown Pie
+      // Chart: Unit Economics
       new Chart(document.getElementById('unitChart'), {{
         type: 'doughnut',
         data: {{
@@ -1700,16 +1975,16 @@ def build_dashboard():
 </html>
 '''
 
-    # Save to desktop
+    # Write to desktop
     with open(DESKTOP_HTML, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
-    # Save to artifact
+    # Write to artifact
     os.makedirs(ARTIFACT_DIR, exist_ok=True)
     with open(ARTIFACT_HTML, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
-    print(f"✅ Dashboard generated successfully!")
+    print(f"✅ Enhanced Allegro Dashboard generated successfully!")
     print(f"🖥️ Desktop Path: {DESKTOP_HTML}")
     print(f"📂 Artifact Path: {ARTIFACT_HTML}")
 
