@@ -1,0 +1,29 @@
+{
+  "created_at": "2026-10-26T09:24:42.559510Z",
+  "account_id": "act_1304486204267762",
+  "account_name": "Jaros\u0142aw Jakubczyk",
+  "currency": "PLN",
+  "daily_budget_pln": 20.0,
+  "daily_budget_usd_approx": 5.0,
+  "campaign_id": "120253757821280058",
+  "campaign_name": "Natura Intimo \u2013 US Full-Bust Traffic [Min Bud\u017cet 20 PLN/dzie\u0144]",
+  "adset_id": "120253757821730058",
+  "adset_name": "US Women 25-54 | Full-Bust Lingerie Shoppers",
+  "creative_id": "1466639522055616",
+  "ad_id": "120253757823950058",
+  "ad_name": "Natura Intimo \u2013 Black Friday US Fit",
+  "source_post_id": "1082888234909700_122124870831297993",
+  "status": "ACTIVE",
+  "target_country": "US",
+  "target_gender": "Female",
+  "target_age": "25-54",
+  "target_interests": [
+    "Biustonosz (odzie\u017c)",
+    "Elegancka bielizna (odzie\u017c)",
+    "Zakupy w Internecie (handel detaliczny)"
+  ],
+  "destination_urls": [
+    "https://naturaintimo.com/size-guide/",
+    "https://naturaintimo.com/"
+  ]
+}
