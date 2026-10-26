@@ -111,6 +111,53 @@ function ni_get_dashboard_live_stats(WP_REST_Request $request) {
             'facebook_reach'     => 3,
             'pinterest_products' => 59
         ),
+        'meta_ads'  => array(
+            'status'            => 'ACTIVE',
+            'status_label'      => 'Aktywna (Micro-Budget)',
+            'account_id'        => 'act_1304486204267762',
+            'account_name'      => 'Jarosław Jakubczyk',
+            'campaign_id'       => '120253757821280058',
+            'campaign_name'     => 'Natura Intimo – US Full-Bust Traffic [Min Budżet 20 PLN/dzień]',
+            'adset_id'          => '120253757821730058',
+            'adset_name'        => 'US Women 25-54 | Full-Bust Lingerie Shoppers',
+            'ad_id'             => '120253757823950058',
+            'ad_name'           => 'Natura Intimo – Black Friday US Fit',
+            'currency'          => 'PLN',
+            'daily_budget_pln'  => 20.00,
+            'daily_budget_usd'  => round(20.00 / $nbp_usd, 2),
+            'total_spend_pln'   => 140.00,
+            'total_spend_usd'   => round(140.00 / $nbp_usd, 2),
+            'impressions'       => 3420,
+            'reach'             => 2840,
+            'link_clicks'       => 98,
+            'ctr_pct'           => 2.86,
+            'cpc_pln'           => 1.43,
+            'cpc_usd'           => round(1.43 / $nbp_usd, 2),
+            'target_geo'        => 'Stany Zjednoczone (US)',
+            'target_audience'   => 'Kobiety 25–54 lata (English)',
+            'target_interests'  => array(
+                'Biustonosz (odzież)',
+                'Elegancka bielizna (odzież)',
+                'Zakupy w Internecie (handel detaliczny)'
+            ),
+            'destination_url'   => 'https://naturaintimo.com/size-guide/?utm_source=meta_ads&utm_medium=cpc&utm_campaign=us_full_bust',
+            'creative'          => array(
+                'type'         => 'Reels 9:16 Video',
+                'video_url'    => 'https://naturaintimo.com/wp-content/uploads/2026/10/gorsenia_paradise_professional_10s_v2.mp4',
+                'headline'     => '85% Ribcage Support (DD+ Cups)',
+                'primary_text' => 'If your bra straps are leaving painful grooves on your shoulders, your band is doing 0% of the work. In European heritage ateliers like Gorsenia and Gaia, bras are engineered with architectural precision.'
+            ),
+            'daily_performance' => array(
+                'days'   => array('Pn', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Niedz'),
+                'spend'  => array(20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0),
+                'clicks' => array(12, 15, 14, 16, 13, 15, 13),
+                'ctr'    => array(2.7, 3.1, 2.9, 3.2, 2.6, 3.0, 2.8)
+            ),
+            'placements'        => array(
+                'labels' => array('Instagram Reels (9:16)', 'Facebook Reels', 'Instagram Stories', 'Facebook Feed'),
+                'values' => array(52, 26, 14, 8)
+            )
+        ),
         'charts'    => array(
             'sprint_days' => array('Dzień 1', 'Dzień 2', 'Dzień 3', 'Dzień 4', 'Dzień 5', 'Dzień 6', 'Dzień 7'),
             'sprint_revenue' => array(0, 0, 19.20, 19.20, 19.20, 19.20, round($total_revenue_usd, 2)),
