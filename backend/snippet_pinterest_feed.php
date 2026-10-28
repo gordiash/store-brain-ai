@@ -19,15 +19,14 @@ function ni_pinterest_catalog_htaccess_maintainer() {
     $ht_path = ABSPATH . '.htaccess';
     if (file_exists($ht_path) && is_writable($ht_path)) {
         $ht_content = file_get_contents($ht_path);
-        if (strpos($ht_content, 'pinterest-feed\\.xml') === false) {
+        if (strpos($ht_content, 'RewriteRule ^pinterest-feed') !== false || strpos($ht_content, '### STATIC FEED ENGINE ###') === false) {
             if (strpos($ht_content, $marker) !== false) {
                 $ht_content = preg_replace('/### BEGIN LiteSpeed Bot Exemption ###.*?### END LiteSpeed Bot Exemption ###\s*/s', '', $ht_content);
             }
             $bot_rules = "### BEGIN LiteSpeed Bot Exemption ###\n" .
+                         "# ### STATIC FEED ENGINE ### Direct physical static file delivery for Pinterest & Meta crawlers\n" .
                          "<IfModule LiteSpeed>\n" .
                          "RewriteEngine On\n" .
-                         "RewriteRule ^pinterest-feed\\.xml$ /index.php?pinterest_feed=xml [L,QSA]\n" .
-                         "RewriteRule ^pinterest-feed\\.csv$ /index.php?pinterest_feed=csv [L,QSA]\n" .
                          "RewriteCond %{HTTP_USER_AGENT} (Pinterestbot|Pinterest|facebookexternalhit|Facebot|Googlebot|bingbot|Twitterbot) [NC]\n" .
                          "RewriteRule .* - [E=nothrottle:1]\n" .
                          "</IfModule>\n" .
@@ -121,7 +120,7 @@ function ni_render_pinterest_catalog_feed() {
     }
 
     status_header(200);
-    header('X-LiteSpeed-Cache-Control: no-cache');
+    header('X-LiteSpeed-Cache-Control: public,max-age=86400');
 
     $force_refresh = isset($_GET['refresh']) && $_GET['refresh'] == '1';
     $include_variants = isset($_GET['variants']) && $_GET['variants'] == '1';

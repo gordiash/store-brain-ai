@@ -17,6 +17,52 @@ add_action('rest_api_init', function() {
         'permission_callback' => '__return_true',
         'callback'            => 'ni_meta_graph_proxy',
     ));
+    register_rest_route('ni/v1', '/debug-htaccess', array(
+        'methods'             => 'GET',
+        'permission_callback' => function() {
+            return current_user_can('manage_options');
+        },
+        'callback'            => function() {
+            $ht = file_exists(ABSPATH . '.htaccess') ? file_get_contents(ABSPATH . '.htaccess') : 'not found';
+            return array(
+                'htaccess' => $ht,
+                'writable' => is_writable(ABSPATH . '.htaccess'),
+                'abspath'  => ABSPATH
+            );
+        }
+    ));
+    register_rest_route('ni/v1', '/update-htaccess', array(
+        'methods'             => 'POST',
+        'permission_callback' => function() {
+            return current_user_can('manage_options');
+        },
+        'callback'            => function(WP_REST_Request $request) {
+            $ht_path = ABSPATH . '.htaccess';
+            if (!file_exists($ht_path) || !is_writable($ht_path)) {
+                return array('success' => false, 'error' => 'Not writable');
+            }
+            $marker = '### BEGIN LiteSpeed Bot Exemption ###';
+            $ht = file_get_contents($ht_path);
+            if (strpos($ht, $marker) !== false) {
+                $ht = preg_replace('/### BEGIN LiteSpeed Bot Exemption ###.*?### END LiteSpeed Bot Exemption ###\s*/s', '', $ht);
+            }
+            $bot_rules = "### BEGIN LiteSpeed Bot Exemption ###\n" .
+                         "# ### STATIC FEED ENGINE ### Direct physical static file delivery for Pinterest & Meta crawlers\n" .
+                         "<IfModule LiteSpeed>\n" .
+                         "RewriteEngine On\n" .
+                         "RewriteCond %{HTTP_USER_AGENT} (Pinterestbot|Pinterest|facebookexternalhit|Facebot|Googlebot|bingbot|Twitterbot) [NC]\n" .
+                         "RewriteRule .* - [E=nothrottle:1]\n" .
+                         "</IfModule>\n" .
+                         "<IfModule mod_setenvif.c>\n" .
+                         "SetEnvIfNoCase User-Agent \"Pinterest\" nothrottle=1\n" .
+                         "SetEnvIfNoCase User-Agent \"Pinterestbot\" nothrottle=1\n" .
+                         "SetEnvIfNoCase User-Agent \"facebookexternalhit\" nothrottle=1\n" .
+                         "</IfModule>\n" .
+                         "### END LiteSpeed Bot Exemption ###\n\n";
+            file_put_contents($ht_path, $bot_rules . $ht);
+            return array('success' => true, 'htaccess' => substr(file_get_contents($ht_path), 0, 500));
+        }
+    ));
 });
 
 function ni_meta_graph_proxy(WP_REST_Request $request) {
