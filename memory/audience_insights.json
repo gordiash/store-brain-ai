@@ -1,21 +1,95 @@
 {
-  "last_updated": "2026-10-18T16:50:00Z",
-  "us_market_pain_points": [
-    "Frustration with molded foam seamless bras that flatten breasts towards armpits instead of projecting forward.",
-    "Painful shoulder grooves caused by thin straps bearing 80%+ of breast weight instead of the ribcage band.",
-    "Lack of cute, sensual, lacy coordinated sets for cup sizes above US DDD / G without looking like medical or orthopedic garments.",
-    "Hidden fees, slow shipping, and fear of getting stuck with an ill-fitting bra overseas."
+  "last_updated": "2026-10-28T10:05:00Z",
+  "active_target_markets": [
+    {
+      "country_code": "US",
+      "country_name": "United States",
+      "currency": "USD",
+      "symbol": "$",
+      "language": "en-US",
+      "shipping_threshold_free": "150.00 USD",
+      "standard_shipping": "24.99 USD (DHL Express DDP)",
+      "sizing": "US (DDD, G, H, I, J)",
+      "focus": "Pain relief, ribcage band support vs shoulder tension, Polish architectural cut-and-sewn cups"
+    },
+    {
+      "country_code": "CA",
+      "country_name": "Canada",
+      "currency": "CAD",
+      "symbol": "C$",
+      "language": "en-CA, fr-CA",
+      "shipping_threshold_free": "200.00 CAD",
+      "standard_shipping": "24.99 CAD (DHL Express DDP)",
+      "sizing": "US/CA",
+      "focus": "CETA 0% tariff, DDP zero surprise duty, bilingual care (Quebec compliance)"
+    },
+    {
+      "country_code": "UK",
+      "country_name": "United Kingdom",
+      "currency": "GBP",
+      "symbol": "£",
+      "language": "en-GB",
+      "shipping_threshold_free": "120.00 GBP",
+      "standard_shipping": "19.99 GBP (DHL Express DDP)",
+      "sizing": "UK (DD, E, F, FF, G, GG, H, HH, J, JJ, K)",
+      "focus": "High brafitting awareness, appreciation for Polish projection and narrow wires vs Panache/Freya, rapid 2-4 day delivery"
+    },
+    {
+      "country_code": "AU",
+      "country_name": "Australia",
+      "currency": "AUD",
+      "symbol": "A$",
+      "language": "en-AU",
+      "shipping_threshold_free": "230.00 AUD",
+      "standard_shipping": "39.99 AUD (DHL Express DDP)",
+      "sizing": "AU/NZ (Dress size bands: 10, 12, 14, 16 + UK cups)",
+      "focus": "Extreme shortage of European full-bust craft locally, high purchasing power, breathable luxury mesh/lace for warm climate"
+    },
+    {
+      "country_code": "AE",
+      "country_name": "United Arab Emirates",
+      "currency": "AED",
+      "symbol": "AED (د.إ)",
+      "language": "en-AE, ar-AE",
+      "shipping_threshold_free": "550.00 AED",
+      "standard_shipping": "90.00 AED (DHL Express DDP)",
+      "sizing": "EU / UK / US",
+      "focus": "Ultra-luxury European atelier heritage, sensual yet elegant full-coverage & semi-padded sets, VIP discreet express delivery"
+    }
   ],
+  "market_specific_pain_points": {
+    "us_ca": [
+      "Frustration with molded foam seamless bras that flatten breasts towards armpits instead of projecting forward.",
+      "Painful shoulder grooves caused by thin straps bearing 80%+ of breast weight instead of the ribcage band.",
+      "Lack of cute, sensual, lacy coordinated sets for cup sizes above US DDD / G without looking like medical or orthopedic garments.",
+      "Hidden fees, slow shipping, and fear of getting stuck with an ill-fitting bra overseas."
+    ],
+    "uk": [
+      "Customers are highly educated on brafitting (ABraThatFits), but often struggle with wide wires from UK legacy brands poking into armpits.",
+      "Desire for Polish bra engineering (narrow underwires, forward projection, narrow roots).",
+      "Need for rapid delivery and clear UK-to-EU size conversion."
+    ],
+    "au": [
+      "Severe local shortage of European full-bust luxury; domestic department stores stock limited sizing.",
+      "Very high local retail markups and slow surface shipping from overseas.",
+      "Confusion around AU dress size bands (10, 12, 14, 16) vs European centimetre bands (70, 75, 80, 85)."
+    ],
+    "ae": [
+      "Demand for premium European atelier craftsmanship, high-end lace, and exquisite matching sets.",
+      "Need for discreet, rapid express courier delivery (DHL Express direct to Dubai / Abu Dhabi).",
+      "Exclusion of explicit/erotic terminology in favor of refined luxury, haute brafitting, and comfort under silk garments."
+    ]
+  },
   "winning_value_propositions": [
     "Structural architectural brafitting from Poland (the European epicenter of full-bust lingerie).",
     "Powernet ribcage anchoring: band supports 85% of breast weight, freeing shoulders completely.",
     "Delivered Duty Paid (DDP) via DHL Express in 2–4 business days directly from Europe.",
     "Free First Size Exchange & 30-Day Hassle-Free Returns.",
-    "Automatic Set Savings ($10 USD / $13 CAD / 40 PLN) when pairing bra with matching bottoms."
+    "Automatic Set Savings ($10 USD / $13 CAD / £8 GBP / $15 AUD / 37 AED / 40 PLN) when pairing bra with matching bottoms."
   ],
   "top_performing_content_formats": [
     {
-      "format": "Structural comparison carousel (US molded foam vs Polish 3-piece cut-and-sewn seamed cup).",
+      "format": "Structural comparison carousel (Molded foam vs Polish 3-piece cut-and-sewn seamed cup).",
       "best_platform": "Instagram & Facebook",
       "primary_metric": "Saves & DMs (Direct Message shares)"
     },
@@ -25,7 +99,7 @@
       "primary_metric": "Rewatches, completion rate >100%, DM sends to friends (Hook 0-3s)"
     },
     {
-      "format": "Curated style Pin ('Sensual matching sets for DD–H cups that actually support').",
+      "format": "Curated style Pin ('Sensual matching sets for full busts that actually support').",
       "best_platform": "Pinterest",
       "primary_metric": "Saves & Outbound Clicks (Front-loaded keywords, 2:3 ratio 1000x1500px, zero hashtags)"
     }
