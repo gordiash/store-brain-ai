@@ -17,13 +17,36 @@
     "recent_orders": []
   },
   "exchange_rates_nbp": {
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "table": "A",
-    "USD_PLN": 3.9293,
-    "CAD_PLN": 2.8032,
-    "EUR_PLN": 4.4026
+    "USD_PLN": 3.9542,
+    "CAD_PLN": 2.8203,
+    "EUR_PLN": 4.4056
   },
   "daily_operations_log": [
+    {
+      "date": "2026-10-28",
+      "action": "Expanded International Non-EU Architecture to UK & Australia (Zones, Sizing & Global Organic Levers)",
+      "details": {
+        "shipping_zones_added": [
+          "Zone 7: United Kingdom (GB) - DHL Express DDP flat-rate \u00a319.99, Free at \u00a3120.00",
+          "Zone 8: Australia & New Zealand (AU, NZ) - DHL Express DDP flat-rate A9.99 (or 6.99 USD), Free at A30.00"
+        ],
+        "snippets_upgraded": [
+          "Snippet 7: Enforced UK/AU/NZ DHL Express DDP labels, metadata, and payment gateway isolation",
+          "Snippet 8: Enriched PDP Live Size Converter with UK & Australian band conversions (US 34DDD / UK 34E / AU 12E)"
+        ],
+        "single_source_of_truth": [
+          "brain/single_source_of_truth/market_config.json: Added UK & AU market parameters",
+          "brain/single_source_of_truth/size_conversion_matrix.json: Added AU/NZ dress size band mapping (AU 8-26)",
+          "brain/ai_seo/llms.txt & llms-full.txt: Added UK and Australia DDP air transit parameters"
+        ],
+        "organic_marketing_assets": [
+          "brain/marketing/reddit_abathatfits_authority_guide.md: Technical Polish bra projection guide for 450k-member community",
+          "brain/marketing/pinterest_international_campaign_pack.md: 6 high-intent international pins for US, UK, CA, AU"
+        ]
+      }
+    },
     {
       "date": "2026-10-26",
       "action": "Built Natura Intimo Allegro & MADA Wholesale Integration Dashboard Hub",
@@ -49,10 +72,6 @@
           "Allegro REST API Key Management interface with local encryption and OAuth 2.0 connection test",
           "Allegro Demand & Bestseller Radar ranking products by monthly sales velocity and turnover days",
           "One-click Top Bestsellers CSV batch exporter for prioritizing high-demand models"
-        ],
-          "Anti-Overselling Watchdog protecting Allegro Seller Quality ratings with stock buffer",
-          "Instant Allegro REST API JSON Payload generation and Mass Listing CSV batch downloader",
-          "Interactive Chart.js visualizations (Brand distribution, Wholesale stock, Cup size availability, Margin structure)"
         ]
       }
     },
@@ -145,5 +164,5 @@
       }
     }
   ],
-  "last_heartbeat_pulse": "2026-10-26T10:47:45.453521+00:00"
+  "last_heartbeat_pulse": "2026-10-28T07:35:44.994554+00:00"
 }

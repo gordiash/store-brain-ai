@@ -68,6 +68,36 @@
       "returnWindowDays": 30,
       "freeFirstSizeExchange": true
     },
+    "UK": {
+      "currency": "GBP",
+      "displaySymbol": "£",
+      "locales": ["en-GB"],
+      "carrier": "DHL Express Worldwide",
+      "incoterms": "DDP",
+      "preparationDays": { "min": 1, "max": 2 },
+      "transitBusinessDays": { "min": 2, "max": 4 },
+      "minimumOrderAmount": 0,
+      "freeShippingThreshold": 120.00,
+      "standardShippingCost": 19.99,
+      "returnWindowDays": 30,
+      "freeFirstSizeExchange": true,
+      "sizingSystem": "UK (DD, E, F, FF, G, GG, H, HH, J, JJ, K)"
+    },
+    "AU": {
+      "currency": "AUD",
+      "displaySymbol": "A$",
+      "locales": ["en-AU"],
+      "carrier": "DHL Express Worldwide",
+      "incoterms": "DDP",
+      "preparationDays": { "min": 1, "max": 2 },
+      "transitBusinessDays": { "min": 3, "max": 5 },
+      "minimumOrderAmount": 0,
+      "freeShippingThreshold": 230.00,
+      "standardShippingCost": 39.99,
+      "returnWindowDays": 30,
+      "freeFirstSizeExchange": true,
+      "sizingSystem": "AU/NZ (Dress size band 10, 12, 14, 16 + UK cups)"
+    },
     "PL": {
       "currency": "PLN",
       "displaySymbol": "zł",

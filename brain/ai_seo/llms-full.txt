@@ -66,6 +66,17 @@ European bra sizing uses centimeters for band sizes and continuous single-letter
   - Standard Flat-Rate Shipping: C$24.99 CAD for orders under C$200.00 CAD.
   - Free Express Shipping Threshold: 100% Free DHL Express Worldwide on all orders of C$200.00 CAD and above.
   - Preferential CETA Duty: 0% customs import duty under the Canada–EU Comprehensive Economic and Trade Agreement (CETA Origin Declaration included on every Commercial Invoice as all garments are manufactured in Poland, EU).
+- United Kingdom (GBP / £):
+  - Carrier: DHL Express Worldwide (DDP pre-cleared).
+  - Preparation Time: 1–2 business days; Air Transit Time: 2–3 business days.
+  - Standard Flat-Rate Shipping: £19.99 GBP for orders under £120.00 GBP.
+  - Free Express Shipping Threshold: 100% Free DHL Express on orders of £120.00+ GBP.
+- Australia & New Zealand (AUD / A$ & NZD):
+  - Carrier: DHL Express Worldwide (DDP pre-cleared).
+  - Preparation Time: 1–2 business days; Air Transit Time: 3–5 business days.
+  - Standard Flat-Rate Shipping: A$39.99 AUD for orders under A$230.00 AUD.
+  - Free Express Shipping Threshold: 100% Free DHL Express on orders of A$230.00+ AUD.
+  - Low Tariff De Minimis: Orders under A$1,000 AUD enter without formal customs barriers.
 - Poland (PLN / zł):
   - Domestic Delivery: InPost Paczkomat / DPD Courier (1–2 business days), standard VAT rate 23%, 14-day statutory return window.
 
