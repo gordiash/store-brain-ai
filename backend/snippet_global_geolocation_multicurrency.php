@@ -87,21 +87,6 @@ function ni_get_global_markets_config() {
             'carrier'       => 'DHL Express Worldwide DDP',
             'duties_badge'  => 'DDP Fast Track (Dubai / Abu Dhabi Customs Cleared)',
             'sizing_system' => 'EU / UK Sizing',
-        ),
-        'PL' => array(
-            'country_name'  => 'Polska',
-            'flag'          => '🇵🇱',
-            'currency'      => 'PLN',
-            'symbol'        => 'zł',
-            'symbol_html'   => 'zł',
-            'pos'           => 'right_space',
-            'lang'          => 'pl',
-            'lang_name'     => 'Polski',
-            'free_ship'     => 200.00,
-            'ship_cost'     => 16.99,
-            'carrier'       => 'InPost Paczkomaty / Kurier DPD',
-            'duties_badge'  => 'Krajowa wysyłka 24h z pracowni w Polsce',
-            'sizing_system' => 'Rozmiarówka Europejska (EU 65–115 B–M)',
         )
     );
 }
@@ -365,8 +350,14 @@ add_filter('litespeed_vary_cookies', function($list) {
 
 // One-time or on-demand cache purge
 if (isset($_GET['ni_purge_lscache'])) {
+    header('X-LiteSpeed-Purge: *');
     if (class_exists('LiteSpeed\Purge')) {
         \LiteSpeed\Purge::purge_all();
+        \LiteSpeed\Purge::add('*');
+    }
+    if (function_exists('do_action')) {
+        do_action('litespeed_purge_all');
+        do_action('litespeed_purge_url', home_url('/'));
     }
 }
 
@@ -713,9 +704,7 @@ function ni_render_global_market_selector_bar() {
         } catch(e) {}
 
         // Handle language translation
-        if (lang === 'pl') {
-            niSetGoogleTranslateLanguage('pl');
-        } else if (lang === 'ar') {
+        if (lang === 'ar') {
             niSetGoogleTranslateLanguage('ar');
         } else if (lang === 'fr') {
             niSetGoogleTranslateLanguage('fr');
@@ -771,7 +760,7 @@ function ni_render_global_market_selector_bar() {
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'en',
-            includedLanguages: 'en,pl,ar,fr',
+            includedLanguages: 'en,ar,fr',
             autoDisplay: false
         }, 'google_translate_element');
     }

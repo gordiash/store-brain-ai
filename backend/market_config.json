@@ -113,13 +113,6 @@
       "returnWindowDays": 30,
       "freeFirstSizeExchange": true,
       "sizingSystem": "EU / UK / US"
-    },
-    "PL": {
-      "currency": "PLN",
-      "displaySymbol": "zł",
-      "locales": ["pl-PL"],
-      "vatRateStandard": 0.23,
-      "returnWindowDays": 14
     }
   },
   "customsAndHts": {
