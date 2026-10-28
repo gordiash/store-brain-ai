@@ -356,6 +356,20 @@ add_action('woocommerce_before_calculate_totals', function($cart) {
     }
 }, 9999);
 
+// LiteSpeed Cache Vary per Country Cookie (Ensures correct cached HTML per market)
+add_filter('litespeed_vary_cookies', function($list) {
+    if (!is_array($list)) $list = array();
+    $list[] = 'ni_user_country';
+    return $list;
+});
+
+// One-time or on-demand cache purge
+if (isset($_GET['ni_purge_lscache'])) {
+    if (class_exists('LiteSpeed\Purge')) {
+        \LiteSpeed\Purge::purge_all();
+    }
+}
+
 // =========================================================================
 // 5. LOCALIZED DDP SHIPPING & FREE SHIPPING THRESHOLDS
 // =========================================================================
