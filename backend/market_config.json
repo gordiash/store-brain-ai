@@ -8,7 +8,7 @@
     "taxIdNip": "7621888669",
     "countryCode": "PL",
     "address": {
-      "street": "ul. Wesoła 1A",
+      "street": "ul. Weso\u0142a 1A",
       "postalCode": "10-652",
       "city": "Olsztyn",
       "country": "Poland"
@@ -17,7 +17,7 @@
       "supportEmail": "support@naturaintimo.com",
       "legacyEmail": "sklep@naturaintimo.com",
       "responseSlaHours": 24,
-      "businessHoursCet": "Mon–Fri 09:00–17:00 CET (03:00–11:00 AM EST)",
+      "businessHoursCet": "Mon\u2013Fri 09:00\u201317:00 CET (03:00\u201311:00 AM EST)",
       "socialChannels": {
         "instagram": "https://www.instagram.com/naturaintimo/",
         "facebook": "https://www.facebook.com/naturaintimo/",
@@ -38,16 +38,24 @@
     "US": {
       "currency": "USD",
       "displaySymbol": "US$",
-      "locales": ["en-US"],
+      "locales": [
+        "en-US"
+      ],
       "carrier": "DHL Express Worldwide",
       "incoterms": "DDP",
-      "preparationDays": { "min": 1, "max": 2 },
-      "transitBusinessDays": { "min": 2, "max": 4 },
+      "preparationDays": {
+        "min": 1,
+        "max": 2
+      },
+      "transitBusinessDays": {
+        "min": 2,
+        "max": 4
+      },
       "minimumOrderAmount": 0,
-      "freeShippingThreshold": 150.00,
-      "freeDutiesThreshold": 150.00,
+      "freeShippingThreshold": 150.0,
+      "freeDutiesThreshold": 150.0,
       "standardShippingCost": 24.99,
-      "ddpCustomsProcessingFee": 0.00,
+      "ddpCustomsProcessingFee": 0.0,
       "pricingTransparencyRule": "All mandatory fees and customs duties are included in the flat shipping rate or absorbed into product margin (California SB 478 and Canadian Competition Act compliant). Standard DHL Express DDP flat rate: $24.99, 100% Free DHL Express at $150+ USD.",
       "returnWindowDays": 30,
       "freeFirstSizeExchange": true
@@ -56,28 +64,45 @@
       "currency": "CAD",
       "fallbackCurrency": "USD",
       "displaySymbol": "C$",
-      "locales": ["en-CA", "fr-CA"],
+      "locales": [
+        "en-CA",
+        "fr-CA"
+      ],
       "carrier": "DHL Express Worldwide",
       "incoterms": "DDP",
       "cetaOriginDeclarationApplicable": true,
-      "preparationDays": { "min": 1, "max": 2 },
-      "transitBusinessDays": { "min": 3, "max": 5 },
+      "preparationDays": {
+        "min": 1,
+        "max": 2
+      },
+      "transitBusinessDays": {
+        "min": 3,
+        "max": 5
+      },
       "minimumOrderAmount": 0,
-      "freeShippingThreshold": 200.00,
+      "freeShippingThreshold": 200.0,
       "standardShippingCost": 24.99,
       "returnWindowDays": 30,
       "freeFirstSizeExchange": true
     },
     "UK": {
       "currency": "GBP",
-      "displaySymbol": "£",
-      "locales": ["en-GB"],
+      "displaySymbol": "\u00a3",
+      "locales": [
+        "en-GB"
+      ],
       "carrier": "DHL Express Worldwide",
       "incoterms": "DDP",
-      "preparationDays": { "min": 1, "max": 2 },
-      "transitBusinessDays": { "min": 2, "max": 4 },
+      "preparationDays": {
+        "min": 1,
+        "max": 2
+      },
+      "transitBusinessDays": {
+        "min": 2,
+        "max": 4
+      },
       "minimumOrderAmount": 0,
-      "freeShippingThreshold": 120.00,
+      "freeShippingThreshold": 120.0,
       "standardShippingCost": 19.99,
       "returnWindowDays": 30,
       "freeFirstSizeExchange": true,
@@ -86,13 +111,21 @@
     "AU": {
       "currency": "AUD",
       "displaySymbol": "A$",
-      "locales": ["en-AU"],
+      "locales": [
+        "en-AU"
+      ],
       "carrier": "DHL Express Worldwide",
       "incoterms": "DDP",
-      "preparationDays": { "min": 1, "max": 2 },
-      "transitBusinessDays": { "min": 3, "max": 5 },
+      "preparationDays": {
+        "min": 1,
+        "max": 2
+      },
+      "transitBusinessDays": {
+        "min": 3,
+        "max": 5
+      },
       "minimumOrderAmount": 0,
-      "freeShippingThreshold": 230.00,
+      "freeShippingThreshold": 230.0,
       "standardShippingCost": 39.99,
       "returnWindowDays": 30,
       "freeFirstSizeExchange": true,
@@ -101,18 +134,52 @@
     "AE": {
       "currency": "AED",
       "displaySymbol": "AED",
-      "displaySymbolNative": "د.إ",
-      "locales": ["en-AE", "ar-AE"],
+      "displaySymbolNative": "\u062f.\u0625",
+      "locales": [
+        "en-AE",
+        "ar-AE"
+      ],
       "carrier": "DHL Express Worldwide",
       "incoterms": "DDP",
-      "preparationDays": { "min": 1, "max": 2 },
-      "transitBusinessDays": { "min": 2, "max": 4 },
+      "preparationDays": {
+        "min": 1,
+        "max": 2
+      },
+      "transitBusinessDays": {
+        "min": 2,
+        "max": 4
+      },
       "minimumOrderAmount": 0,
-      "freeShippingThreshold": 550.00,
-      "standardShippingCost": 90.00,
+      "freeShippingThreshold": 550.0,
+      "standardShippingCost": 90.0,
       "returnWindowDays": 30,
       "freeFirstSizeExchange": true,
       "sizingSystem": "EU / UK / US"
+    },
+    "CH": {
+      "currency": "CHF",
+      "displaySymbol": "CHF",
+      "locales": [
+        "de-CH",
+        "fr-CH",
+        "en-CH"
+      ],
+      "carrier": "DHL Express Worldwide",
+      "incoterms": "DDP",
+      "preparationDays": {
+        "min": 1,
+        "max": 2
+      },
+      "transitBusinessDays": {
+        "min": 1,
+        "max": 3
+      },
+      "minimumOrderAmount": 0,
+      "freeShippingThreshold": 140.0,
+      "standardShippingCost": 18.0,
+      "returnWindowDays": 30,
+      "freeFirstSizeExchange": true,
+      "sizingSystem": "EU (65\u2013115 / D\u2013M)"
     }
   },
   "customsAndHts": {
@@ -223,18 +290,54 @@
       "115": "50"
     },
     "cupEuToUsAndUk": {
-      "B": { "us": "B", "uk": "B" },
-      "C": { "us": "C", "uk": "C" },
-      "D": { "us": "D", "uk": "D" },
-      "E": { "us": "DD (E)", "uk": "DD" },
-      "F": { "us": "DDD (F)", "uk": "E" },
-      "G": { "us": "G", "uk": "F" },
-      "H": { "us": "H", "uk": "FF" },
-      "I": { "us": "I", "uk": "G" },
-      "J": { "us": "J", "uk": "GG" },
-      "K": { "us": "K", "uk": "H" },
-      "L": { "us": "L", "uk": "HH" },
-      "M": { "us": "M", "uk": "J" }
+      "B": {
+        "us": "B",
+        "uk": "B"
+      },
+      "C": {
+        "us": "C",
+        "uk": "C"
+      },
+      "D": {
+        "us": "D",
+        "uk": "D"
+      },
+      "E": {
+        "us": "DD (E)",
+        "uk": "DD"
+      },
+      "F": {
+        "us": "DDD (F)",
+        "uk": "E"
+      },
+      "G": {
+        "us": "G",
+        "uk": "F"
+      },
+      "H": {
+        "us": "H",
+        "uk": "FF"
+      },
+      "I": {
+        "us": "I",
+        "uk": "G"
+      },
+      "J": {
+        "us": "J",
+        "uk": "GG"
+      },
+      "K": {
+        "us": "K",
+        "uk": "H"
+      },
+      "L": {
+        "us": "L",
+        "uk": "HH"
+      },
+      "M": {
+        "us": "M",
+        "uk": "J"
+      }
     }
   }
 }

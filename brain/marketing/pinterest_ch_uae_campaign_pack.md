@@ -1,121 +1,137 @@
-# 📌 Natura Intimo – Pinterest Luxury Campaign Pack: Switzerland & UAE / Gulf
-**Target Markets:** Switzerland (`CH` – Zurich, Geneva, Basel, Lausanne, Bern) and United Arab Emirates & Gulf (`AE` – Dubai, Abu Dhabi, Sharjah; `QA` – Doha; `SA` – Riyadh)  
-**Primary Goal:** Capture high-intent luxury organic search traffic for European full-bust lingerie (EU cups B–M), unpadded architectural cut-and-sewn soft bras, breathable fine mesh, and coordinated luxury sets.  
-**Live Catalog Synchronization:** Dynamic catalog feeds synced at `https://naturaintimo.com/pinterest-feed.xml` and `pinterest-feed.csv`.  
-**Delivery Guarantee:** Express priority transit via DHL Express Worldwide (24–48h to Switzerland, 48–72h to UAE/Gulf) with pre-cleared customs and 100% discreet protective packaging.
+# 📌 Natura Intimo – Pinterest Luxury Campaign Pack: Switzerland (CH) & UAE / Gulf (AE)
+> **Single Source of Truth Alignment:** [`brain/single_source_of_truth/market_config.json`](file:///home/jarek/Pulpit/TikTok%20Agent/brain/single_source_of_truth/market_config.json)  
+> **Target Markets:** 
+> * **Szwajcaria (`CH`):** Zürich, Genewa, Bazylea, Lozanna, Berno. Waluta: `CHF`, próg darmowej dostawy: `140.00 CHF` (standard `18.00 CHF` DHL Express DDP). Języki: niemiecki (`de-CH`), francuski (`fr-CH`), angielski (`en-CH`). Sizing: Native European (`65–110 / B–M`).
+> * **Zjednoczone Emiraty Arabskie & Zatoka (`AE`):** Dubaj, Abu Zabi, Szardża. Waluta: `AED` (`د.إ`), próg darmowej dostawy: `550.00 AED` (standard `90.00 AED` DHL Express DDP). Języki: `en-AE`, `ar-AE`. Sizing: EU / UK / US.
+> **Format Pinterest SEO (2026 Guidelines):** Wymiar 2:3 (1000x1500 px), Front-loaded SEO title (<40 znaków do cięcia), naturalne frazy kluczowe w opisie, zero hashtagów w opisie pinów (zgodnie z wytycznymi algorytmu Pinterest Visual Search), 100% zgodności z Adult Content Policy (brak słów zakazanych: `nude`, `sexy`, `erotic`, `boobs`).
 
 ---
 
-## 📌 Pin 1: Native European Sizing & Express Swiss Delivery (Switzerland)
+## 🧭 Strategia i Architektura Kampanii dla Rynków Premium (CH & AE)
 
-* **Board Name:** *European Luxury Lingerie | Brafitting Suisse*
-* **Pin Title:** *Authentic European Full-Bust Bras Delivered to Switzerland in 24–48h 🇨🇭*
-* **Destination URL:** `https://naturaintimo.com/full-bust-bras/`
-* **Visual Concept:** Minimalist Swiss luxury aesthetic. Clean studio photography of Gorsenia and Gaia soft bras with a typography overlay: *"Soutien-gorge Grande Taille · Native European Sizing · 24–48h DHL Express nach Zürich & Genève"*.
+1. **Dlaczego Szwajcaria (CH)?**
+   * Bardzo wysoki dochód rozporządzalny, bezpośrednia bliskość Unii Europejskiej, ale konieczność odprawy celnej (DDP rozwiązuje problem barier celnych i opłat manipulacyjnych poczty szwajcarskiej).
+   * Kobiety w Szwajcarii posługują się naturalną europejską rozmiarówką metryczną (`EU 70F`, `75G`, `80H`), nie potrzebują konwersji jednostek, a na rynku lokalnym brakuje wyspecjalizowanych krojów z głęboką projekcją w rozsądnych cenach.
+2. **Dlaczego Zjednoczone Emiraty Arabskie (AE)?**
+   * Dubaj i Abu Zabi to globalne centra luksusu, gdzie mieszka ponad 85% ekspatriantek z Europy, Wielkiej Brytanii i USA.
+   * Gorący klimat wymaga ultraoddychających, niepiankowych biustonoszy z delikatnej siatki i stabilnego tiulu, a zakupy bielizny wymagają absolutnej dyskrecji doręczenia i gwarancji oryginalności atelier.
+3. **Automatyczne Rabaty Zestawowe (Set Savings):**
+   * Szwajcaria: **Automatyczny rabat CHF 10.00** przy zakupie biustonosza z majtkami.
+   * ZEA: **Automatyczny rabat 37.00 AED** (~$10.00 USD) przy zakupie kompletu.
+
+---
+
+## 📌 Zestaw Pinów 1: Szwajcaria (Zürich, Genève, Basel)
+
+### Pin 1.1: Gorsenia K496 Paradise Soft Balcony – Architektoniczne Uniesienie
+* **Board:** *European Luxury Lingerie | Brafitting Schweiz & Suisse*
+* **Wymiar:** 1000 × 1500 px (2:3 Vertical)
+* **Wizualia:** Minimalistyczny szwajcarski kadr studyjny. Model K496 Paradise Black na jasnoszarym tle z subtelną typografią: *"Native European Sizing · 24–48h DHL Express nach Zürich & Genève"*.
+* **Pin Title:** *Gorsenia K496 Paradise Bra: Deep Cup Forward Lift*
+* **Destination URL:** `https://naturaintimo.com/product/gorsenia-paradise-k496-soft-balcony-bra-black/`
 * **Pin Description:**
-  > Searching for authentic European full-bust lingerie with genuine architectural support without the headache of sizing conversions? Natura Intimo delivers directly from Poland to Switzerland in 24 to 48 hours via DHL Express Worldwide.  
-  >  
-  > 📐 Native Metric Sizing: European band sizes 65 to 110 cm, cups B through M. No conversion needed for Swiss shoppers.  
-  > 🏔️ Swiss Customs Clarity: Pre-cleared customs processing with transparent delivery. Free DHL Express shipping on all qualifying orders of 140 CHF+.  
-  > ⚜️ Crafted in Poland: Renowned cut-and-sewn seamed construction engineered for projected busts and narrow roots.  
-  >  
-  > #LingerieSuisse #BrafittingZurich #LingerieGeneve #SoutienGorgeDentelle #FullBustSwitzerland #GorseniaSchweiz #EuropeanLingerie #ModeSuisse
-* **Alt Text:** *European full bust lace bra displayed with Swiss delivery and native European size information.*
+  > Searching for genuine architectural full-bust support in Switzerland without painful shoulder pressure? The Gorsenia K496 Paradise soft balcony bra is crafted in Poland with 3-piece seamed cups and narrow underwires designed for steep forward projection. The firm powernet band anchors 85% of breast weight directly against your ribcage.
+  >
+  > Native European metric sizing from 70I to 100G (cups B through M available). Fast 24 to 48 hours delivery direct to Zurich, Geneva, Basel, and across Switzerland via DHL Express Worldwide. Pre-cleared Swiss customs with zero surprise delivery charges. Complimentary DHL Express shipping on orders of 140 CHF and above. 30-day returns and free first size exchange guarantee.
+* **Alt Text:** *Gorsenia K496 Paradise black unpadded balcony bra engineered with 3-piece seamed cups and narrow underwires for full bust lift in Switzerland.*
 
 ---
 
-## 📌 Pin 2: Breathable Fine Mesh for Warm Climates (UAE / Dubai)
-
-* **Board Name:** *Dubai Luxury Lingerie | Breathable Elegance*
-* **Pin Title:** *Lightweight Architectural Lift: Unpadded Breathable Bras for Dubai & UAE 🇦🇪*
-* **Destination URL:** `https://naturaintimo.com/product-category/bras/`
-* **Visual Concept:** Airy, sunlit lifestyle flat lay showing an unpadded European bra made of breathable double-layer tulle mesh and delicate lace. Text overlay: *"Zero Padding. Maximum Lift & Airflow · Direct to UAE in 48–72h"*.
+### Pin 1.2: Gaia Mary BS 1372 Semi-Soft Burgundy – Ochrona Ramion
+* **Board:** *Supportive Everyday Lingerie | Soutien-Gorge Grande Taille*
+* **Wymiar:** 1000 × 1500 px (2:3 Vertical)
+* **Wizualia:** Elegancki burgundowy komplet Gaia Mary z akcentem na szeroki, mocny pas obwodu i miękko podszyte dolne miseczki. Tekst: *"85% Halt durch das Unterbrustband · Entlastung für Nacken & Schultern"*.
+* **Pin Title:** *Gaia Mary Burgundy Bra: 85% Ribcage Band Support*
+* **Destination URL:** `https://naturaintimo.com/product/gaia-mary-bs-1372-semi-soft-bra-burgundy/`
 * **Pin Description:**
-  > Heavy foam padding can feel stifling in warm, humid weather. European ateliers excel at creating structural, unpadded soft bras crafted from breathable fine mesh and multi-part seamed embroidery that lift and center full busts naturally while keeping you completely cool.  
-  >  
-  > 🇦🇪 Fast Express Transit: 48 to 72 hours direct to Dubai, Abu Dhabi, and across the UAE via DHL Express Worldwide.  
-  > 📦 100% Discreet Packaging: Plain, unmarked protective luxury outer shipping guaranteed for every Middle East order.  
-  > 💳 Free Shipping Threshold: Complimentary DHL Express delivery on orders of 550 AED+ ($150 USD+).  
-  >  
-  > #DubaiLingerie #AbuDhabiStyle #UAELuxury #BreathableLingerie #FullBustDubai #GorseniaUAE #EuropeanLingerieUAE #DiscreetShipping
-* **Alt Text:** *Unpadded breathable fine mesh soft bra engineered for comfortable full bust support in warm climates.*
+  > If your bra straps leave red pressure marks on your shoulders at the end of the day, your band is too loose. The Gaia Mary BS 1372 semi-soft bra in rich burgundy features firm microfiber wings that secure full busts firmly against your ribcage, completely liberating your neck and traps from tension.
+  >
+  > European band sizes 70 to 95 with cups D to D+. Enjoy an automatic 10.00 CHF Set Savings discount when pairing with matching Brazilian or bikini briefs. Fast air transit to Switzerland in 1 to 2 business days via DHL Express DDP. Free shipping on all orders over 140 CHF.
+* **Alt Text:** *Gaia Mary semi soft burgundy bra designed with firm powernet wings for shoulder tension relief, delivered to Switzerland.*
 
 ---
 
-## 📌 Pin 3: Coordinated Luxury Sets & Instant Set Savings (UAE & Gulf)
-
-* **Board Name:** *Coordinated Lingerie Sets & Bridal Trousseau*
-* **Pin Title:** *Refined Matching Lingerie Sets: Instant $10 Bundle Savings ✨*
-* **Destination URL:** `https://naturaintimo.com/product-category/lingerie-sets/`
-* **Visual Concept:** Elegant arrangement of a matching bra with both Brazilian cut and high-waist briefs in deep champagne lace on marble background. Gold badge: *"Complete Your Set – Automatic Bundle Discount"*.
-* **Pin Description:**
-  > Elevate your everyday foundation with perfectly matched European lingerie sets. Whether styling a bridal trousseau or refreshing your luxury capsule wardrobe, pairing any Natura Intimo bra with its matching briefs automatically unlocks an instant $10.00 Set Savings bundle discount at checkout.  
-  >  
-  > ⚜️ Matching Coordinates: Brazilian cut, bikini briefs, and high-waisted briefs (Sizes S to 3XL).  
-  > ✈️ Priority Air Delivery: 48–72h express air shipping to Dubai, Abu Dhabi, Doha, and Riyadh.  
-  > 🔒 Private & Discreet: Unmarked outer packaging with tamper-evident sealing.  
-  >  
-  > #LingerieSets #DubaiShopping #BridalLingerieUAE #LuxurySetsDubai #ChampagneLace #SetSavings #FullBustLuxury #NaturaIntimo
-* **Alt Text:** *Coordinated European lace bra and matching Brazilian briefs set arranged on marble.*
-
----
-
-## 📌 Pin 4: Deep Cup Projection: Gorsenia K496 Paradise (Switzerland)
-
-* **Board Name:** *Iconic European Bra Ateliers*
-* **Pin Title:** *Gorsenia K496 Paradise: The Crown Jewel of Full-Bust Lift 🖤*
-* **Destination URL:** `https://naturaintimo.com/product/bra-soft-gorsenia-k-496-paradise/`
-* **Visual Concept:** Editorial studio capture of Gorsenia K496 Paradise in classic black embroidery on a mannequin, highlighting the 3-piece seamed architectural cup and narrow underwire positioning.
-* **Pin Description:**
-  > Designed and produced in Poland, the Gorsenia K496 Paradise soft bra is legendary among international brafitting connoisseurs for its ability to anchor heavy breast tissue and provide steep forward projection without widening your silhouette.  
-  >  
-  > 🇨🇭 Swiss Delivery Details: 24–48 hours transit to Basel, Geneva, and Zurich. Free delivery on orders of 140 CHF+.  
-  > 📐 Available Sizes: Band 65–100 cm (Cups D through M).  
-  > 🕊️ Fit Nuance: Firm powernet band delivers 85% of total bust support to eliminate shoulder pressure.  
-  >  
-  > #GorseniaParadise #FullBustBra #SoutienGorgeNoir #BrafittingSchweiz #DentelleSuisse #GorseniaK496 #NarrowWires #ProjectedBust
-* **Alt Text:** *Gorsenia K496 Paradise black embroidered soft bra showing 3-piece seamed cup architecture.*
-
----
-
-## 📌 Pin 5: Everyday Refined Comfort: Gaia BS 1135 in Neutral Champagne (UAE / Gulf)
-
-* **Board Name:** *Everyday Neutral Foundations*
-* **Pin Title:** *Invisible Under Abayas & Light Fabrics: Gaia BS 1135 Soft Bra ✨*
-* **Destination URL:** `https://naturaintimo.com/product/bra-semi-soft-gaia-1135-bs-charlotte-beige/`
-* **Visual Concept:** Soft neutral palette showing the Gaia BS 1135 in beige/champagne, paired with matching seamless cotton-lined briefs. Caption overlay: *"Smooth Under Seamless Silk & Light Crepe"*.
-* **Pin Description:**
-  > The perfect foundation under delicate silks, white linens, and everyday abayas. Gaia BS 1135 combines ergonomic semi-soft lower cups lined with soft breathable microfiber and flexible stretch lace upper cups that conform smoothly to your natural bust shape without creating ridges or bulk.  
-  >  
-  > 🇦🇪 UAE Fast Delivery: 48–72h priority express transit via DHL Express. 100% Free Shipping on orders over 550 AED ($150 USD).  
-  > 🕊️ Everyday Luxury: Gentle lateral support panels center breast tissue and eliminate underarm friction.  
-  > 📦 Guaranteed 100% discreet packaging on every shipment.  
-  >  
-  > #NeutralLingerie #AbayaUndergarments #GaiaBS1135 #BeigeBra #FullBustEveryday #ComfortLingerieDubai #UAEShoppingOnline #NaturaIntimo
-* **Alt Text:** *Gaia BS 1135 neutral champagne semi-soft bra designed for seamless invisible fit under lightweight clothing.*
-
----
-
-## 📌 Pin 6: Virtual Brafitting Consultation & Sister Size Concierge (International)
-
-* **Board Name:** *Bra Size Help & Sister Sizes*
-* **Pin Title:** *Not Sure of Your European Bra Size? Consult Our Virtual Brafitter 📐*
+### Pin 1.3: Szwajcarski Przewodnik Rozmiarów Brafittingu (Kalkulator EU)
+* **Board:** *Bra Fitting Guide & Size Converter*
+* **Wymiar:** 1000 × 1500 px (2:3 Infografika)
+* **Wizualia:** Czysty, geometryczny przewodnik infograficzny: jak zmierzyć obwód pod biustem na ciasno w centymetrach i dobrać stabilny obwód EU (np. 75 pod biustem = obwód 75, nie 80).
+* **Pin Title:** *Find Your European Bra Size: Free Metric Calculator*
 * **Destination URL:** `https://naturaintimo.com/size-guide/`
-* **Visual Concept:** Clean step-by-step graphic guide showing how to measure underbust snug in cm/inches and how European sister sizing works. Badge: *"Empathetic Virtual Size Consultations <24h"*.
 * **Pin Description:**
-  > Transitioning from UK, US, or Australian sizing to European ateliers? You don't have to guess. Our interactive Bra Size Calculator and Virtual Brafitting Concierge help you find your exact metric band and cup match based on your unique breast shape and root width.  
-  >  
-  > 🌍 Worldwide Express Coverage: United States, Canada, United Kingdom, Australia, Switzerland, and UAE.  
-  > 🤝 Fit Guarantee: 30-day returns and a complimentary Free First Size Exchange on all coordinated sets.  
-  > ✉️ Need personalized advice? Reach out to our master fitters at support@naturaintimo.com.  
-  >  
-  > #BraSizeCalculator #BrafittingAdvice #SisterSizes #ConvertBraSize #EuropeanSizing #FullBustSupport #NaturaIntimoFit #DubaiBrafitting #SwissBrafitting
-* **Alt Text:** *Infographic showing bra measurement steps and size conversion to European metric sizing.*
+  > Finding your exact European bra size does not require guesswork. Our interactive brafitting guide and size calculator help Swiss shoppers identify their true metric band and cup match based on ribcage measurements and breast projection.
+  >
+  > Experience the posture-transforming difference of authentic Polish atelier engineering. Rapid express delivery across Switzerland with DHL Express Worldwide DDP. Free shipping threshold of 140 CHF and complimentary 30-day Free First Size Exchange.
+* **Alt Text:** *Infographic showing how to calculate European bra sizes using metric underbust and bust measurements.*
 
 ---
 
-## 📊 Campaign Deployment Checklist
-- [x] Link to live Pinterest Feed XML (`https://naturaintimo.com/pinterest-feed.xml`) and CSV (`https://naturaintimo.com/pinterest-feed.csv`).
-- [x] Verified Pinterest domain meta tag active on live homepage (`p:domain_verify`).
-- [x] All destination URLs point to canonical SSL endpoints (`/full-bust-bras/`, `/size-guide/`, `/product-category/lingerie-sets/`).
-- [x] 100% compliant with FTC, Canadian Competition Act, and Middle East cultural advertising guidelines (Zero adult filter triggers).
+## 📌 Zestaw Pinów 2: ZEA & Dubaj (Dubai, Abu Dhabi, Luxury Gulf)
+
+### Pin 2.1: Ava 2271 Divine Champagne Wine – Luksusowy Haft Atelier
+* **Board:** *Dubai Luxury Lingerie | Haute Atelier Craftsmanship*
+* **Wymiar:** 1000 × 1500 px (2:3 Vertical)
+* **Wizualia:** Luksusowy flat-lay na jasnym marmurze z ciepłym światłem. Biustonosz Ava Divine w kolorze szampańskim z burgundowym haftem i pasującymi figami. Subtelna złota plakietka: *"Atelier Craftsmanship · 48–72h DHL Express to Dubai & Abu Dhabi"*.
+* **Pin Title:** *Ava Divine Luxury Bra Set: Champagne Embroidery*
+* **Destination URL:** `https://naturaintimo.com/product/ava-2271-divine-soft-bra-champagne-wine/`
+* **Pin Description:**
+  > High-end European atelier artistry meets uncompromising full-bust structural engineering. The Ava 2271 Divine unpadded soft bra features exquisite champagne floral embroidery layered over resilient support tulle, offering natural centered contouring without heavy padding.
+  >
+  > Designed for comfort under fine silks, abayas, and luxury evening wear. Save 37.00 AED automatically when completing your coordinated set with matching bikini briefs. Priority express air courier transit to Dubai and Abu Dhabi in 48 to 72 hours via DHL Express Worldwide. Guaranteed 100% discreet packaging. Complimentary shipping on qualifying orders of 550 AED and above.
+* **Alt Text:** *Ava Divine luxury soft bra in champagne lace and fine tulle embroidery with coordinated matching briefs on marble background.*
+
+---
+
+### Pin 2.2: Gorsenia Luisse K441 Black – Oddychający Tiul na Ciepły Klimat Dubaju
+* **Board:** *Breathable Lingerie for Warm Climates | Dubai Style*
+* **Wymiar:** 1000 × 1500 px (2:3 Vertical)
+* **Wizualia:** Lekkie, pełne światła ujęcie detalu ultralekkiej, podwójnej siateczki tiulowej modelu Luisse K441. Napis: *"Zero Foam Padding · Ultra-Light Breathable Mesh · Full Bust Lift"*.
+* **Pin Title:** *Breathable Unpadded Bra for Dubai: Gorsenia Luisse*
+* **Destination URL:** `https://naturaintimo.com/product/gorsenia-luisse-k441-soft-bra-black/`
+* **Pin Description:**
+  > Thick molded foam padding traps moisture and creates heat friction in warm Middle Eastern climates. The Gorsenia Luisse K441 soft bra replaces heavy foam with ultra-lightweight, high-tensile breathable embroidery and side-support slings that channel tissue forward and centered.
+  >
+  > Maximum airflow with dependable lift for fuller busts (EU band 65 to 110, cups F to D). Fast express door-to-door delivery across the United Arab Emirates via DHL Express Worldwide. Free shipping on orders of 550 AED+. Every order arrives in an unmarked, private protective luxury shipping box.
+* **Alt Text:** *Gorsenia Luisse black unpadded breathable mesh bra designed for full cup lift and cool comfort in warm climates.*
+
+---
+
+### Pin 2.3: Gaia BS 1135 Everyday Beige – Gładki i Niewidoczny pod Jedwabiami
+* **Board:** *Everyday Neutral Foundations | Seamless Silhouette*
+* **Wymiar:** 1000 × 1500 px (2:3 Vertical)
+* **Wizualia:** Neutralny odcień szampana/beżu, minimalistyczna kompozycja obok jedwabnej tkaniny. Tekst: *"Invisible Under Silk & Crepe · Ergonomic Everyday Support"*.
+* **Pin Title:** *Invisible Foundation Bra: Neutral Champagne Mesh*
+* **Destination URL:** `https://naturaintimo.com/product/gaia-bs-1135-everyday-soft-bra-beige/`
+* **Pin Description:**
+  > The quintessential discreet foundation under lightweight silks, linens, and light fabrics. The Gaia BS 1135 everyday soft bra combines microfiber wings with smooth unlined cups that mold to your natural silhouette without showing ridges or bulky outlines.
+  >
+  > Engineered for effortless all-day wear with lateral support panels that eliminate underarm chafing. Pair with matching Brazilian briefs for an automatic 37.00 AED Set Savings discount at checkout. Direct DHL Express air courier delivery to UAE in 2 to 4 business days. Pre-cleared customs and 100% confidential discreet packaging.
+* **Alt Text:** *Gaia BS 1135 neutral champagne soft bra designed for an invisible smooth contour under fine light fabrics.*
+
+---
+
+## 📋 Tabela Parametrów Handlowych i Logistycznych (DDP Checklist)
+
+| Parametr Handlowy | 🇨🇭 Szwajcaria (`CH`) | 🇦🇪 Zjednoczone Emiraty Arabskie (`AE`) |
+| :--- | :--- | :--- |
+| **Waluta bazowa** | **CHF** | **AED (`د.إ`)** |
+| **Przewoźnik i Serwis** | DHL Express Worldwide (Air) | DHL Express Worldwide (Air) |
+| **Czas doręczenia** | 1–3 dni robocze | 2–4 dni robocze |
+| **Standardowy koszt dostawy** | 18.00 CHF (DDP) | 90.00 AED (DDP) |
+| **Próg darmowej dostawy** | **140.00 CHF+** | **550.00 AED+** |
+| **Rabat zestawowy (Biustonosz + Figi)** | **-10.00 CHF** (automatyczny w koszyku) | **-37.00 AED** (automatyczny w koszyku) |
+| **Odprawa celna i formalności** | DDP (cło i podatek opłacone z góry, brak opłat pocztowych) | DDP (pre-cleared, zero dopłat kurierskich) |
+| **Opakowanie zewnętrzne** | Dyskretny, bezpieczny karton wysyłkowy | **100% Discreet Packaging** (brak zewnętrznych oznaczeń bielizny) |
+| **Polityka zwrotów i wymiany** | 30 dni na zwrot + **Darmowa Pierwsza Wymiana Rozmiaru** | 30 dni na zwrot + **Darmowa Pierwsza Wymiana Rozmiaru** |
+
+---
+
+## 🚀 Wytyczne Wdrożeniowe i Publikacyjne Pinterest
+
+1. **Formaty i Rozdzielczości:**
+   * Wszystkie kreacje należy publikować w pionowym formacie **1000 × 1500 px (proporcje 2:3)**. Formaty kwadratowe lub poziome tracą do 70% zasięgu w algorytmie Pinterest Visual Search.
+2. **Koniec z hashtagami:**
+   * Algorytm Pinterest indeksuje frazy semantycznie. Hashtagi nie pomagają w pozycjonowaniu i zostały wyeliminowane na rzecz naturalnych fraz kluczowych umieszczonych w pierwszych 50 znakach tytułu i pierwszych 100 znakach opisu.
+3. **Synchronizacja ze Sklepem:**
+   * Piny produktowe łączą się bezpośrednio z aktywnym katalogiem Pinterest (`https://naturaintimo.com/pinterest-feed.xml` oraz `pinterest-feed.csv`), co zapewnia automatyczny status **Rich Pins** (aktualna cena w CHF/AED, dostępność w magazynie w czasie rzeczywistym).
+4. **Zgodność z Adult Content Policy (P0):**
+   * Kreacje fotograficzne wykorzystują zdjęcia studyjne i flat-laye produktowe bez epatowania nagością, co gwarantuje pełną akceptację przez systemy Smart Feed i brak shadowbana.
