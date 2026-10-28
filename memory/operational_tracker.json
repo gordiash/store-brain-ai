@@ -26,6 +26,27 @@
   "daily_operations_log": [
     {
       "date": "2026-10-28",
+      "action": "Cleaned up primary navigation menu & deployed unified global geolocation selector",
+      "details": {
+        "menu_items_removed": [
+          "ID 4576: 🇺🇸 USA",
+          "ID 4577: 🇨🇦 Canada"
+        ],
+        "reason": "Redundant navigation links replaced by automatic Geo-IP and the luxury Top Bar Market & Currency Selector",
+        "active_menu_items": [
+          "Shop",
+          "Full Bust Bras (DD+)",
+          "Size Guide",
+          "Journal",
+          "About Natura Intimo",
+          "Track Order",
+          "Account"
+        ],
+        "cache_status": "Purged LiteSpeed Cache via /wp-json/ni/v1/purge-cache"
+      }
+    },
+    {
+      "date": "2026-10-28",
       "action": "Expanded International Non-EU Architecture to UK & Australia (Zones, Sizing & Global Organic Levers)",
       "details": {
         "shipping_zones_added": [
@@ -164,5 +185,5 @@
       }
     }
   ],
-  "last_heartbeat_pulse": "2026-10-28T07:59:30.451823+00:00"
+  "last_heartbeat_pulse": "2026-10-28T08:29:33.639578+00:00"
 }
