@@ -98,6 +98,22 @@
       "freeFirstSizeExchange": true,
       "sizingSystem": "AU/NZ (Dress size band 10, 12, 14, 16 + UK cups)"
     },
+    "AE": {
+      "currency": "AED",
+      "displaySymbol": "AED",
+      "displaySymbolNative": "د.إ",
+      "locales": ["en-AE", "ar-AE"],
+      "carrier": "DHL Express Worldwide",
+      "incoterms": "DDP",
+      "preparationDays": { "min": 1, "max": 2 },
+      "transitBusinessDays": { "min": 2, "max": 4 },
+      "minimumOrderAmount": 0,
+      "freeShippingThreshold": 550.00,
+      "standardShippingCost": 90.00,
+      "returnWindowDays": 30,
+      "freeFirstSizeExchange": true,
+      "sizingSystem": "EU / UK / US"
+    },
     "PL": {
       "currency": "PLN",
       "displaySymbol": "zł",

@@ -33,6 +33,14 @@ Ten dokument stanowi dynamiczną bazę wiedzy i doświadczeń operacyjnych zespo
 
 
 
+* **Wielorynkowa Geolokalizacja, Multi-Currency & Language Engine (Snippet 126):**
+  * Wdrożono kompleksowy silnik geolokalizacyjny dla 6 kluczowych rynków: **USA (`US` - USD $)**, **Wielka Brytania (`GB` - GBP £)**, **Kanada (`CA` - CAD C$)**, **Australia (`AU` - AUD A$)**, **Zjednoczone Emiraty Arabskie (`AE` - AED د.إ)** oraz **Polska (`PL` - PLN zł)**.
+  * *Wykrywanie kraju:* Wykorzystuje 5-stopniową kaskadę: parametr URL (`?country=...` / `?currency=...`), ciasteczko wyboru manualnego (`ni_user_country`), nagłówek Cloudflare GeoIP (`HTTP_CF_IPCOUNTRY`), `WC_Geolocation::geolocate_ip()` oraz sesję klienta WooCommerce.
+  * *Płynna konwersja walut:* Pobiera live kursy walut z NBP (USD, CAD, GBP, AUD) oraz stosuje stały oficjalny peg Banku Centralnego ZEA dla AED (1 USD = 3.6725 AED). Zastosowano dynamiczny hash cache wariacji (`woocommerce_get_variation_prices_hash`), aby uniknąć serwowania starych cen z transientów.
+  * *Ochrona przed podwójną konwersją:* Wykluczono filtr `raw_woocommerce_price` przy aktywnym `woocommerce_product_get_price` / `woocommerce_variation_prices_price`, co gwarantuje precyzyjne przeliczenie do jednego grosza/centa/dirhama bez podwójnego mnożenia kursu.
+  * *Wielojęzyczność i lokalizacja:* Zintegrowano asynchroniczny silnik Google Translation z automatyczną aktywacją języka polskiego dla gości z Polski, arabskiego (`ar` z obsługą `dir="rtl"`) dla ZEA, francuskiego dla Quebecu oraz angielskiego dla USA, UK i Australii.
+  * *Luksusowy interfejs:* Wdrożono responsywny pasek na samej górze witryny (`ni-global-market-bar`) z flagą, krajem, walutą, progiem darmowej dostawy DHL DDP oraz modalem wyboru rynku.
+
 ## 2. Prawne i Celne USA / Kanada (`us-ca-compliance-auditor-sms` & `accounting-export-customs-sms`)
 * **California SB 478 (Honest Pricing Law):** Wszelkie obowiązkowe opłaty manipulacyjne lub cła muszą być wliczone w cenę bazową lub w z góry określony ryczałt wysyłkowy ($24.99 USD DDP). Zakaz naliczania nieujawnionych opłat celnych przy doręczeniu w USA.
 * **Kanadyjski zakaz Drip Pricing (Competition Act):** Klient z Kanady nie może widzieć ceny w USD bez wyraźnego oznaczenia waluty, a stawka wysyłki ($34.99 CAD) musi być prezentowana w całości przed checkoutem.
