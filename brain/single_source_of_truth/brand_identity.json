@@ -16,6 +16,16 @@
       "primary_language": "en-US"
     },
     {
+      "code": "GB",
+      "currency": "GBP",
+      "shipping_carrier": "DHL Express Tracked",
+      "delivery_days": "2-4 business days",
+      "standard_shipping_rate": 19.99,
+      "free_shipping_threshold": 120.00,
+      "duties": "DDP Included",
+      "primary_language": "en-GB"
+    },
+    {
       "code": "CA",
       "currency": "CAD",
       "shipping_carrier": "DHL Express Worldwide",
@@ -26,9 +36,24 @@
       "primary_language": "en-CA (with fr-CA for Quebec)"
     },
     {
-      "code": "PL",
-      "currency": "PLN",
-      "primary_language": "pl-PL"
+      "code": "AU",
+      "currency": "AUD",
+      "shipping_carrier": "DHL Express Worldwide",
+      "delivery_days": "3-5 business days",
+      "standard_shipping_rate": 39.99,
+      "free_shipping_threshold": 230.00,
+      "duties": "DDP Included (Under A$1000 Exemption)",
+      "primary_language": "en-AU"
+    },
+    {
+      "code": "AE",
+      "currency": "AED",
+      "shipping_carrier": "DHL Express Worldwide",
+      "delivery_days": "2-4 business days",
+      "standard_shipping_rate": 90.00,
+      "free_shipping_threshold": 550.00,
+      "duties": "DDP Pre-Cleared Fast Track",
+      "primary_language": "ar-AE / en-AE"
     }
   ],
   "tone_of_voice": {
