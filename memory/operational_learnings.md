@@ -55,6 +55,16 @@ Ten dokument stanowi dynamiczną bazę wiedzy i doświadczeń operacyjnych zespo
 
 ## 4. Marketing Organiczny i AI SEO (`growth-marketing-ai-seo-sms`)
 * **Zero Halucynacji w Treściach Postów:** Wszelkie posty publikowane na FB/IG muszą precyzyjnie podawać parametry logistyczne z `market_config.json` ($24.99 USD / $24.99 CAD / £19.99 GBP / $39.99 AUD / 90 AED ryczałt DDP; darmowa dostawa od $150 USD / $200 CAD / £120 GBP / $230 AUD / 550 AED). Błędne ceny natychmiast niszczą zaufanie klienta i podlegają karom konsumenckim.
+* **Rozwiązanie błędu ucinania kwot w aplikacji mobilnej Facebooka (Zero Stripped Currencies – P0):**
+  * *Diagnoza błędu:* W aplikacji mobilnej Facebook/Instagram użycie znaku dolara bezpośrednio przed liczbą (np. `$10.00`, `$150+`, `C$200`) powoduje, że silnik renderujący posty traktuje ciąg jako wewnętrzny token sklepu/szablonu handlowego i usuwa znak `$` wraz z pierwszą cyfrą kwoty. W efekcie `$10.00` wyświetla się na telefonach jako `0.00 USD`, a `$150+` jako `50+ USD` lub `C00+ CAD`.
+  * *Wdrożone rozwiązanie (P0):* Całkowity zakaz stosowania znaku `$` bezpośrednio przed cyframi w opisach postów social media. Wszystkie kwoty muszą być zapisywane z pełnym kodem waluty ISO lub słownie:
+    * `USD 10.00` / `10.00 USD` (zamiast `$10.00`)
+    * `USD 150+` / `150+ USD` (zamiast `$150+`)
+    * `CAD 200` / `200+ CAD` (zamiast `C$200` / `$200 CAD`)
+    * `GBP 120` / `120+ GBP` (zamiast `£120`)
+    * `AUD 230` / `230+ AUD` (zamiast `A$230`)
+    * `550.00 AED` (zamiast `550 AED`)
+  * Wszelkie zaplanowane posty i rolki zostały zaktualizowane w Meta Graph API. Zabezpieczenie zintegrowano na stałe w `AGENTS.md` oraz skryptach publikujących.
 * **Rozszerzenie Geotargetowania Postów i Kampanii (UK, AU, AE):**
   * **Wielka Brytania (`UK` / `GB`):** Dojrzały rynek o wysokiej świadomości brafittingowej (system rozmiarów UK: DD, E, F, FF, G, GG, H, HH, J). Główny wyróżnik to polska konstrukcja (wąskie fiszbiny, mocna projekcja w przód bez wbijania fiszbin pod pachami, w czym przoduje Gorsenia i Gaia). Waluta: `GBP` / `£`, darmowa dostawa od `£120.00`.
   * **Australia (`AU`):** Dotkliwy deficyt europejskiej bielizny rzemieślniczej w lokalnych sieciach handlowych, wysoka siła nabywcza. Odbiorcy poszukują oddychających, luksusowych materiałów i precyzyjnego przeliczenia rozmiarów obwodów odzieżowych AU (10, 12, 14, 16) na centymetry EU (70, 75, 80, 85). Waluta: `AUD` / `A$`, darmowa dostawa od `A$ 230.00`.

@@ -92,3 +92,15 @@ Aby zagwarantować pełną samodzielność, niezawodność i samodoskonalenie si
 4. **AutoGen Consensus Swarm (`autogen_consensus_swarm.py`):**
    * *Wzorzec:* `microsoft/autogen` (Multi-Agent Conversational Deliberation).
    * *Działanie:* Wielogłosowa debata i konsensus między agentami (CEO, CMO, Merchant, Compliance) przed każdą publikacją kampanii lub masową modyfikacją produktów.
+
+## 10. Żelazna Reguła Formatowania Kwot i Walut w Social Media (Zero Stripped Currencies – P0)
+* **Geneza błędu:** W aplikacjach mobilnych Meta (Facebook / Instagram) parser automatycznie traktuje znak dolara `$` bezpośrednio przed cyfrą (np. `$10.00`, `$150+`, `C$200`) jako tag handlowy lub zmienną dynamiczną, ucinając symbol waluty i pierwszą cyfrę (np. `$10.00` wyświetla się w aplikacji jako `0.00`, a `$150+` jako `50+`).
+* **BEZWZGLĘDNY ZAKAZ:** Całkowity zakaz stosowania znaku `$` bezpośrednio przed cyframi w treściach postów (`message`, `caption`, `description`, `title`).
+* **OBOWIĄZKOWY FORMAT WALUTOWY (ISO CURRENCY CODE):**
+  * Zamiast `$10.00` -> **`USD 10.00`** (lub `10.00 USD`)
+  * Zamiast `$150+` -> **`USD 150+`** (lub `150+ USD`)
+  * Zamiast `C$200` / `$200 CAD` -> **`CAD 200`** (lub `200+ CAD`)
+  * Zamiast `£120` -> **`GBP 120`** (lub `120+ GBP`)
+  * Zamiast `A$230` -> **`AUD 230`** (lub `230+ AUD`)
+  * Zamiast `550 AED` -> **`550.00 AED`**
+* **Walidacja Pre-Flight:** Każdy skrypt publikujący posty lub rolki (w `backend/` oraz `brain/`) **musi** przed wysłaniem żądania do Meta Graph API przepuścić tekst przez funkcję sanityzującą `clean_currency_notation(text)`.
