@@ -104,3 +104,14 @@ Aby zagwarantować pełną samodzielność, niezawodność i samodoskonalenie si
   * Zamiast `A$230` -> **`AUD 230`** (lub `230+ AUD`)
   * Zamiast `550 AED` -> **`550.00 AED`**
 * **Walidacja Pre-Flight:** Każdy skrypt publikujący posty lub rolki (w `backend/` oraz `brain/`) **musi** przed wysłaniem żądania do Meta Graph API przepuścić tekst przez funkcję sanityzującą `clean_currency_notation(text)`.
+
+## 11. Zasady Maksymalizacji Dystrybucji i Zaangażowania w Social Media (Positive Distribution Multiplier – P0)
+* **Geneza problemu:** Algorytmy Mety (Facebook / Instagram 2026) karzą posty ujemnym mnożnikiem dystrybucji (np. -1.5x do -2.5x), gdy:
+  1. Post zawiera linki zewnętrzne w treści (Facebook dławi posty wyprowadzające ruch poza aplikację).
+  2. Post ma charakter wyłącznie jednostronnej oferty sprzedażowej (brak komentarzy i dyskusji w pierwszych 60 min).
+  3. Brak wezwania do interakcji wyzwalającego dyskusję lub zapisanie posta (Save/Share First).
+* **BEZWZGLĘDNA REGUŁA STRUKTURY POSTA I REELS:**
+  1. **Zero linków w treści głównej posta:** Wszystkie linki do kalkulatora rozmiarów (`/size-guide/`) oraz sklepu są przeniesione do **pierwszego komentarza pod postem** lub bio profilu. Treść posta odsyła do komentarza: *"🔗 Direct link to our European conversion guide & atelier collections is in the first comment below 👇"*.
+  2. **Obowiązkowy haczyk konwersacyjny (Conversational Hook & Poll):** Każdy post musi kończyć się angażującym pytaniem, ankietą lub wyzwaniem brafittingowym, które prowokuje odbiorczynie do natychmiastowego zostawienia komentarza (np. *„Drop your current US size below and we'll tell you your true European equivalent!”*, *„Be honest: how many years have you worn the same bra size without measuring?”*).
+  3. **Wartość „Save & Share” (Zapisz / Prześlij):** W treści eksponujemy mikrolekcję brafittingową (np. *Sister Size Rule*, *Test 2 palców*, *Fizyka podtrzymania 85%*), aby odbiorczynie zapisywały post na później lub przesyłały go w wiadomościach prywatnych (DMs).
+  4. **Formatowanie walut ISO:** Ścisłe przestrzeganie Reguły 10 (`USD 10.00`, `CAD 200`, `GBP 120`, `AUD 230`, `550.00 AED`).

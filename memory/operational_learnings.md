@@ -73,6 +73,9 @@ Ten dokument stanowi dynamiczną bazę wiedzy i doświadczeń operacyjnych zespo
 * **Algorytmy Dystrybucji Instagram & Facebook Reels (Oficjalne Wytyczne Mety 2026):**
   * **Metryka P0: Shares & DMs First:** Polubienia mają znikomy wpływ na polecanie wideo nowym osobom. Głównym czynnikiem wirusowym w Reels jest współczynnik udostępnień w wiadomościach prywatnych (DMs/Sends) oraz wielokrotne odtworzenia (Rewatches / Completion Rate > 100%).
   * **Hook 0–3 sekundy:** Pierwsze 2–3 sekundy decydują o natychmiastowym swipe away. Porażka w pierwszych 2 sekundach powoduje trwałe obcięcie dystrybucji.
+  * **Eliminacja ujemnego mnożnika dystrybucji (Distribution Score Multiplier – P0):**
+    * *Problem linków zewnętrznych:* Wklejanie linków URL bezpośrednio do treści posta na Facebooku obcina organiczną dystrybucję o 40–60%. Wszystkie linki kierujące do sklepu muszą trafiać do pierwszego przypiętego komentarza.
+    * *Conversational Hook:* Posty bez komentarzy w pierwszych 60 minutach dostają ujemny mnożnik (-1.5x do -2.5x). Każdy post musi kończyć się angażującym pytaniem/ankietą (np. *„How many years have you worn the same size?”, „Drop your US size below for an instant EU conversion”*).
   * **Kary algorytmiczne Mety:** Całkowity zakaz publikowania filmów ze znakami wodnymi obcych aplikacji (TikTok/CapCut), materiałów w niskiej rozdzielczości (<1080p), z nieczytelną typografią lub nieoryginalnych repostów.
   * **Facebook Content Distribution Guidelines:** Bezwzględny zakaz "Engagement Bait" (sztuczne wymuszanie komentarzy typu "napisz TAK", "udostępnij znajomej") – grozi to natychmiastowym ucięciem zasięgu profilu. Feed Facebooka promuje autentyczną wymianę zdań (back-and-forth meaningful comments) i zapisywanie postów.
 * **Algorytm Pinterest (Visual Search Engine vs Social Feed):**
