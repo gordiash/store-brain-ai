@@ -119,6 +119,15 @@ def run_heartbeat_tick(pulse_type="AUTO"):
     except Exception as we:
         print(f"  [WhatsApp Dispatch Notice] {we}")
 
+    # 6. Instagram Auto-Publisher Pulse
+    try:
+        sys.path.insert(0, WORKSPACE_DIR)
+        from backend.instagram_auto_publisher import check_and_publish_instagram
+        print("  [Heartbeat 6] Checking Instagram scheduled publishing queue...")
+        check_and_publish_instagram()
+    except Exception as ie:
+        print(f"  [Instagram Publisher Notice] {ie}")
+
     print(f"[{now_utc.isoformat()}] Heartbeat Pulse Completed. State is healthy.")
     return True
 
