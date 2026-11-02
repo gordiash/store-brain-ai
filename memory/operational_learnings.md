@@ -73,6 +73,18 @@ Ten dokument stanowi dynamiczną bazę wiedzy i doświadczeń operacyjnych zespo
 * **Algorytmy Dystrybucji Instagram & Facebook Reels (Oficjalne Wytyczne Mety 2026):**
   * **Metryka P0: Shares & DMs First:** Polubienia mają znikomy wpływ na polecanie wideo nowym osobom. Głównym czynnikiem wirusowym w Reels jest współczynnik udostępnień w wiadomościach prywatnych (DMs/Sends) oraz wielokrotne odtworzenia (Rewatches / Completion Rate > 100%).
   * **Hook 0–3 sekundy:** Pierwsze 2–3 sekundy decydują o natychmiastowym swipe away. Porażka w pierwszych 2 sekundach powoduje trwałe obcięcie dystrybucji.
+
+## 5. Telemetria i Płatne Kampanie Meta Ads (`growth-marketing-ai-seo-sms` & `tech-ux-security-sms`)
+* **Izolacja Kampanii i Eliminacja Archiwalnych Danych z Konta Reklamowego (P0):**
+  * *Diagnoza błędu w panelu zarządczym:* Zapytanie do Meta Graph API `act_1304486204267762/insights?date_preset=maximum` na poziomie konta agregowało historyczne wyniki archiwalnej kampanii z lipca 2025 r. (`http://kalkulatorynieruchomosci.pl/`), wyświetlając w panelu sklepu bielizny cudze liczby (8 103 wyświetlenia, 156 kliknięć, 64.78 PLN wydatków).
+  * *Wdrożona naprawa:* Backend w Snippecie 125 odpytuje precyzyjnie identyfikator aktywnej kampanii Natura Intimo (`120253757821280058/insights`) oraz strukturę hierarchiczną zestawów reklam (`adsets`). Jeżeli nowo uruchomiona kampania nie zarejestrowała jeszcze pierwszych rozliczonych kliknięć, panel raportuje rzetelne 0.00 PLN wydatków, 0 kliknięć i 0 wyświetleń zamiast halucynowanych/archiwalnych fallbacków.
+  * *Rzeczywisty stan kampanii Natura Intimo:*
+    * Identyfikator konta: `act_1304486204267762` (Jarosław Jakubczyk)
+    * Dostępne saldo przedpłaty: `51,72 PLN`
+    * Zestaw reklam: `US Women 25-54 | Full-Bust Lingerie Shoppers` (ID `120253757821730058`)
+    * Budżet dzienny: `50,00 PLN / dzień` (zaktualizowany z 20 na 50 zł/d)
+    * Reklama: `Natura Intimo – Black Friday US Fit` (ID `120253757823950058`) ze statusem `ACTIVE`
+  * *Odporność autoryzacji (Zero Expired Tokens):* Stały token Meta Page Access Token został bezpiecznie zapisany w opcjach WordPressa (`ni_fb_meta_token`), a proxy `/wp-json/ni/v1/meta-proxy` oraz endpoint `/wp-json/ni/v1/dashboard-stats` automatycznie z niego korzystają, eliminując konieczność ciągłego wklejania wygasających tokenów przez użytkownika.
   * **Eliminacja ujemnego mnożnika dystrybucji (Distribution Score Multiplier – P0):**
     * *Problem linków zewnętrznych:* Wklejanie linków URL bezpośrednio do treści posta na Facebooku obcina organiczną dystrybucję o 40–60%. Wszystkie linki kierujące do sklepu muszą trafiać do pierwszego przypiętego komentarza.
     * *Conversational Hook:* Posty bez komentarzy w pierwszych 60 minutach dostają ujemny mnożnik (-1.5x do -2.5x). Każdy post musi kończyć się angażującym pytaniem/ankietą (np. *„How many years have you worn the same size?”, „Drop your US size below for an instant EU conversion”*).

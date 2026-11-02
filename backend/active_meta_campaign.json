@@ -3,8 +3,8 @@
   "account_id": "act_1304486204267762",
   "account_name": "Jaros\u0142aw Jakubczyk",
   "currency": "PLN",
-  "daily_budget_pln": 20.0,
-  "daily_budget_usd_approx": 5.0,
+  "daily_budget_pln": 50.0,
+  "daily_budget_usd_approx": 12.5,
   "campaign_id": "120253757821280058",
   "campaign_name": "Natura Intimo \u2013 US Full-Bust Traffic [Min Bud\u017cet 20 PLN/dzie\u0144]",
   "adset_id": "120253757821730058",
@@ -25,5 +25,7 @@
   "destination_urls": [
     "https://naturaintimo.com/size-guide/",
     "https://naturaintimo.com/"
-  ]
+  ],
+  "advantage_audience": true,
+  "last_updated": "2026-10-29T16:19:46.778005+00:00"
 }
