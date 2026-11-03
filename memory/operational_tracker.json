@@ -17,11 +17,11 @@
     "recent_orders": []
   },
   "exchange_rates_nbp": {
-    "date": "2026-10-30",
+    "date": "2026-11-02",
     "table": "A",
-    "USD_PLN": 3.9251,
-    "CAD_PLN": 2.812,
-    "EUR_PLN": 4.3955
+    "USD_PLN": 3.9389,
+    "CAD_PLN": 2.8201,
+    "EUR_PLN": 4.4185
   },
   "daily_operations_log": [
     {
@@ -217,7 +217,7 @@
       }
     }
   ],
-  "last_heartbeat_pulse": "2026-11-02T07:31:19.367322+00:00",
+  "last_heartbeat_pulse": "2026-11-03T06:57:53.997022+00:00",
   "history": [
     {
       "timestamp": "2026-10-28T10:58:56.626815+00:00",
