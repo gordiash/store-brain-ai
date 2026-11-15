@@ -3,7 +3,8 @@
   "united_states": {
     "carrier": "DHL Express Worldwide",
     "delivery_model": "DDP (Delivered Duty Paid)",
-    "de_minimis_threshold_usd": 800.00,
+    "de_minimis_threshold_usd": null,
+    "de_minimis_status": "ZAWIESZONE/ZNIESIONE — brak progu $800. Wszystkie przesyłki komercyjne do USA podlegają odprawie celnej i należnościom celnym niezależnie od wartości.",
     "hts_codes": {
       "bras_synthetic": {
         "hts_code": "6212.10.9020",

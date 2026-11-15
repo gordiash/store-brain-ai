@@ -95,3 +95,7 @@ Ten dokument stanowi dynamiczną bazę wiedzy i doświadczeń operacyjnych zespo
   * **Koniec z hashtagami:** Oficjalne wytyczne Pinteresta potwierdzają, że hashtagi nie mają wpływu na indeksowanie. Treść musi operować naturalnymi frazami kluczowymi SEO (Front-loaded titles, gdzie główne słowo kluczowe pojawia się w pierwszych 40 znakach).
   * **Wymiar 2:3 i Fresh Pins:** Bezwzględny wymiar 1000x1500 px (formaty poziome i kwadratowe tracą do 70% zasięgu). Pinterest promuje Fresh Pins (unikalne grafiki) i karze masowe repinowanie tego samego obrazu.
   * **Długowieczność (Long Shelf Life):** Piny indeksują się i pracują na ruch zakupowy przez 6 do 18 miesięcy, w przeciwieństwie do 24-godzinnego życia postów na FB/IG.
+
+## 2026-11-15 — Korekta: de minimis USA
+- Użytkownik potwierdził: próg de minimis $800 już NIE obowiązuje. Wszystkie przesyłki komercyjne do USA podlegają odprawie i cłu niezależnie od wartości.
+- Zaktualizowano `memory/customs_and_tax_rulings.json` (`de_minimis_threshold_usd: null`, status zniesione) oraz `brain/agent_guidebooks/ceo.md`.

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "type": "photo",
+    "status": "scheduled",
+    "response": {
+      "id": "122128549323297993"
+    },
+    "ig_routine_id": "fc153571-be22-4209-ade1-1e4767ec4c27"
+  },
+  {
+    "id": 2,
+    "type": "photo",
+    "status": "scheduled",
+    "response": {
+      "id": "122128549377297993"
+    },
+    "ig_routine_id": "5a3e0692-3b9f-4984-9ac7-01efd99d7551"
+  },
+  {
+    "id": 3,
+    "type": "reel",
+    "status": "scheduled",
+    "response": {
+      "video_id": "1145330394613403",
+      "upload": {
+        "success": true,
+        "message": "Upload Successful. To check the status of the video, please follow the instructions listed at https://developers.facebook.com/docs/video-api/guides/reels-publishing#get-the-upload-status."
+      },
+      "finish": {
+        "success": true,
+        "message": "Video is Processing. To check the status of the video, please follow the instructions listed at https://developers.facebook.com/docs/video-api/guides/reels-publishing#get-the-upload-status.",
+        "post_id": "122128549419297993"
+      }
+    },
+    "ig_routine_id": "eaaec041-86e8-4585-823d-c9c00c5c341c"
+  },
+  {
+    "id": 4,
+    "type": "photo",
+    "status": "scheduled",
+    "response": {
+      "id": "122128549449297993"
+    },
+    "ig_routine_id": "aad3b96e-3a97-4ef9-92ba-bda8eebadeac"
+  },
+  {
+    "id": 5,
+    "type": "photo",
+    "status": "scheduled",
+    "response": {
+      "id": "122128549509297993"
+    },
+    "ig_routine_id": "b8978915-d09b-46cf-b29b-005f29e61d67"
+  },
+  {
+    "id": 6,
+    "type": "reel",
+    "status": "scheduled",
+    "response": {
+      "video_id": "2346267106143275",
+      "upload": {
+        "success": true,
+        "message": "Upload Successful. To check the status of the video, please follow the instructions listed at https://developers.facebook.com/docs/video-api/guides/reels-publishing#get-the-upload-status."
+      },
+      "finish": {
+        "success": true,
+        "message": "Video is Processing. To check the status of the video, please follow the instructions listed at https://developers.facebook.com/docs/video-api/guides/reels-publishing#get-the-upload-status.",
+        "post_id": "122128549671297993"
+      }
+    },
+    "ig_routine_id": "de9b374b-50cc-4bf3-870f-87b511dd9f84"
+  }
+]
