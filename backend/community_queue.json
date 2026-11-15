@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "notes": "Kolejka publikacji Community Autopilot. scheduled_utc w UTC. type: post|reel. Platforms: facebook, instagram. Link tylko w first_comment.",
+  "items": [
+    {
+      "id": "2026-11-17-fb-ig-01",
+      "scheduled_utc": "2026-11-17T16:00:00Z",
+      "type": "post",
+      "platforms": ["facebook", "instagram"],
+      "image_url": "https://naturaintimo.com/wp-content/uploads/2026/09/439272.jpg",
+      "caption": "If your bra straps leave deep red marks at the end of the day, your band is doing 0% of the work. ✨\n\nIn European brafitting, the physics of lift is inverted:\n📐 Multi-part cut-and-sewn cups project tissue forward, never flat into your underarms.\n🔒 Powernet side band anchors 85% of breast weight against the ribcage.\n\n✨ Featured: Gaia Mary BS 1372 Semi-Soft Bra (US 32D–42D / EU 70D–95D).\n✨ Set Savings: USD 10.00 off the coordinated set.\n✈️ FREE DHL Express DDP on orders USD 150+.\n\n💬 Be honest: how many years have you worn the same bra size without measuring? Drop a comment below! 👇",
+      "first_comment": "🔗 Size guide + Gaia Mary set: https://naturaintimo.com/size-guide/"
+    },
+    {
+      "id": "2026-11-18-ig-fb-reel-01",
+      "scheduled_utc": "2026-11-18T16:00:00Z",
+      "type": "reel",
+      "platforms": ["facebook", "instagram"],
+      "video_url": "https://naturaintimo.com/wp-content/uploads/2026/10/reel_next_week_tuesday_uk_gorsenia.mp4",
+      "title": "Why your underwires poke your armpits",
+      "caption": "Why do your underwires keep poking into your armpits? 🇬🇧✨\n\nIf you wear a UK DD–GG, wide wires are an anatomical mismatch, not \"just how bras feel\". Polish ateliers use narrow wires and deep projection to channel volume up and forward.\n\n✨ Gorsenia K496 Paradise Soft Balcony (UK 32F–44E).\n💬 Tell us: do your wires poke at the center gore or under your arms? 👇",
+      "first_comment": "🔗 Find your UK-to-EU size: https://naturaintimo.com/size-guide/"
+    },
+    {
+      "id": "2026-11-19-fb-ig-02",
+      "scheduled_utc": "2026-11-19T16:00:00Z",
+      "type": "post",
+      "platforms": ["facebook", "instagram"],
+      "image_url": "https://naturaintimo.com/wp-content/uploads/2026/09/384060.jpg",
+      "caption": "A 36DD is often a 32G in disguise. ✨\n\nIf department stores only carried 36DD, your band is likely doing too little and your straps too much. European sizing runs in true centimeters, so 32G finally gives you a band that stays put.\n\n✨ Gorsenia Paradise K496 Soft Balcony in Midnight Black.\n💬 What size did a proper fitting reveal for you? Share below 👇",
+      "first_comment": "🔗 European size converter: https://naturaintimo.com/size-guide/"
+    }
+  ]
+}
